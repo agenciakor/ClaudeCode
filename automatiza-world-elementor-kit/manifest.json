@@ -1,0 +1,168 @@
+{
+  "name": "Automatiza World — Elementor Template Kit",
+  "title": "Automatiza World — Ensacadeiras Industriais",
+  "description": "Template Kit corporativo para indústria de ensacadeiras automáticas. 8 páginas, header, footer e configuração global de paleta e tipografia. Pronto para Elementor Pro.",
+  "manifest_version": "1.0.21",
+  "kit_version": "1.0.0",
+  "elementor_version": "3.21.0",
+  "page_builder": "elementor",
+  "author": "Automatiza World",
+  "categories": [
+    {
+      "slug": "automatiza-world",
+      "title": "Automatiza World"
+    }
+  ],
+  "tags": [
+    "industrial",
+    "fabricante",
+    "ensacadeira",
+    "automacao",
+    "b2b"
+  ],
+  "site-settings": {
+    "global-colors": true,
+    "global-typography": true
+  },
+  "templates": {},
+  "content": {
+    "kit": {
+      "global": {
+        "name": "global",
+        "title": "Global Kit Settings",
+        "doc_type": "kit",
+        "thumbnail": "screenshots/global.jpg",
+        "source": "local",
+        "type": "kit",
+        "category": "automatiza-world",
+        "metadata": {
+          "include_in_zip": "1"
+        }
+      }
+    },
+    "site-parts": {
+      "header": {
+        "name": "header",
+        "title": "Automatiza World - Header",
+        "doc_type": "header",
+        "thumbnail": "screenshots/header.jpg",
+        "source": "local",
+        "type": "header",
+        "category": "automatiza-world",
+        "metadata": {
+          "include_in_zip": "1"
+        }
+      },
+      "footer": {
+        "name": "footer",
+        "title": "Automatiza World - Footer",
+        "doc_type": "footer",
+        "thumbnail": "screenshots/footer.jpg",
+        "source": "local",
+        "type": "footer",
+        "category": "automatiza-world",
+        "metadata": {
+          "include_in_zip": "1"
+        }
+      }
+    },
+    "page": {
+      "home": {
+        "name": "home",
+        "title": "Automatiza World - Home",
+        "doc_type": "wp-page",
+        "thumbnail": "screenshots/home.jpg",
+        "source": "local",
+        "type": "wp-page",
+        "category": "automatiza-world",
+        "metadata": {
+          "include_in_zip": "1"
+        }
+      },
+      "sobre": {
+        "name": "sobre",
+        "title": "Automatiza World - Sobre",
+        "doc_type": "wp-page",
+        "thumbnail": "screenshots/sobre.jpg",
+        "source": "local",
+        "type": "wp-page",
+        "category": "automatiza-world",
+        "metadata": {
+          "include_in_zip": "1"
+        }
+      },
+      "ensacadeiras": {
+        "name": "ensacadeiras",
+        "title": "Automatiza World - Ensacadeiras",
+        "doc_type": "wp-page",
+        "thumbnail": "screenshots/ensacadeiras.jpg",
+        "source": "local",
+        "type": "wp-page",
+        "category": "automatiza-world",
+        "metadata": {
+          "include_in_zip": "1"
+        }
+      },
+      "segmentos": {
+        "name": "segmentos",
+        "title": "Automatiza World - Segmentos",
+        "doc_type": "wp-page",
+        "thumbnail": "screenshots/segmentos.jpg",
+        "source": "local",
+        "type": "wp-page",
+        "category": "automatiza-world",
+        "metadata": {
+          "include_in_zip": "1"
+        }
+      },
+      "servicos": {
+        "name": "servicos",
+        "title": "Automatiza World - Serviços",
+        "doc_type": "wp-page",
+        "thumbnail": "screenshots/servicos.jpg",
+        "source": "local",
+        "type": "wp-page",
+        "category": "automatiza-world",
+        "metadata": {
+          "include_in_zip": "1"
+        }
+      },
+      "blog": {
+        "name": "blog",
+        "title": "Automatiza World - Blog",
+        "doc_type": "wp-page",
+        "thumbnail": "screenshots/blog.jpg",
+        "source": "local",
+        "type": "wp-page",
+        "category": "automatiza-world",
+        "metadata": {
+          "include_in_zip": "1"
+        }
+      },
+      "contato": {
+        "name": "contato",
+        "title": "Automatiza World - Contato",
+        "doc_type": "wp-page",
+        "thumbnail": "screenshots/contato.jpg",
+        "source": "local",
+        "type": "wp-page",
+        "category": "automatiza-world",
+        "metadata": {
+          "include_in_zip": "1"
+        }
+      },
+      "404-page": {
+        "name": "404-page",
+        "title": "Automatiza World - 404",
+        "doc_type": "wp-page",
+        "thumbnail": "screenshots/404-page.jpg",
+        "source": "local",
+        "type": "wp-page",
+        "category": "automatiza-world",
+        "metadata": {
+          "include_in_zip": "1"
+        }
+      }
+    }
+  }
+}

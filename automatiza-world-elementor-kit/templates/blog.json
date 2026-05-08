@@ -1,0 +1,984 @@
+{
+  "version": "0.4",
+  "title": "Automatiza World - Blog",
+  "type": "page",
+  "metadata": {
+    "template_type": "wp-page",
+    "include_in_zip": "1",
+    "elementor_pro_required": null
+  },
+  "content": [
+    {
+      "id": "e2cb0060",
+      "elType": "section",
+      "settings": {
+        "background_background": "classic",
+        "background_color": "#0D2137",
+        "padding": {
+          "unit": "px",
+          "top": "110",
+          "right": "20",
+          "bottom": "110",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "99efc0d6",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "4160b860",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "AUTOMATIZA WORLD",
+                "header_size": "p",
+                "align": "center",
+                "title_color": "#F0A500",
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 11,
+                  "sizes": []
+                },
+                "typography_font_weight": "700",
+                "typography_letter_spacing": {
+                  "unit": "em",
+                  "size": 0.08,
+                  "sizes": []
+                },
+                "typography_text_transform": "uppercase",
+                "_animation": "fadeInUp",
+                "_animation_delay": 0,
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "8",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "f79e5928",
+              "elType": "widget",
+              "widgetType": "divider",
+              "settings": {
+                "color": "#F0A500",
+                "weight": {
+                  "unit": "px",
+                  "size": 3,
+                  "sizes": []
+                },
+                "width": {
+                  "unit": "px",
+                  "size": 60,
+                  "sizes": []
+                },
+                "align": "center",
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "24",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "gap": {
+                  "unit": "px",
+                  "size": 0,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "206110ca",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Conteúdo especializado em automação de ensaque",
+                "header_size": "h1",
+                "align": "center",
+                "title_color": "#FFFFFF",
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 44,
+                  "sizes": []
+                },
+                "typography_font_weight": "700",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.2,
+                  "sizes": []
+                },
+                "_animation": "fadeInLeft",
+                "_animation_delay": 0,
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "16",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "e78bb24d",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Guias técnicos, comparativos de modelos e boas práticas para indústrias de ração, soja, fertilizantes e mineração.</p>",
+                "text_color": "#A8B8C2",
+                "align": "center",
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 18,
+                  "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.65,
+                  "sizes": []
+                },
+                "_animation": "fadeInUp",
+                "_animation_delay": 100,
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            }
+          ],
+          "isInner": false
+        }
+      ],
+      "isInner": false
+    },
+    {
+      "id": "177a49ce",
+      "elType": "section",
+      "settings": {
+        "background_background": "classic",
+        "background_color": "#F4F6F9",
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        },
+        "structure": "33"
+      },
+      "elements": [
+        {
+          "id": "9165b944",
+          "elType": "column",
+          "settings": {
+            "_column_size": 33,
+            "_inline_size": null,
+            "background_background": "classic",
+            "background_color": "#FFFFFF",
+            "border_radius": {
+              "unit": "px",
+              "top": "8",
+              "right": "8",
+              "bottom": "8",
+              "left": "8",
+              "isLinked": true
+            },
+            "margin": {
+              "unit": "px",
+              "top": "10",
+              "right": "10",
+              "bottom": "10",
+              "left": "10",
+              "isLinked": false
+            },
+            "padding": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": false
+            }
+          },
+          "elements": [
+            {
+              "id": "f2d6037c",
+              "elType": "widget",
+              "widgetType": "image",
+              "settings": {
+                "image": {
+                  "url": "https://images.unsplash.com/photo-1543393470-b2f8d68a91f7?w=800&q=80",
+                  "id": ""
+                },
+                "image_size": "full",
+                "_alt": "Comparativo de ensacadeiras para fábrica de ração",
+                "image_border_radius": {
+                  "unit": "px",
+                  "top": "8",
+                  "right": "8",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "74ecb059",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<span style=\"color:#F0A500;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;\">Guia técnico</span> &nbsp; <span style=\"color:#5A7A8A;font-size:12px;\">12 mar 2026</span>",
+                "_padding": {
+                  "unit": "px",
+                  "top": "20",
+                  "right": "20",
+                  "bottom": "0",
+                  "left": "20",
+                  "isLinked": false
+                },
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "12",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "8e04329a",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Como escolher a ensacadeira certa para a sua fábrica de ração",
+                "header_size": "h3",
+                "title_color": "#0D2137",
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 18,
+                  "sizes": []
+                },
+                "typography_font_weight": "700",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.35,
+                  "sizes": []
+                },
+                "_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "20",
+                  "bottom": "0",
+                  "left": "20",
+                  "isLinked": false
+                },
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "12",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "9de37f72",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Capacidade, tipo de saco, precisão e integração com a linha de extrusão: os 5 critérios que decidem o investimento.</p>",
+                "text_color": "#5A7A8A",
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 14,
+                  "sizes": []
+                },
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.6,
+                  "sizes": []
+                },
+                "_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "20",
+                  "bottom": "16",
+                  "left": "20",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "1e391624",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "Ler artigo →",
+                "link": {
+                  "url": "#",
+                  "is_external": ""
+                },
+                "align": "left",
+                "size": "sm",
+                "background_color": "rgba(0,0,0,0)",
+                "button_text_color": "#F0A500",
+                "border_radius": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "text_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "20",
+                  "bottom": "24",
+                  "left": "20",
+                  "isLinked": false
+                },
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 14,
+                  "sizes": []
+                },
+                "typography_font_weight": "700"
+              },
+              "elements": []
+            }
+          ],
+          "isInner": false
+        },
+        {
+          "id": "94004834",
+          "elType": "column",
+          "settings": {
+            "_column_size": 33,
+            "_inline_size": null,
+            "background_background": "classic",
+            "background_color": "#FFFFFF",
+            "border_radius": {
+              "unit": "px",
+              "top": "8",
+              "right": "8",
+              "bottom": "8",
+              "left": "8",
+              "isLinked": true
+            },
+            "margin": {
+              "unit": "px",
+              "top": "10",
+              "right": "10",
+              "bottom": "10",
+              "left": "10",
+              "isLinked": false
+            },
+            "padding": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": false
+            }
+          },
+          "elements": [
+            {
+              "id": "cc2607c0",
+              "elType": "widget",
+              "widgetType": "image",
+              "settings": {
+                "image": {
+                  "url": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=800&q=80",
+                  "id": ""
+                },
+                "image_size": "full",
+                "_alt": "Big bag de soja vs saco de 50 kg",
+                "image_border_radius": {
+                  "unit": "px",
+                  "top": "8",
+                  "right": "8",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "f83a4ccc",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<span style=\"color:#F0A500;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;\">Comparativo</span> &nbsp; <span style=\"color:#5A7A8A;font-size:12px;\">28 fev 2026</span>",
+                "_padding": {
+                  "unit": "px",
+                  "top": "20",
+                  "right": "20",
+                  "bottom": "0",
+                  "left": "20",
+                  "isLinked": false
+                },
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "12",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "dcf90837",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Ensacadeira big bag vs saco de 50 kg: qual é mais eficiente para soja?",
+                "header_size": "h3",
+                "title_color": "#0D2137",
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 18,
+                  "sizes": []
+                },
+                "typography_font_weight": "700",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.35,
+                  "sizes": []
+                },
+                "_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "20",
+                  "bottom": "0",
+                  "left": "20",
+                  "isLinked": false
+                },
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "12",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "b2429266",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Análise de custo, produtividade e logística para produtores de soja decidirem entre big bag e saco convencional.</p>",
+                "text_color": "#5A7A8A",
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 14,
+                  "sizes": []
+                },
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.6,
+                  "sizes": []
+                },
+                "_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "20",
+                  "bottom": "16",
+                  "left": "20",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "f5ca435f",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "Ler artigo →",
+                "link": {
+                  "url": "#",
+                  "is_external": ""
+                },
+                "align": "left",
+                "size": "sm",
+                "background_color": "rgba(0,0,0,0)",
+                "button_text_color": "#F0A500",
+                "border_radius": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "text_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "20",
+                  "bottom": "24",
+                  "left": "20",
+                  "isLinked": false
+                },
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 14,
+                  "sizes": []
+                },
+                "typography_font_weight": "700"
+              },
+              "elements": []
+            }
+          ],
+          "isInner": false
+        },
+        {
+          "id": "f43799e4",
+          "elType": "column",
+          "settings": {
+            "_column_size": 33,
+            "_inline_size": null,
+            "background_background": "classic",
+            "background_color": "#FFFFFF",
+            "border_radius": {
+              "unit": "px",
+              "top": "8",
+              "right": "8",
+              "bottom": "8",
+              "left": "8",
+              "isLinked": true
+            },
+            "margin": {
+              "unit": "px",
+              "top": "10",
+              "right": "10",
+              "bottom": "10",
+              "left": "10",
+              "isLinked": false
+            },
+            "padding": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": false
+            }
+          },
+          "elements": [
+            {
+              "id": "43d5d2b5",
+              "elType": "widget",
+              "widgetType": "image",
+              "settings": {
+                "image": {
+                  "url": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80",
+                  "id": ""
+                },
+                "image_size": "full",
+                "_alt": "Técnico em manutenção preventiva de ensacadeira",
+                "image_border_radius": {
+                  "unit": "px",
+                  "top": "8",
+                  "right": "8",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "d536ceed",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<span style=\"color:#F0A500;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;\">Manutenção</span> &nbsp; <span style=\"color:#5A7A8A;font-size:12px;\">14 fev 2026</span>",
+                "_padding": {
+                  "unit": "px",
+                  "top": "20",
+                  "right": "20",
+                  "bottom": "0",
+                  "left": "20",
+                  "isLinked": false
+                },
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "12",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "3703fdaa",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Manutenção preventiva de ensacadeiras: o guia completo para indústrias",
+                "header_size": "h3",
+                "title_color": "#0D2137",
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 18,
+                  "sizes": []
+                },
+                "typography_font_weight": "700",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.35,
+                  "sizes": []
+                },
+                "_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "20",
+                  "bottom": "0",
+                  "left": "20",
+                  "isLinked": false
+                },
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "12",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "ab277a22",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Calendário de manutenção, peças críticas, indicadores de disponibilidade e checklist para o operador.</p>",
+                "text_color": "#5A7A8A",
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 14,
+                  "sizes": []
+                },
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.6,
+                  "sizes": []
+                },
+                "_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "20",
+                  "bottom": "16",
+                  "left": "20",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "a00aefd8",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "Ler artigo →",
+                "link": {
+                  "url": "#",
+                  "is_external": ""
+                },
+                "align": "left",
+                "size": "sm",
+                "background_color": "rgba(0,0,0,0)",
+                "button_text_color": "#F0A500",
+                "border_radius": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                },
+                "text_padding": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "20",
+                  "bottom": "24",
+                  "left": "20",
+                  "isLinked": false
+                },
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 14,
+                  "sizes": []
+                },
+                "typography_font_weight": "700"
+              },
+              "elements": []
+            }
+          ],
+          "isInner": false
+        }
+      ],
+      "isInner": false
+    },
+    {
+      "id": "3b126239",
+      "elType": "section",
+      "settings": {
+        "background_background": "classic",
+        "background_color": "#0D2137",
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "20",
+          "bottom": "80",
+          "left": "20",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "346bebb2",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100,
+            "_inline_size": null
+          },
+          "elements": [
+            {
+              "id": "05ec05fb",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "NEWSLETTER",
+                "header_size": "p",
+                "align": "center",
+                "title_color": "#F0A500",
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 11,
+                  "sizes": []
+                },
+                "typography_font_weight": "700",
+                "typography_letter_spacing": {
+                  "unit": "em",
+                  "size": 0.08,
+                  "sizes": []
+                },
+                "typography_text_transform": "uppercase",
+                "_animation": "fadeInUp",
+                "_animation_delay": 0,
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "8",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "28cb8945",
+              "elType": "widget",
+              "widgetType": "divider",
+              "settings": {
+                "color": "#F0A500",
+                "weight": {
+                  "unit": "px",
+                  "size": 3,
+                  "sizes": []
+                },
+                "width": {
+                  "unit": "%",
+                  "size": 50,
+                  "sizes": []
+                },
+                "align": "center",
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "20",
+                  "left": "0",
+                  "isLinked": false
+                },
+                "gap": {
+                  "unit": "px",
+                  "size": 0,
+                  "sizes": []
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "e17e4729",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Receba nossos artigos técnicos no e-mail",
+                "header_size": "h2",
+                "align": "center",
+                "title_color": "#FFFFFF",
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 30,
+                  "sizes": []
+                },
+                "typography_font_weight": "700",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.2,
+                  "sizes": []
+                },
+                "_animation": "fadeInUp",
+                "_animation_delay": 0,
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "16",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "94884423",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Um e-mail por mês com guias práticos para gestores e engenheiros de produção.</p>",
+                "text_color": "#A8B8C2",
+                "align": "center",
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 16,
+                  "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_line_height": {
+                  "unit": "em",
+                  "size": 1.65,
+                  "sizes": []
+                },
+                "_animation": "fadeInUp",
+                "_animation_delay": 100,
+                "_margin": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "32",
+                  "left": "0",
+                  "isLinked": false
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "aed52954",
+              "elType": "widget",
+              "widgetType": "form",
+              "settings": {
+                "form_name": "Newsletter",
+                "form_fields": [
+                  {
+                    "_id": "b2b12c47",
+                    "field_type": "email",
+                    "field_label": "E-mail",
+                    "placeholder": "seu@email.com.br",
+                    "width": "100",
+                    "required": "true"
+                  }
+                ],
+                "button_text": "Quero receber",
+                "button_align": "center",
+                "button_size": "md",
+                "button_background_color": "#F0A500",
+                "button_text_color": "#0D2137",
+                "button_typography_typography": "custom",
+                "button_typography_font_family": "Inter",
+                "button_typography_font_weight": "700"
+              },
+              "elements": []
+            }
+          ],
+          "isInner": false
+        }
+      ],
+      "isInner": false
+    }
+  ],
+  "page_settings": {
+    "hide_title": true,
+    "template": "elementor_header_footer"
+  }
+}

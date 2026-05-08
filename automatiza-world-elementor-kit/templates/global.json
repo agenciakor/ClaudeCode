@@ -1,0 +1,105 @@
+{
+  "version": "0.4",
+  "title": "Global Kit Settings",
+  "type": "section",
+  "metadata": {
+    "template_type": "kit",
+    "include_in_zip": "1",
+    "elementor_pro_required": null
+  },
+  "content": [],
+  "page_settings": {
+    "system_colors": [
+      {
+        "_id": "primary",
+        "title": "Primary",
+        "color": "#0D2137"
+      },
+      {
+        "_id": "secondary",
+        "title": "Secondary",
+        "color": "#081E2E"
+      },
+      {
+        "_id": "text",
+        "title": "Text",
+        "color": "#5A7A8A"
+      },
+      {
+        "_id": "accent",
+        "title": "Accent",
+        "color": "#F0A500"
+      }
+    ],
+    "custom_colors": [
+      {
+        "_id": "aw_amber",
+        "title": "AW Amber",
+        "color": "#F0A500"
+      },
+      {
+        "_id": "aw_dark",
+        "title": "AW Dark",
+        "color": "#0D2137"
+      },
+      {
+        "_id": "aw_navy2",
+        "title": "AW Navy 2",
+        "color": "#081E2E"
+      },
+      {
+        "_id": "aw_light",
+        "title": "AW Light",
+        "color": "#F4F6F9"
+      },
+      {
+        "_id": "aw_white",
+        "title": "AW White",
+        "color": "#FFFFFF"
+      },
+      {
+        "_id": "aw_text",
+        "title": "AW Text Muted",
+        "color": "#5A7A8A"
+      },
+      {
+        "_id": "aw_border",
+        "title": "AW Border",
+        "color": "#E1E7ED"
+      }
+    ],
+    "system_typography": [
+      {
+        "_id": "primary",
+        "title": "Primary",
+        "typography_typography": "custom",
+        "typography_font_family": "Inter",
+        "typography_font_weight": "700"
+      },
+      {
+        "_id": "secondary",
+        "title": "Secondary",
+        "typography_typography": "custom",
+        "typography_font_family": "Inter",
+        "typography_font_weight": "600"
+      },
+      {
+        "_id": "text",
+        "title": "Text",
+        "typography_typography": "custom",
+        "typography_font_family": "Inter",
+        "typography_font_weight": "400"
+      },
+      {
+        "_id": "accent",
+        "title": "Accent",
+        "typography_typography": "custom",
+        "typography_font_family": "Inter",
+        "typography_font_weight": "700"
+      }
+    ],
+    "default_generic_fonts": "sans-serif",
+    "site_name": "Automatiza World",
+    "site_description": "Ensacadeiras automáticas industriais"
+  }
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Como importar — Automatiza World Template Kit</title>
+<style>
+body{font-family:Inter,Arial,sans-serif;max-width:780px;margin:40px auto;padding:0 20px;color:#0D2137;line-height:1.65;}
+h1{color:#0D2137;border-bottom:3px solid #F0A500;padding-bottom:12px;}
+h2{color:#0D2137;margin-top:32px;}
+code{background:#F4F6F9;padding:2px 6px;border-radius:3px;font-size:13px;}
+.box{background:#F4F6F9;border-left:4px solid #F0A500;padding:16px 20px;margin:20px 0;border-radius:4px;}
+ol li,ul li{margin-bottom:8px;}
+a{color:#F0A500;}
+</style>
+</head>
+<body>
+<h1>Automatiza World — Elementor Template Kit</h1>
+<p><strong>Versão:</strong> 1.0.0 &nbsp; | &nbsp; <strong>Compatibilidade:</strong> Elementor 3.21+ e Elementor Pro 3.21+</p>
+
+<h2>1. Pré-requisitos</h2>
+<ul>
+  <li>WordPress 6.4 ou superior</li>
+  <li>Elementor 3.21+ <strong>e</strong> Elementor Pro 3.21+ ativos</li>
+  <li>Permissão de upload para arquivos <code>.zip</code> em <em>Configurações → Mídia</em></li>
+  <li>Tipografia Inter — o Kit já carrega automaticamente do Google Fonts</li>
+</ul>
+
+<h2>2. Como importar o Kit</h2>
+<ol>
+  <li>No painel do WordPress, vá em <strong>Templates → Kits Library</strong> (ou <strong>Templates → Template Kits</strong>).</li>
+  <li>Clique em <strong>Import Kit</strong> (ou <em>Importar Kit</em>).</li>
+  <li>Faça upload do arquivo <code>automatiza-world-elementor-kit.zip</code>.</li>
+  <li>Na tela de revisão, mantenha marcadas as opções <em>Site Settings</em>, <em>Templates</em> e <em>Content</em>.</li>
+  <li>Clique em <strong>Apply All</strong>.</li>
+</ol>
+<div class="box">A primeira importação pode levar de 30s a 2 minutos. Não feche a aba durante o processo.</div>
+
+<h2>3. Após importar</h2>
+<ol>
+  <li>Vá em <strong>Mídia → Adicionar Nova</strong> e faça upload da logo da Automatiza World.</li>
+  <li>Edite o template <strong>Header</strong> e o <strong>Footer</strong> e substitua o placeholder <code>{{LOGO_URL}}</code> pela imagem enviada.</li>
+  <li>Em <strong>Templates → Theme Builder</strong>, defina o Header e Footer importados como <em>Entire Site</em>.</li>
+  <li>Crie as páginas (Home, Sobre, Ensacadeiras, Segmentos, Serviços, Blog, Contato) e atribua o template correspondente em <em>Page Attributes → Template</em>.</li>
+  <li>Ajuste o menu principal em <strong>Aparência → Menus</strong> com os itens: Sobre, Produtos, Segmentos, Serviços, Blog, Contato.</li>
+  <li>No template Contato, configure as ações pós-envio do formulário (e-mail, integração CRM ou webhook).</li>
+</ol>
+
+<h2>4. Paleta global</h2>
+<ul>
+  <li><strong>Primary (Dark):</strong> <code>#0D2137</code></li>
+  <li><strong>Accent (Amber):</strong> <code>#F0A500</code></li>
+  <li><strong>Light:</strong> <code>#F4F6F9</code></li>
+  <li><strong>Navy 2:</strong> <code>#081E2E</code></li>
+  <li><strong>Text Muted:</strong> <code>#5A7A8A</code></li>
+</ul>
+
+<h2>5. Estrutura do ZIP</h2>
+<pre style="background:#F4F6F9;padding:16px;border-radius:4px;font-size:13px;">
+automatiza-world-elementor-kit/
+├── manifest.json
+├── help.html
+├── templates/
+│   ├── global.json
+│   ├── header.json
+│   ├── footer.json
+│   ├── home.json
+│   ├── sobre.json
+│   ├── ensacadeiras.json
+│   ├── segmentos.json
+│   ├── servicos.json
+│   ├── blog.json
+│   ├── contato.json
+│   └── 404-page.json
+└── screenshots/
+    └── *.jpg
+</pre>
+
+<h2>6. Suporte</h2>
+<p>Em caso de dúvidas na importação, contate a equipe responsável pelo site da Automatiza World.</p>
+</body>
+</html>
