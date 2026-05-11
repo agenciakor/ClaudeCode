@@ -1,167 +1,99 @@
 {
-  "name": "Automatiza World — Elementor Template Kit",
+  "name": "automatiza-world",
   "title": "Automatiza World — Ensacadeiras Industriais",
   "description": "Template Kit corporativo para indústria de ensacadeiras automáticas. 8 páginas, header, footer e configuração global de paleta e tipografia. Pronto para Elementor Pro.",
-  "manifest_version": "1.0.21",
-  "kit_version": "1.0.0",
-  "elementor_version": "3.21.0",
-  "page_builder": "elementor",
   "author": "Automatiza World",
-  "categories": [
-    {
-      "slug": "automatiza-world",
-      "title": "Automatiza World"
+  "version": "1.0.0",
+  "elementor_version": "3.21.0",
+  "created": "1778510792",
+  "thumbnail": "",
+  "site-settings": [
+    "theme_style_settings",
+    "general_settings",
+    "settings_lightbox",
+    "settings_layout"
+  ],
+  "templates": {
+    "1": {
+      "id": 1,
+      "title": "Automatiza World - Header",
+      "doc_type": "header",
+      "thumbnail": "",
+      "source": "local"
+    },
+    "2": {
+      "id": 2,
+      "title": "Automatiza World - Footer",
+      "doc_type": "footer",
+      "thumbnail": "",
+      "source": "local"
     }
-  ],
-  "tags": [
-    "industrial",
-    "fabricante",
-    "ensacadeira",
-    "automacao",
-    "b2b"
-  ],
-  "site-settings": {
-    "global-colors": true,
-    "global-typography": true
   },
-  "templates": {},
   "content": {
-    "kit": {
-      "global": {
-        "name": "global",
-        "title": "Global Kit Settings",
-        "doc_type": "kit",
-        "thumbnail": "screenshots/global.jpg",
-        "source": "local",
-        "type": "kit",
-        "category": "automatiza-world",
-        "metadata": {
-          "include_in_zip": "1"
-        }
-      }
-    },
-    "site-parts": {
-      "header": {
-        "name": "header",
-        "title": "Automatiza World - Header",
-        "doc_type": "header",
-        "thumbnail": "screenshots/header.jpg",
-        "source": "local",
-        "type": "header",
-        "category": "automatiza-world",
-        "metadata": {
-          "include_in_zip": "1"
-        }
-      },
-      "footer": {
-        "name": "footer",
-        "title": "Automatiza World - Footer",
-        "doc_type": "footer",
-        "thumbnail": "screenshots/footer.jpg",
-        "source": "local",
-        "type": "footer",
-        "category": "automatiza-world",
-        "metadata": {
-          "include_in_zip": "1"
-        }
-      }
-    },
     "page": {
-      "home": {
-        "name": "home",
+      "3": {
+        "id": 3,
         "title": "Automatiza World - Home",
         "doc_type": "wp-page",
-        "thumbnail": "screenshots/home.jpg",
-        "source": "local",
-        "type": "wp-page",
-        "category": "automatiza-world",
-        "metadata": {
-          "include_in_zip": "1"
-        }
+        "thumbnail": "",
+        "url": "/automatiza-world-home",
+        "source": "local"
       },
-      "sobre": {
-        "name": "sobre",
+      "4": {
+        "id": 4,
         "title": "Automatiza World - Sobre",
         "doc_type": "wp-page",
-        "thumbnail": "screenshots/sobre.jpg",
-        "source": "local",
-        "type": "wp-page",
-        "category": "automatiza-world",
-        "metadata": {
-          "include_in_zip": "1"
-        }
+        "thumbnail": "",
+        "url": "/automatiza-world-sobre",
+        "source": "local"
       },
-      "ensacadeiras": {
-        "name": "ensacadeiras",
+      "5": {
+        "id": 5,
         "title": "Automatiza World - Ensacadeiras",
         "doc_type": "wp-page",
-        "thumbnail": "screenshots/ensacadeiras.jpg",
-        "source": "local",
-        "type": "wp-page",
-        "category": "automatiza-world",
-        "metadata": {
-          "include_in_zip": "1"
-        }
+        "thumbnail": "",
+        "url": "/automatiza-world-ensacadeiras",
+        "source": "local"
       },
-      "segmentos": {
-        "name": "segmentos",
+      "6": {
+        "id": 6,
         "title": "Automatiza World - Segmentos",
         "doc_type": "wp-page",
-        "thumbnail": "screenshots/segmentos.jpg",
-        "source": "local",
-        "type": "wp-page",
-        "category": "automatiza-world",
-        "metadata": {
-          "include_in_zip": "1"
-        }
+        "thumbnail": "",
+        "url": "/automatiza-world-segmentos",
+        "source": "local"
       },
-      "servicos": {
-        "name": "servicos",
-        "title": "Automatiza World - Serviços",
+      "7": {
+        "id": 7,
+        "title": "Automatiza World - Servicos",
         "doc_type": "wp-page",
-        "thumbnail": "screenshots/servicos.jpg",
-        "source": "local",
-        "type": "wp-page",
-        "category": "automatiza-world",
-        "metadata": {
-          "include_in_zip": "1"
-        }
+        "thumbnail": "",
+        "url": "/automatiza-world-servicos",
+        "source": "local"
       },
-      "blog": {
-        "name": "blog",
+      "8": {
+        "id": 8,
         "title": "Automatiza World - Blog",
         "doc_type": "wp-page",
-        "thumbnail": "screenshots/blog.jpg",
-        "source": "local",
-        "type": "wp-page",
-        "category": "automatiza-world",
-        "metadata": {
-          "include_in_zip": "1"
-        }
+        "thumbnail": "",
+        "url": "/automatiza-world-blog",
+        "source": "local"
       },
-      "contato": {
-        "name": "contato",
+      "9": {
+        "id": 9,
         "title": "Automatiza World - Contato",
         "doc_type": "wp-page",
-        "thumbnail": "screenshots/contato.jpg",
-        "source": "local",
-        "type": "wp-page",
-        "category": "automatiza-world",
-        "metadata": {
-          "include_in_zip": "1"
-        }
+        "thumbnail": "",
+        "url": "/automatiza-world-contato",
+        "source": "local"
       },
-      "404-page": {
-        "name": "404-page",
+      "10": {
+        "id": 10,
         "title": "Automatiza World - 404",
         "doc_type": "wp-page",
-        "thumbnail": "screenshots/404-page.jpg",
-        "source": "local",
-        "type": "wp-page",
-        "category": "automatiza-world",
-        "metadata": {
-          "include_in_zip": "1"
-        }
+        "thumbnail": "",
+        "url": "/automatiza-world-404",
+        "source": "local"
       }
     }
   }
