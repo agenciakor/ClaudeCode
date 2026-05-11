@@ -1,100 +1,226 @@
 {
-  "name": "automatiza-world",
-  "title": "Automatiza World — Ensacadeiras Industriais",
-  "description": "Template Kit corporativo para indústria de ensacadeiras automáticas. 8 páginas, header, footer e configuração global de paleta e tipografia. Pronto para Elementor Pro.",
-  "author": "Automatiza World",
-  "version": "1.0.0",
-  "elementor_version": "3.21.0",
-  "created": "1778510792",
-  "thumbnail": "",
-  "site-settings": [
-    "theme_style_settings",
-    "general_settings",
-    "settings_lightbox",
-    "settings_layout"
-  ],
-  "templates": {
-    "1": {
-      "id": 1,
-      "title": "Automatiza World - Header",
-      "doc_type": "header",
-      "thumbnail": "",
-      "source": "local"
+  "manifest_version": "1.0.21",
+  "title": "Automatiza World — Ensacadeiras Industriais Elementor Template Kit",
+  "page_builder": "elementor",
+  "kit_version": "1.0.0",
+  "templates": [
+    {
+      "name": "Global Kit Styles",
+      "screenshot": "screenshots/global.jpg",
+      "source": "templates/global.json",
+      "preview_url": "https://automatizaworld.com.br/global",
+      "type": "section",
+      "category": "page",
+      "metadata": {
+        "template_type": "global-styles",
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "additional_template_information": [
+          "These are the global theme styles configured through the Elementor Theme Styles area."
+        ]
+      },
+      "elementor_pro_required": true
     },
-    "2": {
-      "id": 2,
-      "title": "Automatiza World - Footer",
-      "doc_type": "footer",
-      "thumbnail": "",
-      "source": "local"
+    {
+      "name": "Header",
+      "screenshot": "screenshots/header.jpg",
+      "source": "templates/header.json",
+      "preview_url": "https://automatizaworld.com.br/header",
+      "type": "header",
+      "category": "section",
+      "metadata": {
+        "template_type": "section-header",
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "elementor_library_type": "header",
+        "elementor_pro_conditions": [
+          "include/general"
+        ],
+        "additional_template_information": [
+          "This is a \"Header\" template for Elementor Pro.",
+          "This template will display on: Entire Site."
+        ]
+      },
+      "elementor_pro_required": true
+    },
+    {
+      "name": "Footer",
+      "screenshot": "screenshots/footer.jpg",
+      "source": "templates/footer.json",
+      "preview_url": "https://automatizaworld.com.br/footer",
+      "type": "footer",
+      "category": "section",
+      "metadata": {
+        "template_type": "section-footer",
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "elementor_library_type": "footer",
+        "elementor_pro_conditions": [
+          "include/general"
+        ],
+        "additional_template_information": [
+          "This is a \"Footer\" template for Elementor Pro.",
+          "This template will display on: Entire Site."
+        ]
+      },
+      "elementor_pro_required": true
+    },
+    {
+      "name": "Home",
+      "screenshot": "screenshots/home.jpg",
+      "source": "templates/home.json",
+      "preview_url": "https://automatizaworld.com.br/home",
+      "type": "section",
+      "category": "page",
+      "metadata": {
+        "template_type": "single-home",
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "additional_template_information": [
+          "This is a \"Home\" template for Elementor Pro.",
+          "This template will display on: Front Page."
+        ]
+      },
+      "elementor_pro_required": true
+    },
+    {
+      "name": "Sobre",
+      "screenshot": "screenshots/sobre.jpg",
+      "source": "templates/sobre.json",
+      "preview_url": "https://automatizaworld.com.br/sobre",
+      "type": "page",
+      "category": "page",
+      "metadata": {
+        "template_type": "single-page",
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "additional_template_information": [
+          "Página institucional Sobre."
+        ]
+      },
+      "elementor_pro_required": true
+    },
+    {
+      "name": "Ensacadeiras",
+      "screenshot": "screenshots/ensacadeiras.jpg",
+      "source": "templates/ensacadeiras.json",
+      "preview_url": "https://automatizaworld.com.br/ensacadeiras",
+      "type": "page",
+      "category": "page",
+      "metadata": {
+        "template_type": "single-page",
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "additional_template_information": [
+          "Página de categoria de produtos — Ensacadeiras."
+        ]
+      },
+      "elementor_pro_required": true
+    },
+    {
+      "name": "Segmentos",
+      "screenshot": "screenshots/segmentos.jpg",
+      "source": "templates/segmentos.json",
+      "preview_url": "https://automatizaworld.com.br/segmentos",
+      "type": "page",
+      "category": "page",
+      "metadata": {
+        "template_type": "single-page",
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "additional_template_information": [
+          "Página de segmentos industriais atendidos."
+        ]
+      },
+      "elementor_pro_required": true
+    },
+    {
+      "name": "Serviços",
+      "screenshot": "screenshots/servicos.jpg",
+      "source": "templates/servicos.json",
+      "preview_url": "https://automatizaworld.com.br/servicos",
+      "type": "page",
+      "category": "page",
+      "metadata": {
+        "template_type": "single-page",
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "additional_template_information": [
+          "Página de serviços de pós-venda."
+        ]
+      },
+      "elementor_pro_required": true
+    },
+    {
+      "name": "Blog",
+      "screenshot": "screenshots/blog.jpg",
+      "source": "templates/blog.json",
+      "preview_url": "https://automatizaworld.com.br/blog",
+      "type": "page",
+      "category": "page",
+      "metadata": {
+        "template_type": "single-page",
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "additional_template_information": [
+          "Página de listagem de artigos do blog."
+        ]
+      },
+      "elementor_pro_required": true
+    },
+    {
+      "name": "Contato",
+      "screenshot": "screenshots/contato.jpg",
+      "source": "templates/contato.json",
+      "preview_url": "https://automatizaworld.com.br/contato",
+      "type": "page",
+      "category": "page",
+      "metadata": {
+        "template_type": "single-page",
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "additional_template_information": [
+          "Página de contato com formulário de orçamento."
+        ]
+      },
+      "elementor_pro_required": true
+    },
+    {
+      "name": "404 Page",
+      "screenshot": "screenshots/404-page.jpg",
+      "source": "templates/404-page.json",
+      "preview_url": "https://automatizaworld.com.br/404-page",
+      "type": "error-404",
+      "category": "page",
+      "metadata": {
+        "template_type": "single-404",
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "elementor_library_type": "error-404",
+        "elementor_pro_conditions": [
+          "include/singular/not_found404"
+        ],
+        "additional_template_information": [
+          "This is a \"Error 404\" template for Elementor Pro.",
+          "This template will display on: 404 Page."
+        ]
+      },
+      "elementor_pro_required": true
     }
-  },
-  "content": {
-    "page": {
-      "3": {
-        "id": 3,
-        "title": "Automatiza World - Home",
-        "doc_type": "wp-page",
-        "thumbnail": "",
-        "url": "/automatiza-world-home",
-        "source": "local"
-      },
-      "4": {
-        "id": 4,
-        "title": "Automatiza World - Sobre",
-        "doc_type": "wp-page",
-        "thumbnail": "",
-        "url": "/automatiza-world-sobre",
-        "source": "local"
-      },
-      "5": {
-        "id": 5,
-        "title": "Automatiza World - Ensacadeiras",
-        "doc_type": "wp-page",
-        "thumbnail": "",
-        "url": "/automatiza-world-ensacadeiras",
-        "source": "local"
-      },
-      "6": {
-        "id": 6,
-        "title": "Automatiza World - Segmentos",
-        "doc_type": "wp-page",
-        "thumbnail": "",
-        "url": "/automatiza-world-segmentos",
-        "source": "local"
-      },
-      "7": {
-        "id": 7,
-        "title": "Automatiza World - Servicos",
-        "doc_type": "wp-page",
-        "thumbnail": "",
-        "url": "/automatiza-world-servicos",
-        "source": "local"
-      },
-      "8": {
-        "id": 8,
-        "title": "Automatiza World - Blog",
-        "doc_type": "wp-page",
-        "thumbnail": "",
-        "url": "/automatiza-world-blog",
-        "source": "local"
-      },
-      "9": {
-        "id": 9,
-        "title": "Automatiza World - Contato",
-        "doc_type": "wp-page",
-        "thumbnail": "",
-        "url": "/automatiza-world-contato",
-        "source": "local"
-      },
-      "10": {
-        "id": 10,
-        "title": "Automatiza World - 404",
-        "doc_type": "wp-page",
-        "thumbnail": "",
-        "url": "/automatiza-world-404",
-        "source": "local"
-      }
+  ],
+  "required_plugins": [
+    {
+      "name": "Elementor Pro",
+      "version": "3.21.0",
+      "file": "elementor-pro/elementor-pro.php",
+      "author": "Elementor.com"
+    },
+    {
+      "name": "Elementor",
+      "version": "3.21.0",
+      "file": "elementor/elementor.php",
+      "author": "Elementor.com"
     }
-  }
+  ],
+  "images": []
 }

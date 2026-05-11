@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """Generator for Automatiza World Elementor Template Kit.
 
-Produces a ZIP in the format consumed by Elementor's
-"Templates → Kit Library → Import Kit" feature:
+Produces a ZIP in the Envato/Template-Kit-Import format used by the
+"Envato Elements / Template Kit Import" WordPress plugin and accepted by
+Elementor Pro. Structure:
 
   kit/
-    manifest.json
-    site-settings.json
-    templates/{id}.json       ← header/footer/section docs
-    content/page/{id}.json    ← pages
+    manifest.json   ← templates as ARRAY of entries
+    help.html
+    templates/{slug}.json
+    screenshots/{slug}.jpg
 """
 import json
 import os
@@ -23,7 +24,7 @@ random.seed(20260511)
 ROOT = Path(__file__).parent
 KIT = ROOT / "automatiza-world-elementor-kit"
 TPL = KIT / "templates"
-CONTENT_PAGE = KIT / "content" / "page"
+SHOTS = KIT / "screenshots"
 
 # ---------- helpers ----------
 def uid() -> str:
@@ -275,84 +276,113 @@ def cta_bar_amber(h2, sub, btn="Falar com um especialista"):
         ]),
     ], bg_amber())
 
-# ---------- writers (Elementor-import compatible) ----------
-def write_doc(folder: Path, doc_id: int, title: str, doc_type: str, content):
-    """Write an Elementor template/content JSON in the simple export shape."""
+# ---------- writers (Envato Template Kit format) ----------
+def write_doc(slug: str, title: str, doc_type: str, template_type: str,
+              content, page_settings=None, extra_metadata=None,
+              extra_info=None):
+    """Write a template JSON in the Envato Template Kit format."""
+    metadata = {
+        "template_type": template_type,
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "wp_page_template": "default",
+    }
+    if extra_metadata:
+        metadata.update(extra_metadata)
+    if extra_info:
+        metadata["additional_template_information"] = extra_info
     data = {
-        "content": content,
-        "page_settings": [],
         "version": "0.4",
         "title": title,
         "type": doc_type,
+        "metadata": metadata,
+        "content": content,
     }
-    p = folder / f"{doc_id}.json"
+    if page_settings is not None:
+        data["page_settings"] = page_settings
+    p = TPL / f"{slug}.json"
     p.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     json.loads(p.read_text(encoding="utf-8"))
 
 # ============================================================
-# site-settings.json (kit globals)
+# templates/global.json (kit theme styles)
 # ============================================================
-def build_site_settings():
-    settings = {
-        "settings": {
-            "template": "default",
-            "system_colors": [
-                {"_id": "primary", "title": "Primary", "color": "#0D2137"},
-                {"_id": "secondary", "title": "Secondary", "color": "#081E2E"},
-                {"_id": "text", "title": "Text", "color": "#5A7A8A"},
-                {"_id": "accent", "title": "Accent", "color": "#F0A500"},
-            ],
-            "custom_colors": [
-                {"_id": "aw_amber", "title": "AW Amber", "color": "#F0A500"},
-                {"_id": "aw_dark", "title": "AW Dark", "color": "#0D2137"},
-                {"_id": "aw_navy2", "title": "AW Navy 2", "color": "#081E2E"},
-                {"_id": "aw_light", "title": "AW Light", "color": "#F4F6F9"},
-                {"_id": "aw_white", "title": "AW White", "color": "#FFFFFF"},
-                {"_id": "aw_text", "title": "AW Text Muted", "color": "#5A7A8A"},
-                {"_id": "aw_border", "title": "AW Border", "color": "#E1E7ED"},
-            ],
-            "system_typography": [
-                {"_id": "primary", "title": "Primary",
-                 "typography_typography": "custom",
-                 "typography_font_family": "Inter",
-                 "typography_font_weight": "700"},
-                {"_id": "secondary", "title": "Secondary",
-                 "typography_typography": "custom",
-                 "typography_font_family": "Inter",
-                 "typography_font_weight": "600"},
-                {"_id": "text", "title": "Text",
-                 "typography_typography": "custom",
-                 "typography_font_family": "Inter",
-                 "typography_font_weight": "400"},
-                {"_id": "accent", "title": "Accent",
-                 "typography_typography": "custom",
-                 "typography_font_family": "Inter",
-                 "typography_font_weight": "700"},
-            ],
-            "default_generic_fonts": "sans-serif",
-            "container_width": size(1200),
-            "space_between_widgets": size(20),
-            "stretched_section_container": "body",
-            "page_title_selector": "h1.entry-title",
-            "viewport_md": 768,
-            "viewport_lg": 1025,
-            "global_image_lightbox": "yes",
-            "lightbox_enable_counter": "yes",
-            "lightbox_enable_fullscreen": "yes",
-            "lightbox_enable_zoom": "yes",
-            "lightbox_enable_share": "yes",
-            "lightbox_title_src": "title",
-            "lightbox_description_src": "description",
-        }
+def build_global():
+    page_settings = {
+        "system_colors": [
+            {"_id": "primary", "title": "Primary", "color": "#0D2137"},
+            {"_id": "secondary", "title": "Secondary", "color": "#081E2E"},
+            {"_id": "text", "title": "Text", "color": "#5A7A8A"},
+            {"_id": "accent", "title": "Accent", "color": "#F0A500"},
+        ],
+        "custom_colors": [
+            {"_id": "aw_amber", "title": "AW Amber", "color": "#F0A500"},
+            {"_id": "aw_dark", "title": "AW Dark", "color": "#0D2137"},
+            {"_id": "aw_navy2", "title": "AW Navy 2", "color": "#081E2E"},
+            {"_id": "aw_light", "title": "AW Light", "color": "#F4F6F9"},
+            {"_id": "aw_white", "title": "AW White", "color": "#FFFFFF"},
+            {"_id": "aw_text", "title": "AW Text Muted", "color": "#5A7A8A"},
+            {"_id": "aw_border", "title": "AW Border", "color": "#E1E7ED"},
+        ],
+        "system_typography": [
+            {"_id": "primary", "title": "H1 Heading",
+             "typography_typography": "custom",
+             "typography_font_family": "Inter",
+             "typography_font_weight": "700",
+             "typography_font_size": size(48),
+             "typography_line_height": size(1.2, "em")},
+            {"_id": "secondary", "title": "H2 Heading",
+             "typography_typography": "custom",
+             "typography_font_family": "Inter",
+             "typography_font_weight": "700",
+             "typography_font_size": size(36),
+             "typography_line_height": size(1.2, "em")},
+            {"_id": "text", "title": "H3 Heading",
+             "typography_typography": "custom",
+             "typography_font_family": "Inter",
+             "typography_font_weight": "600",
+             "typography_font_size": size(24),
+             "typography_line_height": size(1.3, "em")},
+            {"_id": "accent", "title": "Body",
+             "typography_typography": "custom",
+             "typography_font_family": "Inter",
+             "typography_font_weight": "400",
+             "typography_font_size": size(16),
+             "typography_line_height": size(1.65, "em")},
+        ],
+        "custom_typography": [],
+        "default_generic_fonts": "Sans-serif",
+        "page_title_selector": "h1.entry-title",
+        "activeItemIndex": 1,
+        "viewport_md": 768,
+        "viewport_lg": 1025,
+        "button_border_radius": px(4, 4, 4, 4, True),
+        "button_padding": px(14, 28, 14, 28),
+        "button_text_color": "#0D2137",
+        "button_background_color": "#F0A500",
+        "button_hover_text_color": "#0D2137",
+        "button_hover_background_color": "#FFB733",
+        "form_field_border_border": "solid",
+        "form_field_border_width": px(1, 1, 1, 1, True),
+        "form_field_padding": px(12, 16, 12, 16),
+        "form_field_border_radius": px(4, 4, 4, 4, True),
+        "hello_footer_copyright_text": "© Automatiza World — Todos os direitos reservados",
     }
-    p = KIT / "site-settings.json"
-    p.write_text(json.dumps(settings, ensure_ascii=False), encoding="utf-8")
-    json.loads(p.read_text(encoding="utf-8"))
+    write_doc(
+        slug="global",
+        title="Global Kit Styles",
+        doc_type="section",
+        template_type="global-styles",
+        content=[],
+        page_settings=page_settings,
+        extra_info=["These are the global theme styles configured through "
+                    "the Elementor Theme Styles area."],
+    )
 
 # ============================================================
 # header
 # ============================================================
-def build_header(doc_id: int):
+def build_header():
     nav_settings = {
         "menu": "primary",
         "layout": "horizontal",
@@ -388,12 +418,27 @@ def build_header(doc_id: int):
         "structure": "30",
         "stretch_section": "section-stretched",
     })
-    write_doc(TPL, doc_id, "Automatiza World - Header", "header", [sec])
+    write_doc(
+        slug="header",
+        title="Header",
+        doc_type="header",
+        template_type="section-header",
+        content=[sec],
+        page_settings={"content_wrapper_html_tag": "div"},
+        extra_metadata={
+            "elementor_library_type": "header",
+            "elementor_pro_conditions": ["include/general"],
+        },
+        extra_info=[
+            "This is a \"Header\" template for Elementor Pro.",
+            "This template will display on: Entire Site.",
+        ],
+    )
 
 # ============================================================
 # footer
 # ============================================================
-def build_footer(doc_id: int):
+def build_footer():
     main = section([
         column(35, [
             widget("image", {
@@ -515,12 +560,27 @@ def build_footer(doc_id: int):
         "background_color": "#060F17",
         "padding": px(20, 20, 20, 20),
     })
-    write_doc(TPL, doc_id, "Automatiza World - Footer", "footer", [main, bottom])
+    write_doc(
+        slug="footer",
+        title="Footer",
+        doc_type="footer",
+        template_type="section-footer",
+        content=[main, bottom],
+        page_settings={"content_wrapper_html_tag": "div"},
+        extra_metadata={
+            "elementor_library_type": "footer",
+            "elementor_pro_conditions": ["include/general"],
+        },
+        extra_info=[
+            "This is a \"Footer\" template for Elementor Pro.",
+            "This template will display on: Entire Site.",
+        ],
+    )
 
 # ============================================================
 # home
 # ============================================================
-def build_home(doc_id: int):
+def build_home():
     hero = section([
         column(55, [
             eyebrow("TECNOLOGIA EM ENSAQUE INDUSTRIAL"),
@@ -678,14 +738,20 @@ def build_home(doc_id: int):
         "Solicite um diagnóstico técnico gratuito e descubra a ensacadeira "
         "ideal para sua produção.")
 
-    write_doc(CONTENT_PAGE, doc_id, "Automatiza World - Home", "wp-page",
-              [hero, trust_bar, prod_header, prod_cards,
-               seg_header, seg_grid, proc_header, proc_steps, cta_bar])
+    write_doc(
+        slug="home",
+        title="Home",
+        doc_type="section",
+        template_type="single-home",
+        content=[hero, trust_bar, prod_header, prod_cards,
+                 seg_header, seg_grid, proc_header, proc_steps, cta_bar],
+        page_settings={"hide_title": "yes"},
+    )
 
 # ============================================================
 # sobre
 # ============================================================
-def build_sobre(doc_id: int):
+def build_sobre():
     hero = hero_dark(
         "Mais de 20 anos automatizando indústrias brasileiras",
         "Engenharia nacional, suporte próximo e soluções sob medida "
@@ -761,13 +827,17 @@ def build_sobre(doc_id: int):
     cta = cta_bar_amber("Vamos conversar sobre o seu projeto?",
                         "Equipe comercial e engenharia prontos para entender sua "
                         "necessidade e propor a solução ideal.")
-    write_doc(CONTENT_PAGE, doc_id, "Automatiza World - Sobre", "wp-page",
-              [hero, historia, dif_header, dif_grid, cta])
+    write_doc(
+        slug="sobre", title="Sobre",
+        doc_type="page", template_type="single-page",
+        content=[hero, historia, dif_header, dif_grid, cta],
+        page_settings={"hide_title": "yes"},
+    )
 
 # ============================================================
 # ensacadeiras
 # ============================================================
-def build_ensacadeiras(doc_id: int):
+def build_ensacadeiras():
     hero = hero_dark("Ensacadeiras automáticas industriais",
                      "Linha completa para cada tipo de produto, saco e produtividade. "
                      "Conheça os modelos da Automatiza World.")
@@ -864,13 +934,17 @@ def build_ensacadeiras(doc_id: int):
             }),
         ]),
     ], {**bg_light(), "padding": px(80, 20, 80, 20)})
-    write_doc(CONTENT_PAGE, doc_id, "Automatiza World - Ensacadeiras", "wp-page",
-              [hero, sopro, grav, bigbag, final])
+    write_doc(
+        slug="ensacadeiras", title="Ensacadeiras",
+        doc_type="page", template_type="single-page",
+        content=[hero, sopro, grav, bigbag, final],
+        page_settings={"hide_title": "yes"},
+    )
 
 # ============================================================
 # segmentos
 # ============================================================
-def build_segmentos(doc_id: int):
+def build_segmentos():
     hero = hero_dark("Soluções de ensaque para cada segmento industrial",
                      "Conheça as configurações desenvolvidas pela Automatiza World "
                      "para os principais setores produtivos do Brasil.")
@@ -937,13 +1011,17 @@ def build_segmentos(doc_id: int):
     cta = cta_bar_amber("Seu segmento exige uma solução específica?",
                         "Conte para nossa engenharia o produto, a cadência desejada e o "
                         "tipo de saco — propomos a configuração ideal.")
-    write_doc(CONTENT_PAGE, doc_id, "Automatiza World - Segmentos", "wp-page",
-              [hero, racao, soja, fert, quim, cta])
+    write_doc(
+        slug="segmentos", title="Segmentos",
+        doc_type="page", template_type="single-page",
+        content=[hero, racao, soja, fert, quim, cta],
+        page_settings={"hide_title": "yes"},
+    )
 
 # ============================================================
 # servicos
 # ============================================================
-def build_servicos(doc_id: int):
+def build_servicos():
     hero = hero_dark("Mais que equipamentos — suporte técnico completo",
                      "Instalação, manutenção, peças e treinamento. Tudo para que sua "
                      "ensacadeira opere com máxima disponibilidade.")
@@ -998,13 +1076,17 @@ def build_servicos(doc_id: int):
     cta = cta_bar_amber("Sua ensacadeira merece suporte de fabricante.",
                         "Saia do conserto reativo e adote o plano de manutenção da "
                         "Automatiza World.")
-    write_doc(CONTENT_PAGE, doc_id, "Automatiza World - Serviços", "wp-page",
-              [hero, serv_grid, proc_header, proc, cta])
+    write_doc(
+        slug="servicos", title="Serviços",
+        doc_type="page", template_type="single-page",
+        content=[hero, serv_grid, proc_header, proc, cta],
+        page_settings={"hide_title": "yes"},
+    )
 
 # ============================================================
 # blog
 # ============================================================
-def build_blog(doc_id: int):
+def build_blog():
     hero = hero_dark("Conteúdo especializado em automação de ensaque",
                      "Guias técnicos, comparativos de modelos e boas práticas para "
                      "indústrias de ração, soja, fertilizantes e mineração.")
@@ -1115,13 +1197,17 @@ def build_blog(doc_id: int):
             }),
         ]),
     ], {**bg_dark(), "padding": px(80, 20, 80, 20)})
-    write_doc(CONTENT_PAGE, doc_id, "Automatiza World - Blog", "wp-page",
-              [hero, grid, news])
+    write_doc(
+        slug="blog", title="Blog",
+        doc_type="page", template_type="single-page",
+        content=[hero, grid, news],
+        page_settings={"hide_title": "yes"},
+    )
 
 # ============================================================
 # contato
 # ============================================================
-def build_contato(doc_id: int):
+def build_contato():
     hero = hero_dark("Solicite um orçamento personalizado",
                      "Conte sobre seu produto, cadência desejada e tipo de saco. "
                      "Nosso time comercial responde em até 24h úteis.")
@@ -1213,13 +1299,17 @@ def build_contato(doc_id: int):
         column(60, [form_widget], {"padding": px(0, 30, 0, 0)}),
         contact_info,
     ], {**bg_white(), "padding": px(80, 20, 80, 20), "structure": "6040"})
-    write_doc(CONTENT_PAGE, doc_id, "Automatiza World - Contato", "wp-page",
-              [hero, grid])
+    write_doc(
+        slug="contato", title="Contato",
+        doc_type="page", template_type="single-page",
+        content=[hero, grid],
+        page_settings={"hide_title": "yes"},
+    )
 
 # ============================================================
 # 404
 # ============================================================
-def build_404(doc_id: int):
+def build_404():
     sec = section([
         column(100, [
             heading("404", tag="h1", color="#F0A500", fsize=120,
@@ -1244,64 +1334,102 @@ def build_404(doc_id: int):
             }),
         ]),
     ], {**bg_light(), "padding": px(140, 20, 140, 20)})
-    write_doc(CONTENT_PAGE, doc_id, "Automatiza World - 404", "wp-page", [sec])
+    write_doc(
+        slug="404-page", title="404 Page",
+        doc_type="error-404", template_type="single-404",
+        content=[sec], page_settings=None,
+        extra_metadata={
+            "elementor_library_type": "error-404",
+            "elementor_pro_conditions": ["include/singular/not_found404"],
+        },
+        extra_info=[
+            "This is a \"Error 404\" template for Elementor Pro.",
+            "This template will display on: 404 Page.",
+        ],
+    )
 
 # ============================================================
-# manifest.json (Elementor Import Kit format)
+# manifest.json (Envato Template Kit format: templates = ARRAY)
 # ============================================================
 def build_manifest():
-    templates = {
-        # header/footer/section go in templates section
-        "1": {"id": 1, "title": "Automatiza World - Header",
-              "doc_type": "header", "thumbnail": "", "source": "local"},
-        "2": {"id": 2, "title": "Automatiza World - Footer",
-              "doc_type": "footer", "thumbnail": "", "source": "local"},
-    }
-    pages = {
-        "3": {"id": 3, "title": "Automatiza World - Home",
-              "doc_type": "wp-page", "thumbnail": "",
-              "url": "/automatiza-world-home", "source": "local"},
-        "4": {"id": 4, "title": "Automatiza World - Sobre",
-              "doc_type": "wp-page", "thumbnail": "",
-              "url": "/automatiza-world-sobre", "source": "local"},
-        "5": {"id": 5, "title": "Automatiza World - Ensacadeiras",
-              "doc_type": "wp-page", "thumbnail": "",
-              "url": "/automatiza-world-ensacadeiras", "source": "local"},
-        "6": {"id": 6, "title": "Automatiza World - Segmentos",
-              "doc_type": "wp-page", "thumbnail": "",
-              "url": "/automatiza-world-segmentos", "source": "local"},
-        "7": {"id": 7, "title": "Automatiza World - Servicos",
-              "doc_type": "wp-page", "thumbnail": "",
-              "url": "/automatiza-world-servicos", "source": "local"},
-        "8": {"id": 8, "title": "Automatiza World - Blog",
-              "doc_type": "wp-page", "thumbnail": "",
-              "url": "/automatiza-world-blog", "source": "local"},
-        "9": {"id": 9, "title": "Automatiza World - Contato",
-              "doc_type": "wp-page", "thumbnail": "",
-              "url": "/automatiza-world-contato", "source": "local"},
-        "10": {"id": 10, "title": "Automatiza World - 404",
-               "doc_type": "wp-page", "thumbnail": "",
-               "url": "/automatiza-world-404", "source": "local"},
-    }
+    PREVIEW = "https://automatizaworld.com.br"
+
+    def entry(name, slug, t_type, category, template_type, info,
+              elementor_library_type=None,
+              elementor_pro_conditions=None):
+        md = {
+            "template_type": template_type,
+            "include_in_zip": "1",
+            "elementor_pro_required": "1",
+        }
+        if elementor_library_type:
+            md["elementor_library_type"] = elementor_library_type
+        if elementor_pro_conditions:
+            md["elementor_pro_conditions"] = elementor_pro_conditions
+        md["additional_template_information"] = info
+        return {
+            "name": name,
+            "screenshot": f"screenshots/{slug}.jpg",
+            "source": f"templates/{slug}.json",
+            "preview_url": f"{PREVIEW}/{slug}",
+            "type": t_type,
+            "category": category,
+            "metadata": md,
+            "elementor_pro_required": True,
+        }
+
+    templates = [
+        entry("Global Kit Styles", "global", "section", "page",
+              "global-styles",
+              ["These are the global theme styles configured through the "
+               "Elementor Theme Styles area."]),
+        entry("Header", "header", "header", "section", "section-header",
+              ["This is a \"Header\" template for Elementor Pro.",
+               "This template will display on: Entire Site."],
+              elementor_library_type="header",
+              elementor_pro_conditions=["include/general"]),
+        entry("Footer", "footer", "footer", "section", "section-footer",
+              ["This is a \"Footer\" template for Elementor Pro.",
+               "This template will display on: Entire Site."],
+              elementor_library_type="footer",
+              elementor_pro_conditions=["include/general"]),
+        entry("Home", "home", "section", "page", "single-home",
+              ["This is a \"Home\" template for Elementor Pro.",
+               "This template will display on: Front Page."]),
+        entry("Sobre", "sobre", "page", "page", "single-page",
+              ["Página institucional Sobre."]),
+        entry("Ensacadeiras", "ensacadeiras", "page", "page", "single-page",
+              ["Página de categoria de produtos — Ensacadeiras."]),
+        entry("Segmentos", "segmentos", "page", "page", "single-page",
+              ["Página de segmentos industriais atendidos."]),
+        entry("Serviços", "servicos", "page", "page", "single-page",
+              ["Página de serviços de pós-venda."]),
+        entry("Blog", "blog", "page", "page", "single-page",
+              ["Página de listagem de artigos do blog."]),
+        entry("Contato", "contato", "page", "page", "single-page",
+              ["Página de contato com formulário de orçamento."]),
+        entry("404 Page", "404-page", "error-404", "page", "single-404",
+              ["This is a \"Error 404\" template for Elementor Pro.",
+               "This template will display on: 404 Page."],
+              elementor_library_type="error-404",
+              elementor_pro_conditions=["include/singular/not_found404"]),
+    ]
+
     manifest = {
-        "name": "automatiza-world",
-        "title": "Automatiza World — Ensacadeiras Industriais",
-        "description": "Template Kit corporativo para indústria de ensacadeiras "
-                       "automáticas. 8 páginas, header, footer e configuração "
-                       "global de paleta e tipografia. Pronto para Elementor Pro.",
-        "author": "Automatiza World",
-        "version": "1.0.0",
-        "elementor_version": "3.21.0",
-        "created": str(int(time.time())),
-        "thumbnail": "",
-        "site-settings": [
-            "theme_style_settings",
-            "general_settings",
-            "settings_lightbox",
-            "settings_layout",
-        ],
+        "manifest_version": "1.0.21",
+        "title": "Automatiza World — Ensacadeiras Industriais Elementor Template Kit",
+        "page_builder": "elementor",
+        "kit_version": "1.0.0",
         "templates": templates,
-        "content": {"page": pages},
+        "required_plugins": [
+            {"name": "Elementor Pro", "version": "3.21.0",
+             "file": "elementor-pro/elementor-pro.php",
+             "author": "Elementor.com"},
+            {"name": "Elementor", "version": "3.21.0",
+             "file": "elementor/elementor.php",
+             "author": "Elementor.com"},
+        ],
+        "images": [],
     }
     p = KIT / "manifest.json"
     p.write_text(json.dumps(manifest, ensure_ascii=False, indent=2),
@@ -1309,10 +1437,90 @@ def build_manifest():
     json.loads(p.read_text(encoding="utf-8"))
 
 # ============================================================
+# help.html
+# ============================================================
+HELP_HTML = """<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Automatiza World — Template Kit</title>
+<style>
+body{font-family:Inter,Arial,sans-serif;max-width:780px;margin:40px auto;padding:0 20px;color:#0D2137;line-height:1.65;}
+h1{color:#0D2137;border-bottom:3px solid #F0A500;padding-bottom:12px;}
+code{background:#F4F6F9;padding:2px 6px;border-radius:3px;font-size:13px;}
+</style>
+</head>
+<body>
+<h1>Automatiza World — Elementor Template Kit</h1>
+<p><strong>Versão:</strong> 1.0.0 &nbsp;|&nbsp; <strong>Elementor:</strong> 3.21+ e Elementor Pro 3.21+</p>
+<h2>Importação</h2>
+<ol>
+<li>Instale o plugin <strong>Envato Elements — Template Kit Import</strong> (ou use o importador nativo se sua versão do Elementor Pro suportar Template Kits).</li>
+<li>Vá em <strong>Elements → Installed Kits → Upload Template Kit</strong>.</li>
+<li>Faça upload de <code>automatiza-world-elementor-kit.zip</code>.</li>
+<li>Após o upload, instale os templates desejados (clique em cada um e em <em>Insert</em>).</li>
+<li>Aplique o <strong>Global Kit Styles</strong> primeiro para carregar a paleta e tipografia.</li>
+<li>Configure o <strong>Header</strong> e o <strong>Footer</strong> em <em>Templates → Theme Builder</em> com a condição <em>Entire Site</em>.</li>
+<li>Substitua o placeholder <code>{{LOGO_URL}}</code> no Header e Footer pela URL da sua logo.</li>
+</ol>
+<h2>Paleta global</h2>
+<ul>
+<li><strong>Primary (Dark):</strong> <code>#0D2137</code></li>
+<li><strong>Accent (Amber):</strong> <code>#F0A500</code></li>
+<li><strong>Light:</strong> <code>#F4F6F9</code></li>
+<li><strong>Navy 2:</strong> <code>#081E2E</code></li>
+<li><strong>Text Muted:</strong> <code>#5A7A8A</code></li>
+</ul>
+</body>
+</html>
+"""
+
+def build_help():
+    (KIT / "help.html").write_text(HELP_HTML, encoding="utf-8")
+
+# ============================================================
+# screenshots (minimal valid JPEG placeholders)
+# ============================================================
+JPEG_BYTES = bytes([
+    0xFF,0xD8,0xFF,0xE0,0x00,0x10,0x4A,0x46,0x49,0x46,0x00,0x01,
+    0x01,0x00,0x00,0x01,0x00,0x01,0x00,0x00,0xFF,0xDB,0x00,0x43,
+    0x00,0x08,0x06,0x06,0x07,0x06,0x05,0x08,0x07,0x07,0x07,0x09,
+    0x09,0x08,0x0A,0x0C,0x14,0x0D,0x0C,0x0B,0x0B,0x0C,0x19,0x12,
+    0x13,0x0F,0x14,0x1D,0x1A,0x1F,0x1E,0x1D,0x1A,0x1C,0x1C,0x20,
+    0x24,0x2E,0x27,0x20,0x22,0x2C,0x23,0x1C,0x1C,0x28,0x37,0x29,
+    0x2C,0x30,0x31,0x34,0x34,0x34,0x1F,0x27,0x39,0x3D,0x38,0x32,
+    0x3C,0x2E,0x33,0x34,0x32,0xFF,0xC0,0x00,0x0B,0x08,0x00,0x01,
+    0x00,0x01,0x01,0x01,0x11,0x00,0xFF,0xC4,0x00,0x1F,0x00,0x00,
+    0x01,0x05,0x01,0x01,0x01,0x01,0x01,0x01,0x00,0x00,0x00,0x00,
+    0x00,0x00,0x00,0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,
+    0x09,0x0A,0x0B,0xFF,0xC4,0x00,0xB5,0x10,0x00,0x02,0x01,0x03,
+    0x03,0x02,0x04,0x03,0x05,0x05,0x04,0x04,0x00,0x00,0x01,0x7D,
+    0x01,0x02,0x03,0x00,0x04,0x11,0x05,0x12,0x21,0x31,0x41,0x06,
+    0x13,0x51,0x61,0x07,0x22,0x71,0x14,0x32,0x81,0x91,0xA1,0x08,
+    0x23,0x42,0xB1,0xC1,0x15,0x52,0xD1,0xF0,0x24,0x33,0x62,0x72,
+    0x82,0x09,0x0A,0x16,0x17,0x18,0x19,0x1A,0x25,0x26,0x27,0x28,
+    0x29,0x2A,0x34,0x35,0x36,0x37,0x38,0x39,0x3A,0x43,0x44,0x45,
+    0x46,0x47,0x48,0x49,0x4A,0x53,0x54,0x55,0x56,0x57,0x58,0x59,
+    0x5A,0x63,0x64,0x65,0x66,0x67,0x68,0x69,0x6A,0x73,0x74,0x75,
+    0x76,0x77,0x78,0x79,0x7A,0x83,0x84,0x85,0x86,0x87,0x88,0x89,
+    0x8A,0x92,0x93,0x94,0x95,0x96,0x97,0x98,0x99,0x9A,0xA2,0xA3,
+    0xA4,0xA5,0xA6,0xA7,0xA8,0xA9,0xAA,0xB2,0xB3,0xB4,0xB5,0xB6,
+    0xB7,0xB8,0xB9,0xBA,0xC2,0xC3,0xC4,0xC5,0xC6,0xC7,0xC8,0xC9,
+    0xCA,0xD2,0xD3,0xD4,0xD5,0xD6,0xD7,0xD8,0xD9,0xDA,0xE1,0xE2,
+    0xE3,0xE4,0xE5,0xE6,0xE7,0xE8,0xE9,0xEA,0xF1,0xF2,0xF3,0xF4,
+    0xF5,0xF6,0xF7,0xF8,0xF9,0xFA,0xFF,0xDA,0x00,0x08,0x01,0x01,
+    0x00,0x00,0x3F,0x00,0xFB,0xD0,0xFF,0xD9
+])
+
+def build_screenshots(slugs):
+    for s in slugs:
+        (SHOTS / f"{s}.jpg").write_bytes(JPEG_BYTES)
+
+# ============================================================
 # ID-dedup safety pass
 # ============================================================
 def validate_ids():
-    for p in list(TPL.glob("*.json")) + list(CONTENT_PAGE.glob("*.json")):
+    for p in TPL.glob("*.json"):
         data = json.loads(p.read_text(encoding="utf-8"))
         seen = set()
         def fix(node):
@@ -1340,39 +1548,44 @@ def main():
     if KIT.exists():
         shutil.rmtree(KIT)
     TPL.mkdir(parents=True)
-    CONTENT_PAGE.mkdir(parents=True)
+    SHOTS.mkdir(parents=True)
 
-    build_site_settings()
-    build_header(1)
-    build_footer(2)
-    build_home(3)
-    build_sobre(4)
-    build_ensacadeiras(5)
-    build_segmentos(6)
-    build_servicos(7)
-    build_blog(8)
-    build_contato(9)
-    build_404(10)
+    build_global()
+    build_header()
+    build_footer()
+    build_home()
+    build_sobre()
+    build_ensacadeiras()
+    build_segmentos()
+    build_servicos()
+    build_blog()
+    build_contato()
+    build_404()
     build_manifest()
+    build_help()
+
+    slugs = ["global", "header", "footer", "home", "sobre", "ensacadeiras",
+             "segmentos", "servicos", "blog", "contato", "404-page"]
+    build_screenshots(slugs)
     validate_ids()
 
-    # Sanity checks
+    # Sanity checks against manifest
     manifest = json.loads((KIT / "manifest.json").read_text())
-    for tid in manifest["templates"]:
-        assert (TPL / f"{tid}.json").exists(), f"missing templates/{tid}.json"
-    for pid in manifest["content"]["page"]:
-        assert (CONTENT_PAGE / f"{pid}.json").exists(), \
-            f"missing content/page/{pid}.json"
-    assert (KIT / "site-settings.json").exists(), "missing site-settings.json"
+    for entry in manifest["templates"]:
+        src = KIT / entry["source"]
+        shot = KIT / entry["screenshot"]
+        assert src.exists(), f"missing {src}"
+        assert shot.exists(), f"missing {shot}"
+    assert (KIT / "help.html").exists()
 
-    # Build ZIP — files at top level, not nested in a folder
+    # Build ZIP — entries at the ZIP root, no wrapping folder
     zip_path = ROOT / "automatiza-world-elementor-kit.zip"
     if zip_path.exists():
         zip_path.unlink()
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
         for path in sorted(KIT.rglob("*")):
             if path.is_file():
-                arc = path.relative_to(KIT)  # files at ZIP root
+                arc = path.relative_to(KIT)
                 zf.write(path, arc)
     print(f"Kit built: {zip_path}")
     print(f"Size: {zip_path.stat().st_size:,} bytes")
