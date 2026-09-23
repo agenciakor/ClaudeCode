@@ -5,22 +5,43 @@
     • Colar o código abaixo
     • Adicionar código a: "Páginas escolhidas" > a página da landing page Invisalign
     • Posicionar em: "Head"
-  (Código personalizado exige plano Premium com domínio conectado.)
+  (Código personalizado exige plano Premium com domínio conectado e só roda no site
+   publicado, não no "Visualizar" do editor.)
 
   Por que isso é necessário: o Elemento HTML do Wix roda dentro de um iframe em outro
   domínio (filesusr.com). Uma tag do Google Ads colocada DENTRO dele não enxerga o
   clique do anúncio (gclid) e a conversão não é atribuída à campanha. Por isso a página
-  avisa o site "de fora" a cada clique no WhatsApp, e é aqui, no site, que a conversão
-  é registrada.
+  avisa o site "de fora" a cada clique no WhatsApp, e é aqui que a conversão é registrada.
 
-  PENDENTE: substituir AW-XXXXXXXXXX/XXXXXXXXXXXXXXXX pelo ID/rótulo de conversão do
-  Google Ads (Ferramentas > Conversões > [sua conversão] > Configuração da tag).
+  ESCOLHA UM CAMINHO na variável MODO (nunca os dois, para não contar em dobro):
+    'gtm'  = envia o evento lp_whatsapp_click ao Google Tag Manager, e a tag de conversão
+             do Google Ads fica configurada no GTM (RECOMENDADO)
+    'gtag' = este código carrega a tag do Google Ads e registra a conversão sozinho
+             (preencha GOOGLE_ADS_SEND_TO)
 -->
 <script>
   (function () {
-    var GOOGLE_ADS_SEND_TO = 'AW-XXXXXXXXXX/XXXXXXXXXXXXXXXX'; // PENDENTE
+    if (window.__lpInvisalignTracking) return; // evita listener duplicado
+    window.__lpInvisalignTracking = true;
 
+    var MODO = 'gtm';
+    var GOOGLE_ADS_SEND_TO = 'AW-XXXXXXXXXX/XXXXXXXXXXXXXXXX'; // PENDENTE (só no modo 'gtag')
+
+    var AW_ID = GOOGLE_ADS_SEND_TO.split('/')[0];
+    var pronto = GOOGLE_ADS_SEND_TO.indexOf('XXXX') === -1;
     window.dataLayer = window.dataLayer || [];
+
+    if (MODO === 'gtag' && pronto) {
+      if (typeof window.gtag !== 'function') {
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + AW_ID;
+        document.head.appendChild(s);
+        window.gtag('js', new Date());
+      }
+      window.gtag('config', AW_ID); // guarda o gclid do anúncio nesta página
+    }
 
     window.addEventListener('message', function (e) {
       var d = e.data;
@@ -32,11 +53,9 @@
       if (!/(^|\.)filesusr\.com$/.test(host)) return;
 
       if (d.event === 'whatsapp_click') {
-        // 1) Para o Google Tag Manager (acionador "Evento personalizado": lp_whatsapp_click)
-        window.dataLayer.push({ event: 'lp_whatsapp_click', cta_posicao: d.cta_posicao || '' });
-
-        // 2) Google Ads direto, caso a tag global (gtag.js) já esteja no site
-        if (typeof window.gtag === 'function' && GOOGLE_ADS_SEND_TO.indexOf('XXXX') === -1) {
+        if (MODO === 'gtm') {
+          window.dataLayer.push({ event: 'lp_whatsapp_click', cta_posicao: d.cta_posicao || '' });
+        } else if (pronto) {
           window.gtag('event', 'conversion', { send_to: GOOGLE_ADS_SEND_TO });
         }
       }

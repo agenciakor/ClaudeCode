@@ -40,16 +40,22 @@ window.LP_CONFIG = {
   },
 
   // ---------- ANTES E DEPOIS (aparece só se tiver pelo menos 1 caso) ----------
-  // Somente com autorização por escrito do paciente (Res. CFO-196/2019).
+  // Regras (Res. CFO-196/2019 e CFO-118/2012, art. 44, VI):
+  //  • somente casos tratados pela própria Dra. Vannessa, com termo de autorização (TCLE) assinado;
+  //  • apenas foto inicial (diagnóstico) e final, mesmo enquadramento, sem edição/retoque;
+  //  • NÃO identificar o paciente (sem nome) – a legenda mostra "Caso 1 · Dra. Vannessa · CRO".
+  //  • autorizado: true confirma que o TCLE está assinado (sem isso o caso não aparece).
   antesDepois: [
-    // { antes: 'URL_FOTO_ANTES', depois: 'URL_FOTO_DEPOIS', paciente: 'Nome do paciente', descricao: 'Dentes apinhados · 12 meses de tratamento' },
+    // { antes: 'URL_FOTO_ANTES', depois: 'URL_FOTO_DEPOIS', descricao: 'Dentes apinhados · 12 meses de tratamento', autorizado: true },
   ],
 
   // ---------- DEPOIMENTOS (aparece só se tiver pelo menos 1) ----------
+  // Use só avaliações reais. Nome: primeiro nome + inicial (ex.: 'Ana P.'); sem foto do paciente.
+  // estrelas: a nota real daquela avaliação (1 a 5). Deixe sem 'estrelas' se não vier do Google.
   depoimentos: [
-    // { nome: 'Nome do paciente', texto: 'Depoimento real copiado do Google...', origem: 'Google', foto: '' },
+    // { nome: 'Ana P.', texto: 'Depoimento real copiado do Google...', origem: 'Google', estrelas: 5 },
   ],
-  notaGoogle: '',          // ex.: '5,0'  (deixe vazio para não exibir)
+  notaGoogle: '',            // nota média real do perfil, ex.: '4,9'  (vazio = não exibe)
   totalAvaliacoesGoogle: '', // ex.: '120'
 
   // ---------- CONSULTA DE AVALIAÇÃO (pendente) ----------
@@ -66,7 +72,9 @@ window.LP_CONFIG = {
   },
 
   // ---------- DADOS LEGAIS (CFO) ----------
-  responsavelTecnico: 'Dra. Vannessa Borsato · CRO-PR 26722', // confirme quem é o(a) RT da clínica
+  // OBRIGATÓRIO (CFO-118/2012, art. 43). PENDENTE: confirmar com a clínica quem é o(a) RT ANTES de publicar.
+  // Se for outra pessoa, troque a linha inteira, ex.: 'Responsável técnico: Dr. NOME · CRO-PR 00000'
+  responsavelTecnico: 'Responsável técnica: Dra. Vannessa Borsato · CRO-PR 26722',
   croClinica: 'CRO-PR 6780',
   cnpj: '39.816.125/0001-20',
 
@@ -79,7 +87,8 @@ window.LP_CONFIG = {
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap"></noscript>
 
 <style>
   :root{
@@ -89,13 +98,14 @@ window.LP_CONFIG = {
     --surface:#FFFFFF;
     --ink:#1B2A2C;
     --ink-soft:#44565A;
-    --muted:#6A7a7d;
+    --muted:#5B6B6E;
     --line:#E7DFD4;
     --brand:#1F4D48;
     --brand-hover:#173D39;
     --brand-deep:#132F2C;
     --accent:#B08E62;
     --accent-soft:#EFE5D6;
+    --accent-ink:#80613A;
     --ok:#2F7A5E;
 
     --radius:18px;
@@ -110,7 +120,8 @@ window.LP_CONFIG = {
 
   *,*::before,*::after{box-sizing:border-box}
   [hidden]{display:none !important}
-  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%;background:#0E2422;scrollbar-width:none}
+  html::-webkit-scrollbar{display:none}
   body{
     margin:0;background:var(--bg);color:var(--ink);
     font-family:var(--sans);font-size:clamp(15.5px, 1.05vw + 11px, 17.5px);line-height:1.65;
@@ -118,25 +129,26 @@ window.LP_CONFIG = {
   }
   img{max-width:100%;display:block}
   a{color:inherit}
-  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12;letter-spacing:-.015em;margin:0;color:var(--ink)}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12;letter-spacing:-.015em;margin:0;color:var(--ink);text-wrap:balance}
   h1 em,h2 em{font-style:italic;color:var(--brand)}
   p{margin:0}
   sup{font-size:.5em;vertical-align:super;line-height:0}
   .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-  :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+  :focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:6px}
+  .final :focus-visible,.foot :focus-visible{outline-color:#D9BF97}
 
   .eyebrow{
-    display:inline-flex;align-items:center;gap:10px;
-    font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+    display:inline-flex;align-items:flex-start;gap:10px;
+    font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);line-height:1.6;
   }
-  .eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+  .eyebrow::before{content:"";width:28px;height:1px;background:currentColor;flex:none;margin-top:.8em}
   .section{padding:var(--section) 0}
   .section-head{max-width:720px;margin-bottom:clamp(36px,5vw,56px)}
   .section-head h2{font-size:clamp(1.85rem, 3.6vw, 2.9rem);margin-top:14px}
-  .section-head p{margin-top:16px;color:var(--ink-soft);font-size:1.05em}
+  .section-head p:not(.note){margin-top:16px;color:var(--ink-soft);font-size:1.05em}
   .center{text-align:center;margin-left:auto;margin-right:auto}
-  .center .eyebrow::after{content:"";width:28px;height:1px;background:currentColor}
+  .center .eyebrow::after{content:"";width:28px;height:1px;background:currentColor;flex:none;margin-top:.8em}
 
   /* ---------- Botões ---------- */
   .btn{
@@ -257,10 +269,10 @@ window.LP_CONFIG = {
     display:flex;gap:14px;align-items:flex-start;
   }
   .num{
-    font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--accent);min-width:26px;line-height:1.5
+    font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--accent-ink);min-width:26px;line-height:1.5
   }
   .indic-list b{display:block;font-weight:700;font-size:1rem;line-height:1.35}
-  .indic-list span{display:block;color:var(--muted);font-size:.9rem;margin-top:4px;line-height:1.5}
+  .indic-list b + span{display:block;color:var(--muted);font-size:.9rem;margin-top:4px;line-height:1.5}
   .note{margin-top:22px;font-size:.9rem;color:var(--muted);display:flex;gap:10px;align-items:flex-start}
   .note svg{width:18px;height:18px;flex:none;margin-top:3px;color:var(--accent)}
 
@@ -279,7 +291,7 @@ window.LP_CONFIG = {
   .checks span{color:var(--ink-soft)}
 
   /* ---------- Como funciona ---------- */
-  .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:18px;counter-reset:s}
+  .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;counter-reset:s}
   .step{position:relative;padding:28px 22px 26px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line)}
   .step::before{
     counter-increment:s;content:counter(s, decimal-leading-zero);
@@ -301,6 +313,7 @@ window.LP_CONFIG = {
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231F4D48' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18-6-6 6-6M15 6l6 6-6 6'/%3E%3C/svg%3E");
     background-size:22px;background-repeat:no-repeat;background-position:center;
   }
+  .ba input:focus-visible ~ .handle::after{box-shadow:0 0 0 3px var(--brand),0 0 0 6px #fff,0 4px 16px rgba(0,0,0,.25)}
   .ba input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
   .ba .tag{
     position:absolute;top:12px;padding:5px 10px;border-radius:999px;font-size:.7rem;font-weight:700;letter-spacing:.1em;
@@ -315,7 +328,7 @@ window.LP_CONFIG = {
   /* ---------- Quem é a Dra. ---------- */
   .about{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,6vw,88px);align-items:center}
   .about h2{font-size:clamp(1.85rem, 3.6vw, 2.9rem);margin-top:14px}
-  .about .role{margin-top:10px;font-size:.95rem;color:var(--accent);font-weight:600;letter-spacing:.02em}
+  .about .role{margin-top:10px;font-size:.95rem;color:var(--accent-ink);font-weight:600;letter-spacing:.02em}
   .about .body{margin-top:22px;color:var(--ink-soft);display:grid;gap:14px}
   .facts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px}
   .fact{padding:18px 20px;border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--line)}
@@ -327,7 +340,9 @@ window.LP_CONFIG = {
   .rating b{font-family:var(--serif);font-size:1.5rem;font-weight:500}
   .stars{display:inline-flex;gap:2px;color:#E0A53A}
   .stars svg{width:16px;height:16px}
-  .rating > span:not(.stars){font-size:.86rem;color:var(--muted)}
+  .rating > span:not(.stars){font-size:.86rem;color:var(--muted);white-space:nowrap}
+  .rating{flex-wrap:wrap;max-width:100%;column-gap:12px;row-gap:2px;border-radius:18px}
+  .rating > svg{flex:none}
   .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
   .quote{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:18px}
   .quote p{font-family:var(--serif);font-size:1.1rem;line-height:1.55;color:var(--ink)}
@@ -351,7 +366,8 @@ window.LP_CONFIG = {
   .row p,.row a{display:block;margin-top:2px;line-height:1.5;text-decoration:none}
   .row a:hover{text-decoration:underline}
   .hours{display:grid;grid-template-columns:auto 1fr;gap:2px 16px;margin-top:4px}
-  .hours dt{color:var(--ink-soft)}.hours dd{margin:0;font-weight:600}
+  .hours dt{color:var(--ink-soft)}.hours dd{margin:0;font-weight:600;white-space:nowrap}
+  .hours{margin:4px 0 0}
   .map{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);min-height:340px;background:var(--accent-soft)}
   .map iframe{width:100%;height:100%;min-height:340px;border:0;display:block}
 
@@ -370,6 +386,7 @@ window.LP_CONFIG = {
   }
   .faq details[open] summary::after{transform:rotate(-135deg);margin-top:-2px}
   .faq .ans{padding:0 0 26px;color:var(--ink-soft);max-width:760px}
+  .faq .ans a{color:var(--brand);font-weight:600}
 
   /* ---------- CTA final ---------- */
   .final{background:var(--brand-deep);color:#E8EFEE;position:relative;overflow:hidden}
@@ -394,6 +411,16 @@ window.LP_CONFIG = {
   .foot hr{border:0;border-top:1px solid rgba(255,255,255,.1);margin:0}
   .foot .tm{font-size:.76rem;color:#7F9894;line-height:1.6}
 
+  /* ---------- Grades com conteúdo variável ---------- */
+  .quotes{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+  .ba-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+  .ba-card:only-child{max-width:640px}
+  .gallery{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
+  .gallery figure:only-child{max-width:640px}
+  .inline-cta.plain{background:var(--surface);border:1px solid var(--line)}
+  .indic .inline-cta{grid-column:1/-1;margin-top:8px}
+  .about .hero-ctas{margin-top:30px}
+
   /* ---------- Animação de entrada ---------- */
   .js .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
   .js .reveal.in{opacity:1;transform:none}
@@ -403,8 +430,15 @@ window.LP_CONFIG = {
   }
 
   /* ---------- Responsivo ---------- */
+  @media (max-width:1180px){
+    .steps{grid-template-columns:repeat(6,minmax(0,1fr))}
+    .step{grid-column:span 2}
+    .step:nth-child(4){grid-column:2 / span 2}
+    .step:nth-child(5){grid-column:4 / span 2}
+  }
   @media (max-width:1080px){
-    .steps{grid-template-columns:repeat(3,1fr)}
+    .indic{grid-template-columns:1fr}
+    .indic .section-head{margin-bottom:8px}
     .creds .wrap{grid-template-columns:repeat(2,1fr)}
     .cred:nth-child(3){border-left:0}
     .cred:nth-child(n+3){border-top:1px solid rgba(255,255,255,.1)}
@@ -418,18 +452,26 @@ window.LP_CONFIG = {
     .spec .media{order:2}
     .top-right .cro{display:none}
   }
-  @media (max-width:640px){
-    .grid-3,.indic-list,.facts{grid-template-columns:1fr}
+  @media (max-width:820px){
     .steps{grid-template-columns:1fr}
+    .step,.step:nth-child(4),.step:nth-child(5){grid-column:auto}
     .step{display:grid;grid-template-columns:auto 1fr;column-gap:16px;padding:22px 20px}
     .step::before{margin:0;font-size:1.9rem;grid-row:span 2}
+  }
+  @media (max-width:640px){
+    .grid-3,.indic-list,.facts{grid-template-columns:1fr}
+    .hero{padding-top:28px}
+    .hero h1{margin-top:12px}
+    .hero .lead{margin-top:14px;font-size:1em}
+    .hero-ctas{margin-top:22px}
     .creds .wrap{grid-template-columns:1fr 1fr}
     .cred{padding:20px 14px}
     .cred b{font-size:1.02rem}
     .cred span{font-size:.78rem}
     .hero-ctas .btn{width:100%}
-    .inline-cta{padding:24px 22px}
-    .inline-cta .btn{width:100%}
+    .inline-cta{padding:22px 16px}
+    .inline-cta .btn{width:100%;padding-left:16px;padding-right:16px;gap:10px}
+    .about .hero-ctas .btn{width:100%}
     .final-box .btn{width:100%}
     .badge-float{left:10px;bottom:14px;max-width:calc(100% - 20px);padding:12px 14px}
     .badge-top{display:none}
@@ -439,6 +481,10 @@ window.LP_CONFIG = {
     .card .icon{margin-bottom:16px}
     .visit-info{padding:24px 20px}
     .quote{padding:24px 22px}
+  }
+  @media (max-width:420px){
+    .hours{grid-template-columns:1fr;gap:0}
+    .hours dd{margin-bottom:6px}
   }
   @media (max-width:360px){
     .creds .wrap{grid-template-columns:1fr}
@@ -478,12 +524,12 @@ window.LP_CONFIG = {
 <!-- ================= TOPO ================= -->
 <header class="topbar">
   <div class="wrap">
-    <a class="brand" href="#" data-logo aria-label="Clínica Ateliê Dental">
+    <span class="brand" data-logo>
       <span class="wordmark"><small>Clínica</small><span>Ateliê Dental</span></span>
-    </a>
+    </span>
     <div class="top-right">
       <span class="cro">Dra. Vannessa Borsato · CRO-PR 26722</span>
-      <a class="btn btn-primary" data-wa="topo" href="https://wa.me/554130726994" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+      <a class="btn btn-primary" data-wa="topo" href="https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
         <svg aria-hidden="true"><use href="#i-wa"/></svg><span>Falar no WhatsApp</span>
       </a>
     </div>
@@ -496,15 +542,14 @@ window.LP_CONFIG = {
   <div class="wrap">
     <div class="hero-copy reveal">
       <span class="eyebrow">Invisalign em Curitiba</span>
-      <h1>Sorriso alinhado com Invisalign<sup>®</sup>, <em>sem aparelho aparente.</em></h1>
-      <p class="lead">Alinhadores transparentes, removíveis e feitos sob medida. O tratamento é planejado e acompanhado pela <strong>Dra. Vannessa Borsato, especialista em Ortodontia e Invisalign Doctor</strong>, na Clínica Ateliê Dental.</p>
+      <h1>Sorriso alinhado com Invisalign<sup>®</sup>, <em>sem aparelho à mostra.</em></h1>
+      <p class="lead">Alinhadores transparentes, praticamente invisíveis e removíveis, planejados pela <strong>Dra. Vannessa Borsato, especialista em Ortodontia e Invisalign Doctor</strong>, em Curitiba.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" data-wa="hero" href="https://wa.me/554130726994" target="_blank" rel="noopener">
+        <a class="btn btn-primary" data-wa="hero" href="https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*" target="_blank" rel="noopener">
           <svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar minha avaliação
         </a>
-        <a class="btn btn-ghost" href="#como-funciona">Como funciona</a>
       </div>
-      <p class="cta-note"><span class="dot" aria-hidden="true"></span>Atendimento pelo WhatsApp · Seg a sex, 8h às 18h · Sáb, 8h às 12h</p>
+      <p class="cta-note"><span class="dot" aria-hidden="true"></span>Envie sua mensagem a qualquer hora. Respondemos seg a sex, 8h às 18h, e sáb, 8h às 12h.</p>
       <ul class="trust" aria-label="Credenciais">
         <li><svg aria-hidden="true"><use href="#i-check"/></svg>Especialista em Ortodontia</li>
         <li><svg aria-hidden="true"><use href="#i-check"/></svg>Invisalign Doctor</li>
@@ -518,7 +563,7 @@ window.LP_CONFIG = {
       </div>
       <div class="badge-float">
         <span class="ring"><svg aria-hidden="true"><use href="#i-award"/></svg></span>
-        <div><b>Invisalign Doctor</b><span>Profissional certificada para tratar com Invisalign<sup>®</sup></span></div>
+        <div><b>Invisalign Doctor</b><span>Tratamento com alinhadores Invisalign<sup>®</sup></span></div>
       </div>
       <div class="badge-float badge-top">
         <span class="ring"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
@@ -529,10 +574,10 @@ window.LP_CONFIG = {
 </section>
 
 <!-- ================= CREDENCIAIS ================= -->
-<section class="creds" aria-label="Formação da Dra. Vannessa">
+<section class="creds" aria-label="Credenciais da Dra. Vannessa">
   <div class="wrap">
     <div class="cred"><b>Especialista em Ortodontia</b><span>Especialização pela UEPG</span></div>
-    <div class="cred"><b>Invisalign Doctor</b><span>Certificada em alinhadores Invisalign<sup>®</sup></span></div>
+    <div class="cred"><b>Invisalign Doctor</b><span>Tratamento com alinhadores Invisalign<sup>®</sup></span></div>
     <div class="cred"><b>Ortopedia Funcional</b><span>Atuação em Ortopedia Funcional dos Maxilares</span></div>
     <div class="cred"><b>Campina do Siqueira</b><span>Rua General Mário Tourinho, 1805 · Curitiba</span></div>
   </div>
@@ -544,7 +589,7 @@ window.LP_CONFIG = {
     <div class="section-head reveal">
       <span class="eyebrow">Por que Invisalign</span>
       <h2>Ortodontia que se encaixa <em>na sua rotina</em>, e não o contrário.</h2>
-      <p>Os alinhadores Invisalign<sup>®</sup> são placas transparentes que movimentam os dentes aos poucos, de acordo com um plano feito para o seu sorriso.</p>
+      <p>Conhecidos como “aparelho invisível”, os alinhadores Invisalign<sup>®</sup> são placas transparentes que movimentam os dentes aos poucos, de acordo com um plano feito para o seu sorriso.</p>
     </div>
     <div class="grid-3">
       <article class="card reveal">
@@ -555,7 +600,7 @@ window.LP_CONFIG = {
       <article class="card reveal">
         <div class="icon"><svg aria-hidden="true"><use href="#i-food"/></svg></div>
         <h3>Removível</h3>
-        <p>Você retira para comer e beber. Sem lista de alimentos proibidos por causa de braquetes e fios.</p>
+        <p>Você retira para comer e beber, então não precisa abrir mão dos seus alimentos favoritos durante o tratamento.</p>
       </article>
       <article class="card reveal">
         <div class="icon"><svg aria-hidden="true"><use href="#i-feather"/></svg></div>
@@ -574,14 +619,14 @@ window.LP_CONFIG = {
       </article>
       <article class="card reveal">
         <div class="icon"><svg aria-hidden="true"><use href="#i-cal"/></svg></div>
-        <h3>Menos imprevistos</h3>
-        <p>Sem braquete que descola ou fio que machuca. As consultas seguem o cronograma do seu plano.</p>
+        <h3>Acompanhamento planejado</h3>
+        <p>As trocas de alinhador e as consultas de acompanhamento seguem o cronograma do seu plano de tratamento.</p>
       </article>
     </div>
     <div class="inline-cta reveal">
       <p>Quer saber se o Invisalign<sup>®</sup> é indicado para o seu caso?</p>
-      <a class="btn btn-primary" data-wa="beneficios" href="https://wa.me/554130726994" target="_blank" rel="noopener">
-        <svg aria-hidden="true"><use href="#i-wa"/></svg>Quero fazer minha avaliação
+      <a class="btn btn-primary" data-wa="beneficios" href="https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*" target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#i-wa"/></svg>Quero minha avaliação
       </a>
     </div>
   </div>
@@ -593,7 +638,7 @@ window.LP_CONFIG = {
     <div class="section-head reveal">
       <span class="eyebrow">Para quem é</span>
       <h2>Do ajuste discreto <em>à correção da mordida.</em></h2>
-      <p>O Invisalign<sup>®</sup> trata de casos simples a mais complexos, em adultos e adolescentes. Estas são algumas das situações mais comuns:</p>
+      <p>O Invisalign<sup>®</sup> trata desde casos simples até os mais complexos, em adultos e adolescentes. Estas são algumas das situações mais comuns:</p>
       <p class="note"><svg aria-hidden="true"><use href="#i-info"/></svg><span>A indicação para o seu caso é confirmada na consulta de avaliação com a especialista.</span></p>
     </div>
     <ul class="indic-list">
@@ -604,6 +649,12 @@ window.LP_CONFIG = {
       <li class="reveal"><span class="num">05</span><div><b>Mordida aberta</b><span>Os dentes da frente não se tocam quando você fecha a boca.</span></div></li>
       <li class="reveal"><span class="num">06</span><div><b>Dentes que voltaram a entortar</b><span>Para quem usou aparelho no passado e perdeu parte do resultado.</span></div></li>
     </ul>
+    <div class="inline-cta plain reveal">
+      <p>Se identificou com algum desses casos?</p>
+      <a class="btn btn-primary" data-wa="indicacoes" href="https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*" target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#i-wa"/></svg>Quero avaliar meu caso
+      </a>
+    </div>
   </div>
 </section>
 
@@ -616,13 +667,13 @@ window.LP_CONFIG = {
       </div>
     </div>
     <div class="reveal">
-      <span class="eyebrow">A diferença está no planejamento</span>
-      <h2>O alinhador é a ferramenta. <em>Quem planeja faz o resultado.</em></h2>
-      <p class="body">O sistema Invisalign<sup>®</sup> simula a movimentação dos dentes, mas é o ortodontista quem decide cada etapa: quanto cada dente se move, em que ordem e como a mordida vai se encaixar no final. Por isso a formação de quem conduz o seu tratamento faz tanta diferença.</p>
+      <span class="eyebrow">Planejamento com especialista</span>
+      <h2>O alinhador é a ferramenta. <em>O planejamento define cada etapa.</em></h2>
+      <p class="body">O sistema Invisalign<sup>®</sup> simula a movimentação dos dentes, mas é o dentista quem decide cada etapa: quanto cada dente se move, em que ordem e como a mordida vai se encaixar no final. Aqui, esse planejamento é feito pela Dra. Vannessa, especialista em Ortodontia.</p>
       <ul class="checks">
-        <li><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><div><b>Especialista em Ortodontia pela UEPG.</b> <span>A formação dedicada à posição dos dentes e à mordida.</span></div></li>
-        <li><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><div><b>Formação em Ortopedia Funcional dos Maxilares.</b> <span>Um olhar para a função, e não só para a estética.</span></div></li>
-        <li><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><div><b>Invisalign Doctor certificada.</b> <span>Habilitada a planejar e conduzir tratamentos com o sistema Invisalign<sup>®</sup>.</span></div></li>
+        <li><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><div><b>Especialista em Ortodontia pela UEPG.</b> <span>A especialidade que cuida da posição dos dentes e da mordida.</span></div></li>
+        <li><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><div><b>Atuação em Ortopedia Funcional dos Maxilares.</b> <span>Um olhar para a função, e não só para a estética.</span></div></li>
+        <li><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><div><b>Invisalign Doctor.</b> <span>Planeja e acompanha tratamentos com o sistema Invisalign<sup>®</sup>.</span></div></li>
         <li><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><div><b>Plano individual.</b> <span>Nenhum sorriso é igual ao outro: o planejamento é feito para os seus dentes e a sua mordida.</span></div></li>
       </ul>
     </div>
@@ -640,10 +691,16 @@ window.LP_CONFIG = {
     <ol class="steps">
       <li class="step reveal"><h3>Avaliação</h3><p>Conversa sobre o que incomoda no seu sorriso, exame clínico e registros para entender o seu caso.</p></li>
       <li class="step reveal"><h3>Planejamento 3D</h3><p>A Dra. planeja o tratamento no software ClinCheck<sup>®</sup> e você vê a simulação da movimentação dos dentes.</p></li>
-      <li class="step reveal"><h3>Seus alinhadores</h3><p>Você recebe os alinhadores sob medida e troca de jogo conforme a orientação, usando de 20 a 22 horas por dia.</p></li>
+      <li class="step reveal"><h3>Seus alinhadores</h3><p>Você recebe seus alinhadores sob medida, usa cada um de 20 a 22 horas por dia e troca para o próximo conforme a orientação da Dra.</p></li>
       <li class="step reveal"><h3>Acompanhamento</h3><p>Consultas periódicas para conferir a evolução e fazer ajustes, se necessário.</p></li>
       <li class="step reveal"><h3>Contenção</h3><p>Ao final, a contenção ajuda a manter os dentes na nova posição.</p></li>
     </ol>
+    <div class="inline-cta plain reveal">
+      <p>Tudo começa pela avaliação com a especialista.</p>
+      <a class="btn btn-primary" data-wa="como-funciona" href="https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*" target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar minha avaliação
+      </a>
+    </div>
   </div>
 </section>
 
@@ -656,7 +713,7 @@ window.LP_CONFIG = {
       <p>Arraste a linha sobre a foto para comparar o início e o final do tratamento.</p>
     </div>
     <div class="ba-grid" id="ba-grid"></div>
-    <p class="legal-small">Casos de pacientes da Dra. Vannessa Borsato (CRO-PR 26722), publicados com autorização. Imagens sem edição. Cada tratamento é individual e os resultados variam de pessoa para pessoa.</p>
+    <p class="legal-small">Casos tratados pela Dra. Vannessa Borsato (CRO-PR 26722), publicados com autorização por escrito dos pacientes. Fotos do início e do final do tratamento. Cada tratamento é individual e os resultados variam de pessoa para pessoa.</p>
   </div>
 </section>
 
@@ -673,14 +730,19 @@ window.LP_CONFIG = {
       <h2>Dra. Vannessa <em>Borsato</em></h2>
       <p class="role">Cirurgiã-dentista · Especialista em Ortodontia · CRO-PR 26722</p>
       <div class="body">
-        <p>Formada em Odontologia pela Universidade Estadual de Ponta Grossa (UEPG), onde também fez a especialização em Ortodontia, a Dra. Vannessa dedica a carreira a devolver alinhamento, função e confiança ao sorriso dos pacientes.</p>
-        <p>Com formação em Ortopedia Funcional dos Maxilares e certificação como Invisalign Doctor, ela une o conhecimento da especialidade à tecnologia dos alinhadores para planejar tratamentos discretos, previsíveis e feitos para a sua rotina.</p>
+        <p>Formada em Odontologia pela Universidade Estadual de Ponta Grossa (UEPG), onde também fez a especialização em Ortodontia, a Dra. Vannessa dedica a carreira a cuidar do alinhamento, da função e da estética do sorriso dos pacientes.</p>
+        <p>Ela também atua com Ortopedia Funcional dos Maxilares e é Invisalign Doctor, unindo o conhecimento da especialidade à tecnologia dos alinhadores para planejar tratamentos discretos e feitos para a sua rotina.</p>
       </div>
       <div class="facts">
         <div class="fact"><small>Graduação</small><b>Odontologia · UEPG</b></div>
         <div class="fact"><small>Especialização</small><b>Ortodontia · UEPG</b></div>
-        <div class="fact"><small>Formação</small><b>Ortopedia Funcional dos Maxilares</b></div>
-        <div class="fact"><small>Certificação</small><b>Invisalign Doctor</b></div>
+        <div class="fact"><small>Área de atuação</small><b>Ortopedia Funcional dos Maxilares</b></div>
+        <div class="fact"><small>Alinhadores</small><b>Invisalign Doctor</b></div>
+      </div>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" data-wa="dra" href="https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar minha avaliação
+        </a>
       </div>
     </div>
   </div>
@@ -707,7 +769,7 @@ window.LP_CONFIG = {
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Clínica Ateliê Dental</span>
-      <h2>Um espaço pensado para você se sentir <em>à vontade.</em></h2>
+      <h2>Um espaço pensado para você se sentir <em>à&nbsp;vontade.</em></h2>
       <p>No bairro Campina do Siqueira, próximo ao Bigorrilho, ao Champagnat e ao Ecoville.</p>
     </div>
     <div class="gallery" id="gallery" hidden></div>
@@ -732,7 +794,7 @@ window.LP_CONFIG = {
         <div class="row">
           <span class="icon"><svg aria-hidden="true"><use href="#i-phone"/></svg></span>
           <div><small>Telefone e WhatsApp</small>
-            <a data-wa="contato" href="https://wa.me/554130726994" target="_blank" rel="noopener" data-tel-label>(41) 3072-6994</a>
+            <a data-wa="contato" href="https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*" target="_blank" rel="noopener" data-tel-label>(41) 3072-6994</a>
           </div>
         </div>
         <div class="row">
@@ -758,39 +820,51 @@ window.LP_CONFIG = {
       <h2>Tudo o que você quer saber <em>antes de começar.</em></h2>
     </div>
     <div class="faq">
-      <details>
-        <summary>Invisalign<sup>®</sup> dói?</summary>
-        <div class="ans">É comum sentir uma leve pressão nos primeiros dias de cada novo alinhador, sinal de que os dentes estão se movimentando. Em geral é um desconforto passageiro e bem tolerado, sem fios ou braquetes machucando a boca.</div>
+      <details name="faq" open>
+        <summary>Invisalign<sup>®</sup> é o mesmo que “aparelho invisível”?</summary>
+        <div class="ans">“Aparelho invisível” é como muita gente chama os alinhadores transparentes. O Invisalign<sup>®</sup> é o sistema de alinhadores da Align Technology, e a Dra. Vannessa é Invisalign Doctor, habilitada a planejar tratamentos com ele.</div>
       </details>
-      <details>
+      <details name="faq">
+        <summary>Invisalign<sup>®</sup> dói?</summary>
+        <div class="ans">É comum sentir uma leve pressão nos primeiros dias de cada novo alinhador, sinal de que os dentes estão se movimentando. Em geral é um desconforto passageiro e bem tolerado.</div>
+      </details>
+      <details name="faq">
         <summary>Quanto tempo dura o tratamento?</summary>
         <div class="ans">Depende da complexidade de cada caso. Ajustes mais simples podem levar alguns meses; correções de mordida costumam levar mais tempo. Na avaliação, a Dra. Vannessa explica a estimativa para o seu caso.</div>
       </details>
-      <details>
+      <details name="faq">
         <summary>Quantas horas por dia preciso usar os alinhadores?</summary>
         <div class="ans">O recomendado é de 20 a 22 horas por dia. Você retira apenas para comer, beber algo que não seja água e fazer a higiene. Usar corretamente é o que mantém o tratamento dentro do planejado.</div>
       </details>
-      <details>
-        <summary>Posso comer de tudo durante o tratamento?</summary>
-        <div class="ans">Sim. Como os alinhadores são removíveis, você tira para as refeições, escova os dentes e coloca de volta. Não há a lista de alimentos proibidos de quem usa aparelho fixo.</div>
+      <details name="faq">
+        <summary>Os alinhadores atrapalham a fala?</summary>
+        <div class="ans">Nos primeiros dias com um alinhador novo, algumas pessoas percebem uma leve mudança na pronúncia de certos sons. Em geral, isso passa conforme a língua se acostuma aos alinhadores.</div>
       </details>
-      <details>
+      <details name="faq">
+        <summary>Posso comer de tudo durante o tratamento?</summary>
+        <div class="ans">Sim. Como os alinhadores são removíveis, você tira para as refeições, escova os dentes e coloca de volta.</div>
+      </details>
+      <details name="faq">
         <summary>O Invisalign<sup>®</sup> resolve o meu caso?</summary>
         <div class="ans">O Invisalign<sup>®</sup> trata desde dentes levemente desalinhados até problemas de mordida mais complexos. Mas só uma avaliação clínica com a especialista pode confirmar a indicação e o melhor caminho para você.</div>
       </details>
-      <details>
+      <details name="faq">
+        <summary>Invisalign<sup>®</sup> ou aparelho fixo: qual é melhor para mim?</summary>
+        <div class="ans">Depende do seu caso. Como especialista em Ortodontia, a Dra. Vannessa avalia seus dentes e sua mordida e explica, na consulta, qual opção é a mais indicada para você.</div>
+      </details>
+      <details name="faq">
         <summary>Como funciona a consulta de avaliação?</summary>
-        <div class="ans" id="faq-avaliacao">Na consulta, a Dra. Vannessa examina seus dentes e sua mordida, entende o que você quer mudar no seu sorriso, responde às suas dúvidas e explica se o Invisalign<sup>®</sup> é indicado para você. Para agendar, é só chamar a nossa equipe no WhatsApp.</div>
+        <div class="ans"><span id="faq-avaliacao">Na consulta, a Dra. Vannessa examina seus dentes e sua mordida, entende o que você quer mudar no seu sorriso, responde às suas dúvidas e explica se o Invisalign<sup>®</sup> é indicado para você.</span> Para agendar, é só <a data-wa="faq" href="https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*" target="_blank" rel="noopener">chamar a nossa equipe no WhatsApp</a>.</div>
       </details>
-      <details>
+      <details name="faq">
         <summary>Quanto custa o tratamento com Invisalign<sup>®</sup>?</summary>
-        <div class="ans">O investimento depende da complexidade e da duração do tratamento, por isso é definido depois da avaliação. Você recebe o plano do seu caso e as condições de pagamento antes de decidir.</div>
+        <div class="ans">O investimento depende da complexidade e da duração do tratamento, por isso é definido depois da avaliação. Você recebe o plano do seu caso, com todas as informações, antes de decidir.</div>
       </details>
-      <details>
+      <details name="faq">
         <summary>Adolescentes podem usar Invisalign<sup>®</sup>?</summary>
         <div class="ans">Sim. Existem alinhadores Invisalign<sup>®</sup> indicados para adolescentes. Na avaliação, a Dra. verifica se é o momento adequado para começar.</div>
       </details>
-      <details>
+      <details name="faq">
         <summary>Preciso usar contenção depois?</summary>
         <div class="ans">Sim. Depois do tratamento, a contenção é fundamental para manter os dentes na nova posição. A Dra. orienta o tipo de contenção e por quanto tempo usar.</div>
       </details>
@@ -808,10 +882,10 @@ window.LP_CONFIG = {
       <p>Chame nossa equipe no WhatsApp e agende sua avaliação com a Dra. Vannessa Borsato, especialista em Ortodontia e Invisalign Doctor.</p>
     </div>
     <div class="final-box reveal">
-      <a class="btn btn-light" data-wa="final" href="https://wa.me/554130726994" target="_blank" rel="noopener">
+      <a class="btn btn-light" data-wa="final" href="https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*" target="_blank" rel="noopener">
         <svg aria-hidden="true" style="color:#1F4D48"><use href="#i-wa"/></svg>Agendar pelo WhatsApp
       </a>
-      <p class="cta-note"><span class="dot" aria-hidden="true"></span>Seg a sex, 8h às 18h · Sáb, 8h às 12h</p>
+      <p class="cta-note"><span class="dot" aria-hidden="true"></span>Envie sua mensagem a qualquer hora. Respondemos seg a sex, 8h às 18h, e sáb, 8h às 12h.</p>
     </div>
   </div>
 </section>
@@ -826,7 +900,7 @@ window.LP_CONFIG = {
       </span>
       <div class="foot-legal">
         <span><b>Clínica Ateliê Dental</b> · <span data-cfg="croClinica">CRO-PR 6780</span> · CNPJ <span data-cfg="cnpj">39.816.125/0001-20</span></span>
-        <span>Responsável técnica: <span data-cfg="responsavelTecnico">Dra. Vannessa Borsato · CRO-PR 26722</span></span>
+        <span data-cfg="responsavelTecnico">Responsável técnica: Dra. Vannessa Borsato · CRO-PR 26722</span>
         <span>Rua General Mário Tourinho, 1805, sala 804 · Campina do Siqueira · Curitiba/PR</span>
         <span id="privacy-slot"></span>
       </div>
@@ -842,7 +916,7 @@ window.LP_CONFIG = {
   var C = window.LP_CONFIG || {};
   var fotos = C.fotos || {};
   var links = C.links || {};
-  document.documentElement.classList.add('js');
+  var MSG_PADRAO = 'Olá Tenho interesse em saber mais sobre Invisalign. *NÃO APAGUE ESSA MENSAGEM VOCÊ TEM PREFERÊNCIA*';
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
@@ -850,112 +924,12 @@ window.LP_CONFIG = {
     });
   }
   function hasUrl(u) { return typeof u === 'string' && /^https?:\/\//i.test(u.trim()); }
+  function lista(v) { return Array.isArray(v) ? v : (v ? [v] : []); }
 
   // ---------- Links do WhatsApp ----------
-  var waUrl = 'https://wa.me/' + String(C.whatsapp || '554130726994').replace(/\D/g, '') +
-              '?text=' + encodeURIComponent(C.mensagemWhatsapp || '');
+  var waUrl = 'https://wa.me/' + (String(C.whatsapp || '').replace(/\D/g, '') || '554130726994') +
+              '?text=' + encodeURIComponent(C.mensagemWhatsapp || MSG_PADRAO);
   document.querySelectorAll('[data-wa]').forEach(function (a) { a.href = waUrl; });
-  if (C.telefoneExibicao) document.querySelectorAll('[data-tel-label]').forEach(function (el) { el.textContent = C.telefoneExibicao; });
-
-  // ---------- Links externos ----------
-  document.querySelectorAll('[data-link]').forEach(function (a) {
-    var u = links[a.getAttribute('data-link')];
-    if (hasUrl(u)) a.href = u;
-  });
-
-  // ---------- Dados legais ----------
-  document.querySelectorAll('[data-cfg]').forEach(function (el) {
-    var v = C[el.getAttribute('data-cfg')];
-    if (v) el.textContent = v;
-  });
-  if (hasUrl(links.privacidade)) {
-    document.getElementById('privacy-slot').innerHTML =
-      '<a href="' + esc(links.privacidade) + '" target="_blank" rel="noopener">Política de privacidade</a>';
-  }
-
-  // ---------- Logo ----------
-  function setLogo(sel, url) {
-    var el = document.querySelector(sel);
-    if (el && hasUrl(url)) el.innerHTML = '<img src="' + esc(url) + '" alt="Clínica Ateliê Dental">';
-  }
-  setLogo('[data-logo]', fotos.logo);
-  setLogo('[data-logo-rodape]', fotos.logoRodape);
-
-  // ---------- Fotos principais ----------
-  document.querySelectorAll('[data-foto]').forEach(function (frame) {
-    var url = fotos[frame.getAttribute('data-foto')];
-    if (!hasUrl(url)) return;
-    var img = new Image();
-    img.alt = frame.getAttribute('data-alt') || '';
-    img.decoding = 'async';
-    if (frame.getAttribute('data-foto') !== 'heroDra') img.loading = 'lazy';
-    img.src = url;
-    frame.innerHTML = '';
-    frame.appendChild(img);
-  });
-
-  // ---------- Galeria da clínica ----------
-  var gal = (fotos.clinica || []).filter(hasUrl);
-  if (gal.length) {
-    var g = document.getElementById('gallery');
-    g.innerHTML = gal.map(function (u, i) {
-      return '<figure class="reveal"><img loading="lazy" decoding="async" src="' + esc(u) +
-             '" alt="Clínica Ateliê Dental – ambiente ' + (i + 1) + '"></figure>';
-    }).join('');
-    g.hidden = false;
-  }
-
-  // ---------- Antes e depois ----------
-  var casos = (C.antesDepois || []).filter(function (c) { return c && hasUrl(c.antes) && hasUrl(c.depois); });
-  if (casos.length) {
-    var grid = document.getElementById('ba-grid');
-    grid.innerHTML = casos.map(function (c, i) {
-      return '<figure class="ba-card reveal" style="margin:0">' +
-        '<div class="ba">' +
-          '<img src="' + esc(c.antes) + '" alt="Antes do tratamento' + (c.paciente ? ' – ' + esc(c.paciente) : '') + '" loading="lazy" decoding="async">' +
-          '<img class="after" src="' + esc(c.depois) + '" alt="Depois do tratamento' + (c.paciente ? ' – ' + esc(c.paciente) : '') + '" loading="lazy" decoding="async">' +
-          '<span class="tag l">Antes</span><span class="tag r">Depois</span>' +
-          '<span class="handle"></span>' +
-          '<input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois, caso ' + (i + 1) + '">' +
-        '</div>' +
-        '<figcaption class="ba-info">' + (c.paciente ? '<b>' + esc(c.paciente) + '</b>' : '') +
-          (c.descricao ? '<span>' + esc(c.descricao) + '</span>' : '') + '</figcaption>' +
-      '</figure>';
-    }).join('');
-    grid.querySelectorAll('.ba').forEach(function (ba) {
-      var r = ba.querySelector('input'), after = ba.querySelector('.after'), h = ba.querySelector('.handle');
-      function upd() { after.style.clipPath = 'inset(0 0 0 ' + r.value + '%)'; h.style.left = r.value + '%'; }
-      r.addEventListener('input', upd); upd();
-    });
-    document.getElementById('resultados').hidden = false;
-  }
-
-  // ---------- Depoimentos ----------
-  var deps = (C.depoimentos || []).filter(function (d) { return d && d.texto && d.nome; });
-  if (deps.length) {
-    var star = '<svg aria-hidden="true"><use href="#i-star"/></svg>';
-    document.getElementById('quotes').innerHTML = deps.map(function (d) {
-      var ini = esc(String(d.nome).trim().charAt(0).toUpperCase());
-      var av = hasUrl(d.foto) ? '<img src="' + esc(d.foto) + '" alt="" loading="lazy">' : ini;
-      return '<blockquote class="quote reveal" style="margin:0">' +
-        '<span class="stars" aria-hidden="true">' + star + star + star + star + star + '</span>' +
-        '<p>“' + esc(d.texto) + '”</p>' +
-        '<footer><span class="avatar">' + av + '</span><div><b>' + esc(d.nome) + '</b>' +
-        (d.origem ? '<span>Avaliação no ' + esc(d.origem) + '</span>' : '') + '</div></footer>' +
-      '</blockquote>';
-    }).join('');
-    if (C.notaGoogle) {
-      document.getElementById('rating-slot').innerHTML =
-        '<div class="rating"><svg width="22" height="22" aria-hidden="true"><use href="#i-google"/></svg>' +
-        '<b>' + esc(C.notaGoogle) + '</b><span class="stars" aria-hidden="true">' + star + star + star + star + star + '</span>' +
-        (C.totalAvaliacoesGoogle ? '<span>' + esc(C.totalAvaliacoesGoogle) + ' avaliações no Google</span>' : '<span>no Google</span>') +
-        '</div>';
-    }
-    document.getElementById('depoimentos').hidden = false;
-  }
-
-  // ---------- Texto da avaliação (FAQ) ----------
-  if (C.textoAvaliacao) document.getElementById('faq-avaliacao').textContent = C.textoAvaliacao;
 
   // ---------- Rastreamento: avisa o site Wix (página "mãe") sobre cliques ----------
   function track(evento, dados) {
@@ -972,18 +946,166 @@ window.LP_CONFIG = {
     else if (a.hasAttribute('data-link')) track('outbound_click', { destino: a.getAttribute('data-link') });
   });
 
-  // ---------- Links internos (âncoras) funcionam dentro do iframe do Wix ----------
-  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      var id = a.getAttribute('href').slice(1);
-      var t = id ? document.getElementById(id) : document.body;
-      if (!t) return;
-      e.preventDefault();
-      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // ---------- Conteúdo vindo do LP_CONFIG (um erro aqui não derruba o resto da página) ----------
+  try {
+    if (C.telefoneExibicao) document.querySelectorAll('[data-tel-label]').forEach(function (el) { el.textContent = C.telefoneExibicao; });
+
+    document.querySelectorAll('[data-link]').forEach(function (a) {
+      var u = links[a.getAttribute('data-link')];
+      if (hasUrl(u)) a.href = u;
+    });
+
+    document.querySelectorAll('[data-cfg]').forEach(function (el) {
+      var v = C[el.getAttribute('data-cfg')];
+      if (v) el.textContent = v;
+    });
+    if (hasUrl(links.privacidade)) {
+      document.getElementById('privacy-slot').innerHTML =
+        '<a href="' + esc(links.privacidade) + '" target="_blank" rel="noopener">Política de privacidade</a>';
+    }
+
+    // Logo
+    var setLogo = function (sel, url) {
+      var el = document.querySelector(sel);
+      if (el && hasUrl(url)) el.innerHTML = '<img src="' + esc(url) + '" alt="Clínica Ateliê Dental">';
+    };
+    setLogo('[data-logo]', fotos.logo);
+    setLogo('[data-logo-rodape]', fotos.logoRodape);
+
+    // Fotos principais
+    document.querySelectorAll('[data-foto]').forEach(function (frame) {
+      var url = fotos[frame.getAttribute('data-foto')];
+      if (!hasUrl(url)) return;
+      var img = new Image();
+      img.alt = frame.getAttribute('data-alt') || '';
+      img.decoding = 'async';
+      if (frame.getAttribute('data-foto') !== 'heroDra') img.loading = 'lazy';
+      img.src = url;
+      frame.innerHTML = '';
+      frame.appendChild(img);
+    });
+
+    // Galeria da clínica
+    var gal = lista(fotos.clinica).filter(hasUrl);
+    if (gal.length) {
+      var g = document.getElementById('gallery');
+      g.innerHTML = gal.map(function (u, i) {
+        return '<figure class="reveal"><img loading="lazy" decoding="async" src="' + esc(u) +
+               '" alt="Clínica Ateliê Dental – ambiente ' + (i + 1) + '"></figure>';
+      }).join('');
+      g.hidden = false;
+    }
+
+    // Antes e depois (somente casos com autorizado: true)
+    var casos = lista(C.antesDepois).filter(function (c) {
+      return c && c.autorizado === true && hasUrl(c.antes) && hasUrl(c.depois);
+    });
+    if (casos.length) {
+      var grid = document.getElementById('ba-grid');
+      grid.innerHTML = casos.map(function (c, i) {
+        return '<figure class="ba-card reveal" style="margin:0">' +
+          '<div class="ba">' +
+            '<img src="' + esc(c.antes) + '" alt="Antes do tratamento – caso ' + (i + 1) + '" loading="lazy" decoding="async">' +
+            '<img class="after" src="' + esc(c.depois) + '" alt="Depois do tratamento – caso ' + (i + 1) + '" loading="lazy" decoding="async">' +
+            '<span class="tag l">Antes</span><span class="tag r">Depois</span>' +
+            '<input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois, caso ' + (i + 1) + '">' +
+            '<span class="handle"></span>' +
+          '</div>' +
+          '<figcaption class="ba-info"><b>Caso ' + (i + 1) + ' · Dra. Vannessa Borsato, CRO-PR 26722</b>' +
+            (c.descricao ? '<span>' + esc(c.descricao) + '</span>' : '') + '</figcaption>' +
+        '</figure>';
+      }).join('');
+      grid.querySelectorAll('.ba').forEach(function (ba) {
+        var r = ba.querySelector('input'), after = ba.querySelector('.after'), h = ba.querySelector('.handle');
+        function upd() {
+          after.style.clipPath = 'inset(0 0 0 ' + r.value + '%)';
+          h.style.left = r.value + '%';
+          r.setAttribute('aria-valuetext', 'Antes ' + r.value + '%, depois ' + (100 - r.value) + '%');
+        }
+        r.addEventListener('input', upd); upd();
+      });
+      document.getElementById('resultados').hidden = false;
+    }
+
+    // Depoimentos
+    var deps = lista(C.depoimentos).filter(function (d) { return d && d.texto && d.nome; });
+    if (deps.length) {
+      var star = '<svg aria-hidden="true"><use href="#i-star"/></svg>';
+      var estrelas = function (n) {
+        n = Math.max(0, Math.min(5, parseInt(n, 10) || 0));
+        return n ? '<span class="stars" role="img" aria-label="' + n + ' de 5 estrelas">' + new Array(n + 1).join(star) + '</span>' : '';
+      };
+      document.getElementById('quotes').innerHTML = deps.map(function (d) {
+        var ini = esc(String(d.nome).trim().charAt(0).toUpperCase());
+        return '<blockquote class="quote reveal" style="margin:0">' + estrelas(d.estrelas) +
+          '<p>“' + esc(d.texto) + '”</p>' +
+          '<footer><span class="avatar" aria-hidden="true">' + ini + '</span><div><b>' + esc(d.nome) + '</b>' +
+          (d.origem ? '<span>Avaliação no ' + esc(d.origem) + '</span>' : '') + '</div></footer>' +
+        '</blockquote>';
+      }).join('');
+      if (C.notaGoogle) {
+        document.getElementById('rating-slot').innerHTML =
+          '<div class="rating"><svg width="22" height="22" aria-hidden="true"><use href="#i-google"/></svg>' +
+          '<b>' + esc(C.notaGoogle) + '</b>' +
+          (C.totalAvaliacoesGoogle ? '<span>' + esc(C.totalAvaliacoesGoogle) + ' avaliações no Google</span>' : '<span>nota no Google</span>') +
+          '</div>';
+      }
+      document.getElementById('depoimentos').hidden = false;
+    }
+
+    // Texto da avaliação (FAQ)
+    if (C.textoAvaliacao) document.getElementById('faq-avaliacao').textContent = C.textoAvaliacao;
+  } catch (err) {
+    if (window.console) console.error('LP_CONFIG:', err);
+  }
+
+  // ---------- Fundo alternado entre as seções visíveis ----------
+  [].filter.call(document.querySelectorAll('main > .section:not(.final)'), function (sec) { return !sec.hidden; })
+    .forEach(function (sec, i) { sec.classList.toggle('alt', i % 2 === 1); });
+
+  // ---------- FAQ: uma resposta aberta por vez e altura total constante ----------
+  // (o Elemento HTML do Wix tem altura fixa; abrir perguntas não pode empurrar o rodapé para fora)
+  var faqBox = document.querySelector('.faq');
+  var faqItens = [].slice.call(faqBox.querySelectorAll('details'));
+  var faqMax = 0;
+  function faqAjusta() {
+    var aberta = faqBox.querySelector('details[open] .ans');
+    faqBox.style.paddingBottom = Math.max(0, faqMax - (aberta ? aberta.offsetHeight : 0)) + 'px';
+  }
+  function faqMede() {
+    var antes = faqItens.map(function (d) { return d.open; });
+    faqMax = 0;
+    faqItens.forEach(function (d) { d.open = true; faqMax = Math.max(faqMax, d.querySelector('.ans').offsetHeight); d.open = false; });
+    faqItens.forEach(function (d, i) { d.open = antes[i]; });
+    faqAjusta();
+  }
+  faqItens.forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (d.open) faqItens.forEach(function (o) { if (o !== d) o.open = false; });
+      faqAjusta();
     });
   });
+  faqMede();
+  window.addEventListener('load', faqMede);
+  window.addEventListener('resize', faqMede);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(faqMede);
+
+  // ---------- Pré-carregamento: dentro do iframe do Wix o "lazy" só carrega quando já está na tela ----------
+  var secoes = [].slice.call(document.querySelectorAll('main > section:not([hidden]), footer'));
+  if ('IntersectionObserver' in window) {
+    var pre = new IntersectionObserver(function (en) {
+      en.forEach(function (x) {
+        if (!x.isIntersecting) return;
+        var prox = secoes[secoes.indexOf(x.target) + 1];
+        if (prox) prox.querySelectorAll('[loading="lazy"]').forEach(function (m) { m.loading = 'eager'; });
+        pre.unobserve(x.target);
+      });
+    });
+    secoes.forEach(function (sec) { pre.observe(sec); });
+  }
 
   // ---------- Animação de entrada ----------
+  document.documentElement.classList.add('js');
   var els = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     var ioAtivo = false;
@@ -1001,9 +1123,11 @@ window.LP_CONFIG = {
   }
 
   // ---------- Altura do conteúdo (para ajustar o Elemento HTML no Wix) ----------
+  function alturaConteudo() {
+    return Math.ceil(document.querySelector('.foot').getBoundingClientRect().bottom + (window.pageYOffset || 0));
+  }
   function reportHeight() {
-    var h = Math.ceil(document.documentElement.scrollHeight);
-    try { if (window.parent !== window) window.parent.postMessage({ source: 'lp-invisalign', event: 'altura', altura: h }, '*'); } catch (e) {}
+    try { if (window.parent !== window) window.parent.postMessage({ source: 'lp-invisalign', event: 'altura', altura: alturaConteudo() }, '*'); } catch (e) {}
   }
   window.addEventListener('load', reportHeight);
   window.addEventListener('resize', reportHeight);
@@ -1014,8 +1138,7 @@ window.LP_CONFIG = {
       'font:700 14px/1.4 system-ui,sans-serif;padding:8px 12px;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.3)';
     document.body.appendChild(meter);
     var medir = function () {
-      meter.textContent = 'Largura ' + document.documentElement.clientWidth + 'px → altura necessária: ' +
-        Math.ceil(document.documentElement.scrollHeight) + 'px';
+      meter.textContent = 'Largura ' + document.documentElement.clientWidth + 'px → altura necessária: ' + alturaConteudo() + 'px';
     };
     medir();
     window.addEventListener('load', medir);

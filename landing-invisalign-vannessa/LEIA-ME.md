@@ -8,6 +8,7 @@ Feita para ser colada no Wix como **Elemento HTML**.
 | `index.html` | A landing page completa. É **este arquivo inteiro** que vai dentro do Elemento HTML do Wix. |
 | `wix-codigo-personalizado.html` | Código de rastreamento das conversões (cliques no WhatsApp), que vai em *Configurações > Código personalizado* do Wix. |
 | `LEIA-ME.md` | Este guia. |
+| `preview/` | Prints da página inteira (desktop e celular) para aprovação do layout. |
 
 ---
 
@@ -33,27 +34,30 @@ Não é preciso mexer em mais nada.
 Enquanto um campo estiver vazio, a página mostra um espaço reservado elegante com a legenda da foto que falta.
 
 ### Antes e depois (pendente)
-Cada caso é uma linha com foto de antes, foto de depois, nome e descrição:
+Cada caso é uma linha com foto de antes, foto de depois e descrição:
 ```js
 antesDepois: [
-  { antes: 'URL_ANTES', depois: 'URL_DEPOIS', paciente: 'Maria S.', descricao: 'Dentes apinhados · 12 meses' },
+  { antes: 'URL_ANTES', depois: 'URL_DEPOIS', descricao: 'Dentes apinhados · 12 meses', autorizado: true },
 ],
 ```
-- A seção **só aparece** quando existe pelo menos 1 caso preenchido.
-- O visitante arrasta a linha sobre a foto para comparar.
-- Tire as duas fotos com **o mesmo enquadramento e a mesma luz**, sem filtro nem edição.
-- **Obrigatório:** autorização por escrito do paciente (Res. CFO-196/2019). As fotos devem mostrar o diagnóstico (antes) e o resultado final (depois).
+- A seção **só aparece** quando existe pelo menos 1 caso com `autorizado: true`. Esse campo confirma que o termo de autorização (TCLE) está assinado.
+- O visitante arrasta a linha sobre a foto para comparar. A legenda sai automaticamente como "Caso 1 · Dra. Vannessa Borsato, CRO-PR 26722".
+- **O nome do paciente não aparece.** O CFO-118/2012, art. 44, VI, proíbe identificar o paciente em publicidade, mesmo com consentimento.
+- Use somente casos tratados pela própria Dra. Vannessa, **apenas a foto inicial e a final**, com o mesmo enquadramento e a mesma luz, sem filtro nem edição (Res. CFO-196/2019).
+- ⚠️ Os CROs interpretam a Res. 196/2019 como restrita ao profissional, não à clínica (pessoa jurídica). Como a página está no site da clínica, vale confirmar com o CRO-PR antes de ativar esta seção.
 
 ### Depoimentos (pendente)
 ```js
 depoimentos: [
-  { nome: 'Nome do paciente', texto: 'Texto copiado da avaliação real no Google', origem: 'Google', foto: '' },
+  { nome: 'Ana P.', texto: 'Texto copiado da avaliação real no Google', origem: 'Google', estrelas: 5 },
 ],
-notaGoogle: '5,0',
+notaGoogle: '4,9',
 totalAvaliacoesGoogle: '87',
 ```
-- A seção **só aparece** com pelo menos 1 depoimento. Use somente avaliações reais.
-- A nota e o total só aparecem se preenchidos.
+- A seção **só aparece** com pelo menos 1 depoimento. Use somente avaliações reais, copiadas sem alteração.
+- Nome: primeiro nome + inicial do sobrenome, sem foto do paciente.
+- `estrelas` = a nota real daquela avaliação. Sem esse campo, nenhuma estrela é exibida.
+- A nota e o total do Google só aparecem se preenchidos.
 
 ### Outros campos
 - `textoAvaliacao`: texto sobre a consulta de avaliação, que aparece na pergunta "Como funciona a consulta de avaliação?" (pendente, aguardando a Dra.). **Não coloque valor.**
@@ -68,16 +72,27 @@ totalAvaliacoesGoogle: '87',
 1. **Crie uma página nova** (ex.: `/invisalign`).
 2. Em *Configurações da página > Layout*, deixe a página **sem cabeçalho e sem rodapé do site**. A landing page já tem topo e rodapé próprios, e tirar o menu evita fugas do funil.
 3. *Adicionar (+) > Incorporar código > **Incorporar HTML***. Escolha **Código** e cole **todo** o conteúdo do `index.html`. Clique em *Atualizar*.
-4. Estique o elemento para a **largura total** da página e alinhe-o ao topo (posição 0).
+4. Alinhe o elemento ao topo (posição 0) e estique para a largura total.
+   - **Editor clássico:** faça a medição do passo 5 com a janela do navegador em **1440 px ou mais**. Em telas menores a página fica um pouco mais curta e sobra uma faixa escura abaixo do rodapé, que se confunde com ele.
+   - **Wix Studio:** no Tablet e no Mobile, use largura fixa em px, centralizada (Tablet 740 px, Mobile 320 px), e meça a altura em cada breakpoint.
 5. **Altura**: o Elemento HTML do Wix tem altura fixa, que não se ajusta sozinha ao conteúdo.
    - No `LP_CONFIG`, mude `mostrarAltura` para `true` e clique em *Atualizar*.
    - Abra o **Visualizar**. Uma etiqueta vermelha no topo mostra a altura necessária.
    - Defina a altura do elemento com esse valor + 20 px. Faça isso no **desktop** e depois no **editor mobile**, onde a altura é diferente.
    - Volte `mostrarAltura` para `false` e atualize.
    - **Sempre que adicionar fotos, casos ou depoimentos, meça de novo**, porque a altura muda.
-   - Tabela de referência (sem as seções opcionais, com as fotos principais):
+   - O FAQ já reserva o espaço da maior resposta, então abrir e fechar perguntas **não** muda a altura da página.
+   - Tabela de referência, medida **sem** antes e depois, depoimentos e galeria (esses blocos aumentam a altura):
 
-   ALTURAS_TABELA
+     | Largura do elemento | Altura |
+     |---|---|
+     | 280 px (mobile clássico) | ≈ 14.670 px |
+     | 320 px (mobile clássico) | ≈ 13.620 px |
+     | 390 px | ≈ 12.560 px |
+     | 768 px | ≈ 10.640 px |
+     | 980 px | ≈ 9.010 px |
+     | 1280 px | ≈ 9.220 px |
+     | 1440 px ou mais | ≈ 9.400 px |
 
 6. **SEO da página** (*Configurações da página > SEO*):
    - Título: `Invisalign em Curitiba | Dra. Vannessa Borsato, Ortodontista`
@@ -92,10 +107,10 @@ totalAvaliacoesGoogle: '87',
 
 A página roda dentro de um iframe do Wix, em outro domínio. Uma tag do Google Ads colocada dentro dela **não** é atribuída ao anúncio. Por isso o esquema funciona assim:
 
-1. Cada clique em um botão do WhatsApp da landing page envia um aviso (`postMessage`) para o site Wix, informando **qual** botão foi clicado: `topo`, `hero`, `beneficios`, `contato` ou `final`.
-2. O código de `wix-codigo-personalizado.html`, que vai em *Configurações > Código personalizado > Head*, só na página da landing page, recebe esse aviso e:
-   - envia o evento `lp_whatsapp_click` ao **Google Tag Manager**, **ou**
-   - dispara a conversão do **Google Ads** direto, se o gtag estiver instalado. Nesse caso, preencha `AW-XXXXXXXXXX/XXXXXXXX`.
+1. Cada clique em um botão do WhatsApp da landing page envia um aviso (`postMessage`) para o site Wix, informando **qual** botão foi clicado: `topo`, `hero`, `beneficios`, `indicacoes`, `como-funciona`, `dra`, `faq`, `contato` ou `final`.
+2. O código de `wix-codigo-personalizado.html` recebe esse aviso. Ele vai em *Configurações > Código personalizado > Head*, só na página da landing page, e só funciona no site **publicado**, não no Visualizar. Escolha **um** caminho na variável `MODO`, nunca os dois, para não contar a conversão em dobro:
+   - `'gtm'` (recomendado): envia o evento `lp_whatsapp_click` ao Google Tag Manager, e a tag de conversão fica no GTM;
+   - `'gtag'`: o próprio código carrega a tag do Google Ads e registra a conversão. Nesse caso, preencha `GOOGLE_ADS_SEND_TO`.
 
 **Configuração recomendada (GTM):**
 - Conecte o GTM em *Marketing e SEO > Integrações de marketing > Google Tag Manager*.
@@ -111,15 +126,18 @@ A página roda dentro de um iframe do Wix, em outro domínio. Uma tag do Google 
 ## 4. Decisões de conformidade (CFO e Google Ads)
 
 - **Preço e condições de pagamento não aparecem na página.** O Código de Ética Odontológica (Res. CFO-118/2012, art. 44) proíbe anunciar preços, serviços gratuitos e modalidades de pagamento. Por isso o valor da avaliação (R$ 200) e o parcelamento em 12x ficam para o atendimento no WhatsApp.
-- A página identifica a profissional (nome e CRO-PR 26722), a clínica (CRO-PR 6780 e CNPJ) e o responsável técnico.
+- A página identifica a profissional (nome e CRO-PR 26722), a clínica (CRO-PR 6780 e CNPJ) e o responsável técnico. **O RT precisa ser confirmado antes de publicar.**
 - Não há promessa de resultado. O texto deixa claro que a indicação depende de avaliação.
+- Não há críticas ao aparelho fixo (art. 44 proíbe desmerecer técnicas de colegas). O texto apenas descreve os benefícios dos alinhadores.
+- Ortopedia Funcional aparece como **área de atuação**, não como formação ou especialidade, porque isso não foi confirmado. Se a Dra. tiver título registrado no CRO, dá para ajustar.
+- "Invisalign Doctor" aparece como está, sem acrescentar "certificada" ou níveis que não foram informados.
 - "Invisalign" e "ClinCheck" aparecem com ® e com a nota de marca registrada da Align Technology. **Não use o logotipo oficial do Invisalign** sem o kit de marca fornecido pela Align ao Invisalign Doctor.
 - Antes e depois somente com autorização assinada, sem edição de imagem (Res. CFO-196/2019).
 
 ## 5. Pendências
 
 - [ ] Fotos (logo, Dra. e clínica), para subir no Wix e colar as URLs
-- [ ] Casos de antes e depois, com autorização dos pacientes
+- [ ] Casos de antes e depois, com TCLE assinado (sem nome do paciente), e consulta ao CRO-PR sobre publicação no site da clínica
 - [ ] Depoimentos reais do Google e nota
 - [ ] Detalhes da consulta de avaliação (`textoAvaliacao`)
 - [ ] Confirmar o responsável técnico da clínica
