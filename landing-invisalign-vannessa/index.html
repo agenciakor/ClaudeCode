@@ -47,7 +47,9 @@ window.LP_CONFIG = {
   //  • apenas foto inicial (diagnóstico) e final, mesmo enquadramento, sem edição/retoque;
   //  • NÃO identificar o paciente (sem nome) – a legenda mostra "Caso 1 · Dra. Vannessa · CRO".
   //  • autorizado: true confirma que o TCLE está assinado (sem isso o caso não aparece).
+  // Caminhos "imagens/..." valem só para a aprovação; no Wix, troque pela URL de cada arquivo.
   antesDepois: [
+    { antes: 'imagens/caso-01-antes.jpg', depois: 'imagens/caso-01-depois.jpg', descricao: 'Alinhamento e mordida · caso tratado com Invisalign®', autorizado: true },
     // { antes: 'URL_FOTO_ANTES', depois: 'URL_FOTO_DEPOIS', descricao: 'Dentes apinhados · 12 meses de tratamento', autorizado: true },
   ],
 
@@ -101,19 +103,20 @@ window.LP_CONFIG = {
 <style>
   :root{
     /* Paleta – troque aqui para casar com a identidade da clínica */
-    --bg:#FBF8F4;
-    --bg-alt:#F4EEE6;
+    /* Identidade Ateliê Dental: marrons da marca (#AB8970, #8A6136, #231911) + verde de contraste (#206B67) */
+    --bg:#FBF8F5;
+    --bg-alt:#F5EEE7;
     --surface:#FFFFFF;
-    --ink:#1B2A2C;
-    --ink-soft:#44565A;
-    --muted:#5B6B6E;
-    --line:#E7DFD4;
-    --brand:#1F4D48;
-    --brand-hover:#173D39;
-    --brand-deep:#132F2C;
-    --accent:#B08E62;
-    --accent-soft:#EFE5D6;
-    --accent-ink:#80613A;
+    --ink:#231911;
+    --ink-soft:#4A3B30;
+    --muted:#6B5B4E;
+    --line:#E8DDD2;
+    --brand:#206B67;
+    --brand-hover:#1A5955;
+    --brand-deep:#231911;
+    --accent:#AB8970;
+    --accent-soft:#F1E7DE;
+    --accent-ink:#8A6136;
     --ok:#2F7A5E;
 
     --radius:18px;
@@ -128,7 +131,7 @@ window.LP_CONFIG = {
 
   *,*::before,*::after{box-sizing:border-box}
   [hidden]{display:none !important}
-  html{-webkit-text-size-adjust:100%;text-size-adjust:100%;background:#0E2422;scrollbar-width:none}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%;background:#1A130D;scrollbar-width:none}
   html::-webkit-scrollbar{display:none}
   body{
     margin:0;background:var(--bg);color:var(--ink);
@@ -144,7 +147,7 @@ window.LP_CONFIG = {
   .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   :focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:6px}
-  .final :focus-visible,.foot :focus-visible{outline-color:#D9BF97}
+  .final :focus-visible,.foot :focus-visible{outline-color:#D8B896}
 
   .eyebrow{
     display:inline-flex;align-items:flex-start;gap:10px;
@@ -167,7 +170,7 @@ window.LP_CONFIG = {
     min-height:56px;text-align:center;line-height:1.25;
   }
   .btn svg{width:22px;height:22px;flex:none}
-  .btn-primary{background:var(--brand);color:#fff;box-shadow:0 10px 24px -10px rgba(31,77,72,.65)}
+  .btn-primary{background:var(--brand);color:#fff;box-shadow:0 10px 24px -10px rgba(32,107,103,.6)}
   .btn-primary:hover{background:var(--brand-hover);transform:translateY(-1px)}
   .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
   .btn-ghost:hover{border-color:var(--ink)}
@@ -236,15 +239,15 @@ window.LP_CONFIG = {
       linear-gradient(160deg, #F3EADD, #E9DCC9);
   }
   .ph svg{width:min(72%,300px);height:auto;opacity:.75}
-  .ph small{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#9C7B50}
+  .ph small{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#8A6136}
 
   /* ---------- Faixa de credenciais ---------- */
-  .creds{background:var(--brand-deep);color:#E8EFEE}
+  .creds{background:var(--brand-deep);color:#F3EAE1}
   .creds .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
   .cred{padding:28px 24px;border-left:1px solid rgba(255,255,255,.1)}
   .cred:first-child{border-left:0}
   .cred b{display:block;font-family:var(--serif);font-weight:500;font-size:1.2rem;color:#fff;line-height:1.25}
-  .cred span{display:block;font-size:.84rem;color:#B9CAC7;margin-top:6px;line-height:1.45}
+  .cred span{display:block;font-size:.84rem;color:#CBB9A8;margin-top:6px;line-height:1.45}
 
   /* ---------- Benefícios ---------- */
   .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -318,14 +321,14 @@ window.LP_CONFIG = {
   .ba .handle::after{
     content:"";position:absolute;top:50%;left:50%;width:40px;height:40px;border-radius:50%;
     transform:translate(-50%,-50%);background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.25);
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231F4D48' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18-6-6 6-6M15 6l6 6-6 6'/%3E%3C/svg%3E");
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23206B67' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18-6-6 6-6M15 6l6 6-6 6'/%3E%3C/svg%3E");
     background-size:22px;background-repeat:no-repeat;background-position:center;
   }
   .ba input:focus-visible ~ .handle::after{box-shadow:0 0 0 3px var(--brand),0 0 0 6px #fff,0 4px 16px rgba(0,0,0,.25)}
   .ba input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
   .ba .tag{
     position:absolute;top:12px;padding:5px 10px;border-radius:999px;font-size:.7rem;font-weight:700;letter-spacing:.1em;
-    text-transform:uppercase;background:rgba(19,47,44,.78);color:#fff;pointer-events:none
+    text-transform:uppercase;background:rgba(35,25,17,.78);color:#fff;pointer-events:none
   }
   .ba .tag.l{left:12px}.ba .tag.r{right:12px}
   .ba-info{padding:18px 20px}
@@ -397,27 +400,27 @@ window.LP_CONFIG = {
   .faq .ans a{color:var(--brand);font-weight:600}
 
   /* ---------- CTA final ---------- */
-  .final{background:var(--brand-deep);color:#E8EFEE;position:relative;overflow:hidden}
+  .final{background:var(--brand-deep);color:#F3EAE1;position:relative;overflow:hidden}
   .final .arch{position:absolute;right:-60px;bottom:-40px;width:520px;opacity:.08;color:#fff;pointer-events:none}
   .final .wrap{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
   .final h2{color:#fff;font-size:clamp(2rem,4vw,3.2rem)}
-  .final h2 em{color:#D9BF97}
-  .final p{margin-top:16px;color:#B9CAC7;max-width:560px}
-  .final .cta-note{color:#9FB5B1}
+  .final h2 em{color:#D8B896}
+  .final p{margin-top:16px;color:#CBB9A8;max-width:560px}
+  .final .cta-note{color:#B39F8E}
   .final-box{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
 
   /* ---------- Rodapé ---------- */
-  .foot{background:#0E2422;color:#9FB5B1;font-size:.84rem;padding:40px 0 34px}
+  .foot{background:#1A130D;color:#B39F8E;font-size:.84rem;padding:40px 0 34px}
   .foot .wrap{display:grid;gap:22px}
   .foot-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start}
   .foot .wordmark span{color:#fff}
-  .foot .wordmark small{color:#7F9894}
+  .foot .wordmark small{color:#9C8874}
   .foot img{height:44px;width:auto}
   .foot-legal{display:grid;gap:4px;line-height:1.6}
-  .foot-legal b{color:#DCE6E4;font-weight:600}
-  .foot a{color:#DCE6E4}
+  .foot-legal b{color:#EFE5DB;font-weight:600}
+  .foot a{color:#EFE5DB}
   .foot hr{border:0;border-top:1px solid rgba(255,255,255,.1);margin:0}
-  .foot .tm{font-size:.76rem;color:#7F9894;line-height:1.6}
+  .foot .tm{font-size:.76rem;color:#9C8874;line-height:1.6}
 
   /* ---------- Grades com conteúdo variável ---------- */
   .quotes{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
@@ -444,11 +447,11 @@ window.LP_CONFIG = {
   .aval-intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;margin-bottom:clamp(36px,5vw,56px)}
   .aval-intro .section-head{margin-bottom:0}
   .aval-quote{
-    position:relative;padding:32px 34px;border-radius:var(--radius);background:var(--brand-deep);color:#E8EFEE;
+    position:relative;padding:32px 34px;border-radius:var(--radius);background:var(--brand-deep);color:#F3EAE1;
   }
   .aval-quote p{font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.4rem);line-height:1.45;font-style:italic}
-  .aval-quote footer{margin-top:18px;font-size:.84rem;color:#B9CAC7;font-weight:600;letter-spacing:.02em}
-  .aval-quote::before{content:"“";position:absolute;top:-6px;left:22px;font-family:var(--serif);font-size:5rem;line-height:1;color:#D9BF97;opacity:.55}
+  .aval-quote footer{margin-top:18px;font-size:.84rem;color:#CBB9A8;font-weight:600;letter-spacing:.02em}
+  .aval-quote::before{content:"“";position:absolute;top:-6px;left:22px;font-family:var(--serif);font-size:5rem;line-height:1;color:#D8B896;opacity:.55}
   .aval-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;counter-reset:a}
   .aval-list li{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px 24px 22px;display:grid;grid-template-columns:auto 1fr;column-gap:16px}
   .aval-list li::before{counter-increment:a;content:counter(a);width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);font-family:var(--serif);font-style:italic;font-size:1.05rem;display:grid;place-items:center;margin-top:2px}
@@ -951,13 +954,13 @@ window.LP_CONFIG = {
   <svg class="arch" viewBox="0 0 400 260" aria-hidden="true"><use href="#i-arch"/></svg>
   <div class="wrap">
     <div class="reveal">
-      <span class="eyebrow" style="color:#D9BF97">Agende sua avaliação</span>
+      <span class="eyebrow" style="color:#D8B896">Agende sua avaliação</span>
       <h2 style="margin-top:14px">O sorriso que você quer começa <em>com uma conversa.</em></h2>
       <p>Chame nossa equipe no WhatsApp e agende sua avaliação com a Dra. Vannessa Borsato, especialista em Ortodontia e Invisalign Doctor.</p>
     </div>
     <div class="final-box reveal">
       <a class="btn btn-light" data-wa="final" href="https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*" target="_blank" rel="noopener">
-        <svg aria-hidden="true" style="color:#1F4D48"><use href="#i-wa"/></svg>Agendar pelo WhatsApp
+        <svg aria-hidden="true" style="color:var(--brand)"><use href="#i-wa"/></svg>Agendar pelo WhatsApp
       </a>
       <p class="cta-note"><span class="dot" aria-hidden="true"></span>Envie sua mensagem a qualquer hora. Respondemos seg a sex, 8h às 18h, e sáb, 8h às 12h.</p>
     </div>
