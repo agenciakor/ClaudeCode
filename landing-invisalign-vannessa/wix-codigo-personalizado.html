@@ -1,0 +1,45 @@
+<!--
+  RASTREAMENTO DE CONVERSÕES – CLIQUES NO WHATSAPP DA LANDING PAGE
+  ------------------------------------------------------------------
+  Onde colar: Painel do Wix > Configurações > Código personalizado > + Adicionar código
+    • Colar o código abaixo
+    • Adicionar código a: "Páginas escolhidas" > a página da landing page Invisalign
+    • Posicionar em: "Head"
+  (Código personalizado exige plano Premium com domínio conectado.)
+
+  Por que isso é necessário: o Elemento HTML do Wix roda dentro de um iframe em outro
+  domínio (filesusr.com). Uma tag do Google Ads colocada DENTRO dele não enxerga o
+  clique do anúncio (gclid) e a conversão não é atribuída à campanha. Por isso a página
+  avisa o site "de fora" a cada clique no WhatsApp, e é aqui, no site, que a conversão
+  é registrada.
+
+  PENDENTE: substituir AW-XXXXXXXXXX/XXXXXXXXXXXXXXXX pelo ID/rótulo de conversão do
+  Google Ads (Ferramentas > Conversões > [sua conversão] > Configuração da tag).
+-->
+<script>
+  (function () {
+    var GOOGLE_ADS_SEND_TO = 'AW-XXXXXXXXXX/XXXXXXXXXXXXXXXX'; // PENDENTE
+
+    window.dataLayer = window.dataLayer || [];
+
+    window.addEventListener('message', function (e) {
+      var d = e.data;
+      if (!d || typeof d !== 'object' || d.source !== 'lp-invisalign') return;
+
+      // Aceita mensagens apenas do domínio de arquivos do Wix
+      var host = '';
+      try { host = new URL(e.origin).hostname; } catch (err) { return; }
+      if (!/(^|\.)filesusr\.com$/.test(host)) return;
+
+      if (d.event === 'whatsapp_click') {
+        // 1) Para o Google Tag Manager (acionador "Evento personalizado": lp_whatsapp_click)
+        window.dataLayer.push({ event: 'lp_whatsapp_click', cta_posicao: d.cta_posicao || '' });
+
+        // 2) Google Ads direto, caso a tag global (gtag.js) já esteja no site
+        if (typeof window.gtag === 'function' && GOOGLE_ADS_SEND_TO.indexOf('XXXX') === -1) {
+          window.gtag('event', 'conversion', { send_to: GOOGLE_ADS_SEND_TO });
+        }
+      }
+    });
+  })();
+</script>
