@@ -31,8 +31,10 @@ window.LP_CONFIG = {
   fotos: {
     logo: '',        // logo da clínica, PNG/SVG com fundo transparente (versão para fundo claro)
     logoRodape: '',  // logo em versão clara, para o rodapé escuro (opcional)
-    heroDra: '',     // foto principal da Dra. (vertical 4:5, ~1000x1250px)
-    sobreDra: '',    // retrato da Dra. para a seção "Quem é" (vertical 4:5)
+    // ATENÇÃO: os dois caminhos abaixo (imagens/...) servem só para a aprovação do layout.
+    // No Wix, suba os arquivos da pasta "imagens" no Gerenciador de Mídia e cole aqui a URL de cada um.
+    heroDra: 'imagens/dra-vannessa-hero.jpg',       // foto principal (vertical 4:5, 1000x1250px)
+    sobreDra: 'imagens/dra-vannessa-retrato.jpg',   // retrato para a seção "Quem é" (vertical 4:5)
     atendimento: '', // Dra. atendendo / mostrando o alinhador (horizontal 3:2)
     clinica: [       // fotos da clínica (horizontal 3:2). Apague ou acrescente linhas.
       // 'https://static.wixstatic.com/media/...jpg',
@@ -81,7 +83,13 @@ window.LP_CONFIG = {
   // ---------- AJUDA PARA O WIX ----------
   // true = mostra a altura da página no topo do elemento (use no modo Visualizar
   // para acertar a altura do Elemento HTML). Volte para false antes de publicar.
-  mostrarAltura: false
+  mostrarAltura: false,
+
+  // ---------- BOTÃO FLUTUANTE DE WHATSAPP ----------
+  // true = mostra o botão redondo no canto inferior direito da página.
+  // Dentro do Elemento HTML do Wix ele fica fixo no fim do elemento (junto ao rodapé). Para um botão que
+  // acompanha a rolagem no celular, crie também o botão nativo do Wix (LEIA-ME, seção 2, passo 7).
+  botaoFlutuante: true
 };
 </script>
 
@@ -421,6 +429,39 @@ window.LP_CONFIG = {
   .indic .inline-cta{grid-column:1/-1;margin-top:8px}
   .about .hero-ctas{margin-top:30px}
 
+  /* ---------- Botão flutuante ---------- */
+  .wa-float{
+    position:fixed;right:18px;bottom:18px;z-index:50;width:60px;height:60px;border-radius:50%;
+    background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 28px -6px rgba(0,0,0,.45);
+    transition:transform .2s;
+  }
+  .wa-float:hover{transform:scale(1.06)}
+  .wa-float svg{width:32px;height:32px}
+  .wa-float[hidden]{display:none}
+  @media (max-width:640px){.wa-float{right:14px;bottom:14px;width:56px;height:56px}}
+
+  /* ---------- Avaliação ---------- */
+  .aval-intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;margin-bottom:clamp(36px,5vw,56px)}
+  .aval-intro .section-head{margin-bottom:0}
+  .aval-quote{
+    position:relative;padding:32px 34px;border-radius:var(--radius);background:var(--brand-deep);color:#E8EFEE;
+  }
+  .aval-quote p{font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.4rem);line-height:1.45;font-style:italic}
+  .aval-quote footer{margin-top:18px;font-size:.84rem;color:#B9CAC7;font-weight:600;letter-spacing:.02em}
+  .aval-quote::before{content:"“";position:absolute;top:-6px;left:22px;font-family:var(--serif);font-size:5rem;line-height:1;color:#D9BF97;opacity:.55}
+  .aval-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;counter-reset:a}
+  .aval-list li{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px 24px 22px;display:grid;grid-template-columns:auto 1fr;column-gap:16px}
+  .aval-list li::before{counter-increment:a;content:counter(a);width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);font-family:var(--serif);font-style:italic;font-size:1.05rem;display:grid;place-items:center;margin-top:2px}
+  .aval-list h3{font-size:1.14rem;margin-bottom:6px}
+  .aval-list p{font-size:.94em;color:var(--ink-soft)}
+  .aval-list li.wide{grid-column:1/-1;background:var(--accent-soft);border-color:transparent}
+  .aval-list li.wide::before{background:#fff}
+  .aval-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .aval-tags span{font-size:.8rem;font-weight:600;color:var(--ink-soft);background:var(--bg-alt);border-radius:999px;padding:5px 11px}
+  .aval-list li.wide .aval-tags span{background:#fff}
+  @media (max-width:900px){.aval-intro{grid-template-columns:1fr}}
+  @media (max-width:640px){.aval-list{grid-template-columns:1fr}.aval-list li{padding:20px 18px}.aval-quote{padding:28px 22px}}
+
   /* ---------- Animação de entrada ---------- */
   .js .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
   .js .reveal.in{opacity:1;transform:none}
@@ -689,7 +730,7 @@ window.LP_CONFIG = {
       <p>Um processo claro, com cada etapa explicada antes de começar.</p>
     </div>
     <ol class="steps">
-      <li class="step reveal"><h3>Avaliação</h3><p>Conversa sobre o que incomoda no seu sorriso, exame clínico e registros para entender o seu caso.</p></li>
+      <li class="step reveal"><h3>Avaliação</h3><p>Cerca de 1 hora com a Dra.: conversa, exame clínico, escaneamento intraoral, fotografias e diagnóstico do seu caso.</p></li>
       <li class="step reveal"><h3>Planejamento 3D</h3><p>A Dra. planeja o tratamento no software ClinCheck<sup>®</sup> e você vê a simulação da movimentação dos dentes.</p></li>
       <li class="step reveal"><h3>Seus alinhadores</h3><p>Você recebe seus alinhadores sob medida, usa cada um de 20 a 22 horas por dia e troca para o próximo conforme a orientação da Dra.</p></li>
       <li class="step reveal"><h3>Acompanhamento</h3><p>Consultas periódicas para conferir a evolução e fazer ajustes, se necessário.</p></li>
@@ -698,6 +739,39 @@ window.LP_CONFIG = {
     <div class="inline-cta plain reveal">
       <p>Tudo começa pela avaliação com a especialista.</p>
       <a class="btn btn-primary" data-wa="como-funciona" href="https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*" target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar minha avaliação
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= A AVALIAÇÃO ================= -->
+<section class="section" id="avaliacao">
+  <div class="wrap">
+    <div class="aval-intro">
+      <div class="section-head reveal">
+        <span class="eyebrow">A consulta de avaliação</span>
+        <h2>Cerca de 1 hora dedicada ao seu diagnóstico <em>e à sua clareza.</em></h2>
+        <p>A avaliação com a Dra. Vannessa foi pensada para que você não saia apenas com uma indicação de tratamento, mas entendendo o que está acontecendo com o seu sorriso e por quê.</p>
+      </div>
+      <blockquote class="aval-quote reveal" style="margin:0">
+        <p>Simplesmente dizer “seus dentes estão tortos” não é um diagnóstico. É preciso entender o que está acontecendo, quais estruturas estão envolvidas e quais limites precisamos respeitar para realizar um tratamento seguro.</p>
+        <footer>Dra. Vannessa Borsato · Especialista em Ortodontia · CRO-PR 26722</footer>
+      </blockquote>
+    </div>
+    <ol class="aval-list">
+      <li class="reveal"><div><h3>Primeiro, entender você</h3><p>Antes de olhar para os dentes, a Dra. conversa sobre a sua queixa principal, o que incomoda no seu sorriso, expectativas, hábitos, tratamentos anteriores e o que você gostaria de mudar. Muitas vezes, a queixa estética é só a parte visível de uma questão de mordida, posição dentária ou função.</p></div></li>
+      <li class="reveal"><div><h3>Avaliação clínica detalhada</h3><p>Uma análise completa, que vai além do alinhamento: a relação entre as arcadas, a mordida, a linha média, a gengiva, os desgastes, as assimetrias e como os dentes se relacionam com o rosto.</p>
+        <div class="aval-tags"><span>Mordida</span><span>Posição dos dentes</span><span>Linha média</span><span>Gengiva</span><span>Desgastes</span><span>Face e sorriso</span></div></div></li>
+      <li class="reveal"><div><h3>Escaneamento intraoral</h3><p>O escaneamento digital das arcadas gera uma reprodução precisa dos seus dentes e da sua mordida, e revela detalhes que nem sempre aparecem só ao olhar para o sorriso.</p></div></li>
+      <li class="reveal"><div><h3>Fotografias e documentação</h3><p>Registros fotográficos de diferentes ângulos para comparar proporções, exposição dentária e a relação entre dentes, gengiva e face. Quando necessário, também são avaliados exames radiográficos.</p></div></li>
+      <li class="reveal"><div><h3>Diagnóstico</h3><p>Com todas as informações reunidas, a Dra. cruza os dados clínicos, digitais, fotográficos e radiográficos para responder a uma pergunta fundamental: <strong>por que o seu sorriso chegou à condição atual?</strong></p></div></li>
+      <li class="reveal"><div><h3>Planejamento personalizado</h3><p>A partir do diagnóstico, você entende as possibilidades de tratamento para o seu caso, os objetivos que podem ser alcançados, o que precisa ser corrigido e os cuidados durante o processo. Se houver indicação de outras áreas da odontologia, a Dra. explica como integrar o tratamento com outros profissionais da equipe.</p></div></li>
+      <li class="wide reveal"><div><h3>Clareza antes de qualquer decisão</h3><p>Ninguém deveria iniciar um tratamento ortodôntico sem entender exatamente por que ele foi indicado, o que será feito e quais são os seus limites. Por isso o diagnóstico é explicado de um jeito que você realmente compreenda, com espaço para perguntar e tirar todas as dúvidas. No final, você sai sabendo o que está acontecendo, o que pode ser feito e por que aquele plano foi pensado para você.</p></div></li>
+    </ol>
+    <div class="inline-cta plain reveal">
+      <p>Quer entender o que está acontecendo com o seu sorriso?</p>
+      <a class="btn btn-primary" data-wa="avaliacao" href="https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*" target="_blank" rel="noopener">
         <svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar minha avaliação
       </a>
     </div>
@@ -854,7 +928,7 @@ window.LP_CONFIG = {
       </details>
       <details name="faq">
         <summary>Como funciona a consulta de avaliação?</summary>
-        <div class="ans"><span id="faq-avaliacao">Na consulta, a Dra. Vannessa examina seus dentes e sua mordida, entende o que você quer mudar no seu sorriso, responde às suas dúvidas e explica se o Invisalign<sup>®</sup> é indicado para você.</span> Para agendar, é só <a data-wa="faq" href="https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*" target="_blank" rel="noopener">chamar a nossa equipe no WhatsApp</a>.</div>
+        <div class="ans"><span id="faq-avaliacao">A avaliação dura cerca de 1 hora. A Dra. Vannessa conversa com você sobre o que quer mudar, faz o exame clínico, o escaneamento intraoral e as fotografias, e explica o diagnóstico e as possibilidades de tratamento de um jeito que você realmente compreenda.</span> Para agendar, é só <a data-wa="faq" href="https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*" target="_blank" rel="noopener">chamar a nossa equipe no WhatsApp</a>.</div>
       </details>
       <details name="faq">
         <summary>Quanto custa o tratamento com Invisalign<sup>®</sup>?</summary>
@@ -910,6 +984,10 @@ window.LP_CONFIG = {
   </div>
 </footer>
 
+<a class="wa-float" id="wa-float" data-wa="flutuante" href="https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*" target="_blank" rel="noopener" aria-label="Falar no WhatsApp" hidden>
+  <svg aria-hidden="true"><use href="#i-wa"/></svg>
+</a>
+
 <script>
 (function () {
   'use strict';
@@ -923,7 +1001,7 @@ window.LP_CONFIG = {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
     });
   }
-  function hasUrl(u) { return typeof u === 'string' && /^https?:\/\//i.test(u.trim()); }
+  function hasUrl(u) { return typeof u === 'string' && /^(https?:\/\/|imagens\/)/i.test(u.trim()); }
   function lista(v) { return Array.isArray(v) ? v : (v ? [v] : []); }
 
   // ---------- Links do WhatsApp ----------
@@ -977,9 +1055,11 @@ window.LP_CONFIG = {
       var url = fotos[frame.getAttribute('data-foto')];
       if (!hasUrl(url)) return;
       var img = new Image();
+      var placeholder = frame.innerHTML;
       img.alt = frame.getAttribute('data-alt') || '';
       img.decoding = 'async';
       if (frame.getAttribute('data-foto') !== 'heroDra') img.loading = 'lazy';
+      img.onerror = function () { frame.innerHTML = placeholder; }; // URL errada → volta o espaço reservado
       img.src = url;
       frame.innerHTML = '';
       frame.appendChild(img);
@@ -1058,6 +1138,8 @@ window.LP_CONFIG = {
   } catch (err) {
     if (window.console) console.error('LP_CONFIG:', err);
   }
+
+  if (C.botaoFlutuante !== false) document.getElementById('wa-float').hidden = false;
 
   // ---------- Fundo alternado entre as seções visíveis ----------
   [].filter.call(document.querySelectorAll('main > .section:not(.final)'), function (sec) { return !sec.hidden; })

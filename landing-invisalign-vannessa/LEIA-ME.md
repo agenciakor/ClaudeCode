@@ -17,8 +17,14 @@ Feita para ser colada no Wix como **Elemento HTML**.
 Tudo o que é editável fica no começo do `index.html`, no bloco `window.LP_CONFIG = { ... }`.
 Não é preciso mexer em mais nada.
 
-### Fotos (pendente: o Drive não pôde ser acessado daqui)
-1. No Wix, abra o **Gerenciador de Mídia** e suba as fotos.
+### Fotos
+As fotos da Dra. já estão otimizadas na pasta `imagens/` (JPG e WebP, 1000×1250 px, corte 4:5):
+- `dra-vannessa-hero.jpg` → campo `heroDra`
+- `dra-vannessa-retrato.jpg` → campo `sobreDra`
+- `dra-vannessa-quadrado.jpg` → extra, para redes sociais ou imagem de compartilhamento
+
+Hoje o `LP_CONFIG` aponta para `imagens/...` **só para a aprovação do layout**. No Wix isso não funciona:
+1. No Wix, abra o **Gerenciador de Mídia** e suba os arquivos da pasta `imagens/`.
 2. Clique na foto > **Copiar URL** (a URL começa com `https://static.wixstatic.com/media/...`).
 3. Cole a URL entre as aspas do campo certo:
 
@@ -86,19 +92,19 @@ totalAvaliacoesGoogle: '87',
 
      | Largura do elemento | Altura |
      |---|---|
-     | 280 px (mobile clássico) | ≈ 14.670 px |
-     | 320 px (mobile clássico) | ≈ 13.620 px |
-     | 390 px | ≈ 12.560 px |
-     | 768 px | ≈ 10.640 px |
-     | 980 px | ≈ 9.010 px |
-     | 1280 px | ≈ 9.220 px |
-     | 1440 px ou mais | ≈ 9.400 px |
+     | 280 px (mobile clássico) | ≈ 19.000 px |
+     | 320 px (mobile clássico) | ≈ 17.360 px |
+     | 390 px | ≈ 15.530 px |
+     | 768 px | ≈ 12.850 px |
+     | 980 px | ≈ 10.760 px |
+     | 1280 px | ≈ 10.960 px |
+     | 1440 px ou mais | ≈ 11.200 px |
 
 6. **SEO da página** (*Configurações da página > SEO*):
    - Título: `Invisalign em Curitiba | Dra. Vannessa Borsato, Ortodontista`
    - Descrição: `Alinhadores invisíveis Invisalign com especialista em Ortodontia e Invisalign Doctor. Clínica Ateliê Dental, Campina do Siqueira. Agende sua avaliação.`
    - Se não quiser que a página apareça na busca orgânica, marque "não indexar". Isso **não** atrapalha o Google Ads.
-7. **Botão flutuante de WhatsApp (recomendado para o celular)**: um botão fixo na tela não funciona dentro do Elemento HTML. Por isso, crie no próprio Wix um botão com o ícone do WhatsApp, marque *Fixar na tela* (canto inferior direito) e aponte para o mesmo link da página:
+7. **Botão flutuante de WhatsApp**: a página já traz um botão verde redondo (`botaoFlutuante: true` no `LP_CONFIG`). Dentro do Elemento HTML do Wix, porém, ele fica preso ao fim do elemento, junto ao rodapé, e não acompanha a rolagem. Para o botão seguir a tela no celular, crie também no próprio Wix um botão com o ícone do WhatsApp, marque *Fixar na tela* (canto inferior direito) e aponte para o mesmo link da página. Nesse caso, mude `botaoFlutuante` para `false` para não ficarem dois botões no fim da página:
    `https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*`
 
 ---
@@ -136,11 +142,13 @@ A página roda dentro de um iframe do Wix, em outro domínio. Uma tag do Google 
 
 ## 5. Pendências
 
-- [ ] Fotos (logo, Dra. e clínica), para subir no Wix e colar as URLs
+- [x] Fotos da Dra. (prontas em `imagens/`; falta subir no Wix e colar as URLs)
+- [ ] Logo em PNG sem fundo, da **Clínica Ateliê Dental** (a logo recebida é da Ateliê Facial)
+- [ ] Fotos da clínica (opcional)
 - [ ] Casos de antes e depois, com TCLE assinado (sem nome do paciente), e consulta ao CRO-PR sobre publicação no site da clínica
 - [ ] Depoimentos reais do Google e nota
-- [ ] Detalhes da consulta de avaliação (`textoAvaliacao`)
-- [ ] Confirmar o responsável técnico da clínica
+- [x] Detalhes da consulta de avaliação (virou a seção "A consulta de avaliação")
+- [x] Responsável técnico confirmado no CRO-PR
 - [ ] URL da política de privacidade
 - [ ] IDs do Google Ads e do GTM
 - [ ] Cores oficiais da marca: a paleta está em variáveis no início do `<style>` (`--brand`, `--accent` etc.) e pode ser trocada em um minuto
