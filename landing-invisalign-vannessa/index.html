@@ -36,6 +36,9 @@ window.LP_CONFIG = {
     heroDra: 'imagens/dra-vannessa-hero.jpg',       // foto principal (vertical 4:5, 1000x1250px)
     sobreDra: 'imagens/dra-vannessa-retrato.jpg',   // retrato para a seção "Quem é" (vertical 4:5)
     atendimento: '', // Dra. atendendo / mostrando o alinhador (horizontal 3:2)
+    // Material oficial da Align (baixar no Invisalign Doctor Site > área de marketing):
+    seloInvisalign: '',   // selo "Invisalign Doctor" em PNG sem fundo (aparece no topo e na seção "Quem é")
+    produtoInvisalign: '', // foto do alinhador Invisalign (horizontal 3:2, aparece na seção "Por que Invisalign")
     clinica: [       // fotos da clínica (horizontal 3:2). Apague ou acrescente linhas.
       // 'https://static.wixstatic.com/media/...jpg',
     ]
@@ -432,6 +435,20 @@ window.LP_CONFIG = {
   .indic .inline-cta{grid-column:1/-1;margin-top:8px}
   .about .hero-ctas{margin-top:30px}
 
+  /* ---------- Selo Invisalign Doctor e foto do produto ---------- */
+  .selo{display:flex;align-items:center;gap:14px;margin-top:26px}
+  .selo .selo-img{width:150px;height:64px;flex:none;display:grid;place-items:center;border-radius:10px;
+    border:1.5px dashed var(--accent);color:var(--accent-ink);font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:6px}
+  .selo .selo-img img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+  .selo .selo-img.pronto{border:0;padding:0}
+  .selo span{font-size:.84rem;color:var(--muted);max-width:260px;line-height:1.45}
+  .produto{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;margin-top:clamp(36px,5vw,56px)}
+  .produto .frame{aspect-ratio:3/2;border-radius:24px}
+  .produto h3{font-size:clamp(1.4rem,2.4vw,1.9rem)}
+  .produto p{margin-top:12px;color:var(--ink-soft)}
+  @media (max-width:900px){.produto{grid-template-columns:1fr}.produto .frame{max-width:560px}}
+  @media (max-width:640px){.selo{flex-direction:column;align-items:flex-start}}
+
   /* ---------- Botão flutuante ---------- */
   .wa-float{
     position:fixed;right:18px;bottom:18px;z-index:50;width:60px;height:60px;border-radius:50%;
@@ -599,6 +616,10 @@ window.LP_CONFIG = {
         <li><svg aria-hidden="true"><use href="#i-check"/></svg>Invisalign Doctor</li>
         <li><svg aria-hidden="true"><use href="#i-check"/></svg>Planejamento digital 3D</li>
       </ul>
+      <div class="selo">
+        <div class="selo-img" data-selo>Espaço para o selo Invisalign Doctor</div>
+        <span>A Dra. Vannessa é Invisalign Doctor, habilitada a planejar e conduzir tratamentos com Invisalign<sup>®</sup>.</span>
+      </div>
     </div>
 
     <div class="hero-media reveal">
@@ -666,6 +687,16 @@ window.LP_CONFIG = {
         <h3>Acompanhamento planejado</h3>
         <p>As trocas de alinhador e as consultas de acompanhamento seguem o cronograma do seu plano de tratamento.</p>
       </article>
+    </div>
+    <div class="produto">
+      <div class="frame reveal" data-foto="produtoInvisalign" data-alt="Alinhador Invisalign">
+        <div class="ph"><svg viewBox="0 0 400 260" aria-hidden="true"><use href="#i-arch"/></svg><small>Espaço para a foto do alinhador Invisalign</small></div>
+      </div>
+      <div class="reveal">
+        <h3>Feito sob medida, praticamente invisível.</h3>
+        <p>Cada alinhador Invisalign<sup>®</sup> é fabricado a partir do escaneamento dos seus dentes, com o material SmartTrack<sup>®</sup>, desenvolvido para movimentar os dentes de forma previsível e com mais conforto.</p>
+        <p>Você troca de alinhador conforme o cronograma do seu plano e acompanha a evolução do sorriso em cada etapa.</p>
+      </div>
     </div>
     <div class="inline-cta reveal">
       <p>Quer saber se o Invisalign<sup>®</sup> é indicado para o seu caso?</p>
@@ -815,6 +846,10 @@ window.LP_CONFIG = {
         <div class="fact"><small>Especialização</small><b>Ortodontia · UEPG</b></div>
         <div class="fact"><small>Área de atuação</small><b>Ortopedia Funcional dos Maxilares</b></div>
         <div class="fact"><small>Alinhadores</small><b>Invisalign Doctor</b></div>
+      </div>
+      <div class="selo">
+        <div class="selo-img" data-selo>Espaço para o selo Invisalign Doctor</div>
+        <span>Selo oficial de Invisalign Doctor, fornecido pela Align Technology.</span>
       </div>
       <div class="hero-ctas">
         <a class="btn btn-primary" data-wa="dra" href="https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*" target="_blank" rel="noopener">
@@ -983,7 +1018,7 @@ window.LP_CONFIG = {
       </div>
     </div>
     <hr>
-    <p class="tm">Invisalign<sup>®</sup>, ClinCheck<sup>®</sup> e os respectivos logotipos são marcas registradas da Align Technology, Inc. As informações desta página têm caráter informativo e não substituem a consulta com um profissional. A indicação e a duração do tratamento dependem da avaliação clínica individual.</p>
+    <p class="tm">Invisalign<sup>®</sup>, ClinCheck<sup>®</sup>, SmartTrack<sup>®</sup> e os respectivos logotipos são marcas registradas da Align Technology, Inc. As informações desta página têm caráter informativo e não substituem a consulta com um profissional. A indicação e a duração do tratamento dependem da avaliação clínica individual.</p>
   </div>
 </footer>
 
@@ -1067,6 +1102,14 @@ window.LP_CONFIG = {
       frame.innerHTML = '';
       frame.appendChild(img);
     });
+
+    // Selo Invisalign Doctor
+    if (hasUrl(fotos.seloInvisalign)) {
+      document.querySelectorAll('[data-selo]').forEach(function (el) {
+        el.innerHTML = '<img src="' + esc(fotos.seloInvisalign) + '" alt="Selo Invisalign Doctor" loading="lazy">';
+        el.classList.add('pronto');
+      });
+    }
 
     // Galeria da clínica
     var gal = lista(fotos.clinica).filter(hasUrl);
