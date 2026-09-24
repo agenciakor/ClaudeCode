@@ -29,8 +29,8 @@ window.LP_CONFIG = {
 
   // ---------- FOTOS (cole as URLs; vazio = mostra espaço reservado) ----------
   fotos: {
-    logo: '',        // logo da clínica, PNG/SVG com fundo transparente (versão para fundo claro)
-    logoRodape: '',  // logo em versão clara, para o rodapé escuro (opcional)
+    logo: 'imagens/logo-atelie-dental-horizontal.png',             // logo horizontal, fundo transparente (topo)
+    logoRodape: 'imagens/logo-atelie-dental-horizontal-clara.png',  // versão clara para o rodapé escuro
     // ATENÇÃO: os dois caminhos abaixo (imagens/...) servem só para a aprovação do layout.
     // No Wix, suba os arquivos da pasta "imagens" no Gerenciador de Mídia e cole aqui a URL de cada um.
     heroDra: 'imagens/dra-vannessa-hero.jpg',       // foto principal (vertical 4:5, 1000x1250px)
@@ -52,7 +52,10 @@ window.LP_CONFIG = {
   //  • autorizado: true confirma que o TCLE está assinado (sem isso o caso não aparece).
   // Caminhos "imagens/..." valem só para a aprovação; no Wix, troque pela URL de cada arquivo.
   antesDepois: [
-    { antes: 'imagens/caso-01-antes.jpg', depois: 'imagens/caso-01-depois.jpg', descricao: 'Alinhamento e mordida · caso tratado com Invisalign®', autorizado: true },
+    { antes: 'imagens/caso-01-antes.jpg', depois: 'imagens/caso-01-depois.jpg', descricao: 'Tratamento com alinhadores Invisalign®', autorizado: true },
+    { antes: 'imagens/caso-02-antes.jpg', depois: 'imagens/caso-02-depois.jpg', descricao: 'Tratamento com alinhadores Invisalign®', autorizado: true },
+    { antes: 'imagens/caso-03-antes.jpg', depois: 'imagens/caso-03-depois.jpg', descricao: 'Tratamento com alinhadores Invisalign®', autorizado: true },
+    { antes: 'imagens/caso-04-antes.jpg', depois: 'imagens/caso-04-depois.jpg', descricao: 'Tratamento com alinhadores Invisalign®', autorizado: true },
     // { antes: 'URL_FOTO_ANTES', depois: 'URL_FOTO_DEPOIS', descricao: 'Dentes apinhados · 12 meses de tratamento', autorizado: true },
   ],
 
@@ -100,20 +103,20 @@ window.LP_CONFIG = {
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fahkwang:wght@400;500;600&family=Montserrat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fahkwang:wght@400;500;600&family=Montserrat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap"></noscript>
 
 <style>
   :root{
     /* Paleta – troque aqui para casar com a identidade da clínica */
     /* Identidade Ateliê Dental: marrons da marca (#AB8970, #8A6136, #231911) + verde de contraste (#206B67) */
-    --bg:#FBF8F5;
-    --bg-alt:#F5EEE7;
+    --bg:#FFF8F1;
+    --bg-alt:#F6ECE2;
     --surface:#FFFFFF;
     --ink:#231911;
     --ink-soft:#4A3B30;
     --muted:#6B5B4E;
-    --line:#E8DDD2;
+    --line:#E3DBD0;
     --brand:#206B67;
     --brand-hover:#1A5955;
     --brand-deep:#231911;
@@ -125,8 +128,10 @@ window.LP_CONFIG = {
     --radius:18px;
     --radius-sm:12px;
     --shadow:0 1px 2px rgba(27,42,44,.06), 0 12px 32px -12px rgba(27,42,44,.18);
-    --serif:'Fraunces', Georgia, 'Times New Roman', serif;
-    --sans:'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    /* Fontes do site da clínica: Fahkwang (títulos), Montserrat (texto), Cormorant Garamond itálico (destaques) */
+    --serif:'Fahkwang', 'Trebuchet MS', Arial, sans-serif;
+    --italic:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --sans:'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
     --wrap:1160px;
     --gutter:clamp(16px, 4.5vw, 40px);
     --section:clamp(64px, 9vw, 120px);
@@ -138,13 +143,13 @@ window.LP_CONFIG = {
   html::-webkit-scrollbar{display:none}
   body{
     margin:0;background:var(--bg);color:var(--ink);
-    font-family:var(--sans);font-size:clamp(15.5px, 1.05vw + 11px, 17.5px);line-height:1.65;
+    font-family:var(--sans);font-size:clamp(15px, 1vw + 10.5px, 16.5px);line-height:1.7;
     -webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
   img{max-width:100%;display:block}
   a{color:inherit}
-  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12;letter-spacing:-.015em;margin:0;color:var(--ink);text-wrap:balance}
-  h1 em,h2 em{font-style:italic;color:var(--brand)}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.14;letter-spacing:-.01em;margin:0;color:var(--ink);text-wrap:balance}
+  h1 em,h2 em{font-family:var(--italic);font-style:italic;font-weight:600;font-size:1.12em;line-height:1;color:var(--brand)}
   p{margin:0}
   sup{font-size:.5em;vertical-align:super;line-height:0}
   .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
@@ -186,7 +191,7 @@ window.LP_CONFIG = {
   .topbar{padding:18px 0;border-bottom:1px solid var(--line);background:var(--bg)}
   .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
   .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-  .brand img{height:48px;width:auto}
+  .brand img{height:44px;width:auto;max-width:min(60vw,360px)}
   .wordmark{display:flex;flex-direction:column;line-height:1}
   .wordmark small{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);font-weight:600}
   .wordmark span{font-family:var(--serif);font-size:1.45rem;font-weight:500;color:var(--ink);margin-top:4px}
@@ -271,7 +276,7 @@ window.LP_CONFIG = {
     margin-top:clamp(36px,5vw,56px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
     padding:26px 30px;border-radius:var(--radius);background:var(--accent-soft);
   }
-  .inline-cta p{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.45rem);line-height:1.3;max-width:620px}
+  .inline-cta p{font-family:var(--serif);font-size:clamp(1.1rem,1.8vw,1.35rem);line-height:1.3;max-width:620px}
 
   /* ---------- Indicações ---------- */
   .alt{background:var(--bg-alt)}
@@ -317,7 +322,7 @@ window.LP_CONFIG = {
   /* ---------- Antes e depois ---------- */
   .ba-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:22px}
   .ba-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--line);overflow:hidden}
-  .ba{position:relative;aspect-ratio:4/3;background:var(--accent-soft);overflow:hidden;user-select:none;touch-action:pan-y}
+  .ba{position:relative;aspect-ratio:3/2;background:var(--accent-soft);overflow:hidden;user-select:none;touch-action:pan-y}
   .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .ba .after{clip-path:inset(0 0 0 50%)}
   .ba .handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;transform:translateX(-1px);pointer-events:none}
@@ -359,7 +364,7 @@ window.LP_CONFIG = {
   .rating > svg{flex:none}
   .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
   .quote{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:18px}
-  .quote p{font-family:var(--serif);font-size:1.1rem;line-height:1.55;color:var(--ink)}
+  .quote p{font-family:var(--italic);font-style:italic;font-size:1.3rem;line-height:1.45;color:var(--ink)}
   .quote footer{display:flex;align-items:center;gap:12px;margin-top:auto}
   .avatar{width:42px;height:42px;border-radius:50%;background:var(--accent-soft);color:var(--brand);display:grid;place-items:center;font-weight:700;overflow:hidden;flex:none}
   .avatar img{width:100%;height:100%;object-fit:cover}
@@ -418,7 +423,7 @@ window.LP_CONFIG = {
   .foot-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start}
   .foot .wordmark span{color:#fff}
   .foot .wordmark small{color:#9C8874}
-  .foot img{height:44px;width:auto}
+  .foot img{height:40px;width:auto;max-width:min(70vw,320px)}
   .foot-legal{display:grid;gap:4px;line-height:1.6}
   .foot-legal b{color:#EFE5DB;font-weight:600}
   .foot a{color:#EFE5DB}
@@ -427,7 +432,7 @@ window.LP_CONFIG = {
 
   /* ---------- Grades com conteúdo variável ---------- */
   .quotes{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
-  .ba-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+  .ba-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr))}
   .ba-card:only-child{max-width:640px}
   .gallery{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
   .gallery figure:only-child{max-width:640px}
@@ -466,7 +471,7 @@ window.LP_CONFIG = {
   .aval-quote{
     position:relative;padding:32px 34px;border-radius:var(--radius);background:var(--brand-deep);color:#F3EAE1;
   }
-  .aval-quote p{font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.4rem);line-height:1.45;font-style:italic}
+  .aval-quote p{font-family:var(--italic);font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.4;font-style:italic;font-weight:500}
   .aval-quote footer{margin-top:18px;font-size:.84rem;color:#CBB9A8;font-weight:600;letter-spacing:.02em}
   .aval-quote::before{content:"“";position:absolute;top:-6px;left:22px;font-family:var(--serif);font-size:5rem;line-height:1;color:#D8B896;opacity:.55}
   .aval-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;counter-reset:a}

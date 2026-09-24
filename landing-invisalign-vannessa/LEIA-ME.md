@@ -18,12 +18,18 @@ Tudo o que é editável fica no começo do `index.html`, no bloco `window.LP_CON
 Não é preciso mexer em mais nada.
 
 ### Fotos
-As fotos da Dra. já estão otimizadas na pasta `imagens/` (JPG e WebP, 1000×1250 px, corte 4:5):
-- `dra-vannessa-hero.jpg` → campo `heroDra`
-- `dra-vannessa-retrato.jpg` → campo `sobreDra`
-- `dra-vannessa-quadrado.jpg` → extra, para redes sociais ou imagem de compartilhamento
+Tudo já está otimizado na pasta `imagens/` (feito a partir dos originais do Drive):
+- `dra-vannessa-hero.jpg` / `.webp` → campo `heroDra` (1200×1500 px, corte 4:5)
+- `dra-vannessa-retrato.jpg` / `.webp` → campo `sobreDra`
+- `dra-vannessa-quadrado.jpg` → extra, para redes sociais
+- `logo-atelie-dental-horizontal.png` → campo `logo` (fundo transparente, montada a partir do logotipo oficial)
+- `logo-atelie-dental-horizontal-clara.png` → campo `logoRodape`
+- `logo-atelie-dental.png` / `-clara.png` → versões verticais, caso precise em outro lugar
+- `caso-01` a `caso-04` (`-antes.jpg` / `-depois.jpg`) → campo `antesDepois` (corte 3:2, centrado nos dentes, sem edição de cor)
 
-Hoje o `LP_CONFIG` aponta para `imagens/...` **só para a aprovação do layout**. No Wix isso não funciona:
+**Fontes:** as mesmas do site da clínica, carregadas do Google Fonts: Fahkwang (títulos), Montserrat (texto) e Cormorant Garamond itálico (destaques).
+
+Hoje o `LP_CONFIG` aponta para `imagens/...` **só para a aprovação do layout**. No Wix isso não funciona, então na hora de publicar:
 1. No Wix, abra o **Gerenciador de Mídia** e suba os arquivos da pasta `imagens/`.
 2. Clique na foto > **Copiar URL** (a URL começa com `https://static.wixstatic.com/media/...`).
 3. Cole a URL entre as aspas do campo certo:
@@ -142,10 +148,10 @@ A página roda dentro de um iframe do Wix, em outro domínio. Uma tag do Google 
 
 ## 5. Pendências
 
-- [x] Fotos da Dra. (prontas em `imagens/`; falta subir no Wix e colar as URLs)
-- [ ] Logo em PNG sem fundo, da **Clínica Ateliê Dental** (a logo recebida é da Ateliê Facial)
+- [x] Fotos da Dra., logo e 4 casos de antes e depois (prontos em `imagens/`; falta subir no Wix e colar as URLs)
 - [ ] Fotos da clínica (opcional)
-- [ ] Casos de antes e depois, com TCLE assinado (sem nome do paciente), e consulta ao CRO-PR sobre publicação no site da clínica
+- [ ] Selo Invisalign Doctor e foto do alinhador (material oficial do Invisalign Doctor Site)
+- [ ] Confirmar que os 4 casos têm TCLE assinado e consultar o CRO-PR sobre publicação no site da clínica
 - [ ] Depoimentos reais do Google e nota
 - [x] Detalhes da consulta de avaliação (virou a seção "A consulta de avaliação")
 - [x] Responsável técnico confirmado no CRO-PR
