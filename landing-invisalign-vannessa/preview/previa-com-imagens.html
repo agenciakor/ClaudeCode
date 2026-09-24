@@ -1045,7 +1045,7 @@ window.LP_CONFIG = {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
     });
   }
-  function hasUrl(u) { return typeof u === 'string' && /^(https?:\/\/|imagens\/)/i.test(u.trim()); }
+  function hasUrl(u) { return typeof u === 'string' && /^(https?:\/\/|imagens\/|data:image\/)/i.test(u.trim()); }
   function lista(v) { return Array.isArray(v) ? v : (v ? [v] : []); }
 
   // ---------- Links do WhatsApp ----------
