@@ -1,5 +1,7 @@
 <!--
-  RASTREAMENTO DE CONVERSÕES – CLIQUES NO WHATSAPP DA LANDING PAGE
+  CÓDIGO PERSONALIZADO DA LANDING PAGE (2 funções):
+    A) botão flutuante de WhatsApp que acompanha a rolagem em toda a página
+    B) rastreamento de conversões (cliques no WhatsApp)
   ------------------------------------------------------------------
   Onde colar: Painel do Wix > Configurações > Código personalizado > + Adicionar código
     • Colar o código abaixo
@@ -18,7 +20,52 @@
              do Google Ads fica configurada no GTM (RECOMENDADO)
     'gtag' = este código carrega a tag do Google Ads e registra a conversão sozinho
              (preencha GOOGLE_ADS_SEND_TO)
+
+  Por que o botão flutuante fica aqui e não dentro da landing page: o Elemento HTML do Wix
+  é um iframe de altura fixa; um botão "fixo" dentro dele fica preso ao fim do elemento e
+  não acompanha a rolagem. Este código cria o botão na própria página do site, por cima de
+  tudo, e por isso ele segue a tela no desktop e no celular.
 -->
+
+<!-- ===================== A) BOTÃO FLUTUANTE DE WHATSAPP ===================== -->
+<style>
+  #lp-wa{position:fixed;right:18px;bottom:18px;z-index:2147483000;display:flex;align-items:center;gap:12px;
+    padding:10px 20px 10px 12px;border-radius:999px;background:#25D366;color:#fff;text-decoration:none;
+    font-family:Montserrat,system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;line-height:1.15;
+    box-shadow:0 12px 30px -8px rgba(0,0,0,.45);transition:transform .2s,box-shadow .2s;-webkit-tap-highlight-color:transparent}
+  #lp-wa:hover{transform:translateY(-2px);box-shadow:0 16px 34px -8px rgba(0,0,0,.5)}
+  #lp-wa .ic{width:46px;height:46px;border-radius:50%;background:#fff;color:#25D366;display:grid;place-items:center;flex:none;position:relative}
+  #lp-wa .ic svg{width:28px;height:28px}
+  #lp-wa .ic::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(255,255,255,.7);animation:lp-pulse 1.8s ease-out infinite}
+  #lp-wa small{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.95}
+  #lp-wa small::before{content:"";width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.35)}
+  #lp-wa b{display:block;font-size:15px;font-weight:700;margin-top:2px}
+  @keyframes lp-pulse{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+  @media (max-width:640px){#lp-wa{right:12px;bottom:12px;padding:8px 16px 8px 10px}#lp-wa .ic{width:42px;height:42px}#lp-wa b{font-size:14px}}
+  @media (prefers-reduced-motion:reduce){#lp-wa .ic::after{animation:none}}
+</style>
+<script>
+  (function () {
+    if (document.getElementById('lp-wa')) return;
+    var URL_WA = 'https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*';
+    function criar() {
+      var a = document.createElement('a');
+      a.id = 'lp-wa'; a.href = URL_WA; a.target = '_blank'; a.rel = 'noopener';
+      a.setAttribute('aria-label', 'Estamos online: agende sua avaliação pelo WhatsApp');
+      a.innerHTML = '<span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.15h-.01a8.23 8.23 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.24 8.24 0 0 1 8.24 8.25c0 4.54-3.7 8.23-8.23 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.35-.76-1.84-.2-.49-.41-.42-.56-.43h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.22-.16-.47-.28Z"/></svg></span>' +
+        '<span><small>Estamos online</small><b>Agende sua avaliação</b></span>';
+      a.addEventListener('click', function () {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'lp_whatsapp_click', cta_posicao: 'flutuante_site' });
+        if (window.__lpEnviarConversao) window.__lpEnviarConversao();
+      });
+      document.body.appendChild(a);
+    }
+    if (document.body) criar(); else document.addEventListener('DOMContentLoaded', criar);
+  })();
+</script>
+
+<!-- ===================== B) RASTREAMENTO DE CONVERSÕES ===================== -->
 <script>
   (function () {
     if (window.__lpInvisalignTracking) return; // evita listener duplicado
@@ -71,5 +118,10 @@
         }
       }
     });
+
+    // usado pelo botão flutuante (modo 'gtag'); no modo 'gtm' o próprio dataLayer.push já basta
+    window.__lpEnviarConversao = function () {
+      if (MODO === 'gtag' && pronto) window.gtag('event', 'conversion', { send_to: GOOGLE_ADS_SEND_TO });
+    };
   })();
 </script>

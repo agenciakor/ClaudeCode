@@ -126,18 +126,21 @@ O elemento HTML tem **tamanho fixo**: ele não cresce sozinho com o conteúdo.
 
 ---
 
-## Etapa 6 · Botão flutuante do WhatsApp que acompanha a rolagem (opcional, recomendado)
+## Etapa 6 · Botão flutuante do WhatsApp que acompanha a rolagem
 
-O botão verde que já existe na página fica preso ao final do elemento. Para um botão que segue
-a tela no celular:
+O botão fica no arquivo `wix-codigo-personalizado.html`, junto com o rastreamento. Ele é criado na
+própria página do site, por isso segue a tela no desktop e no celular, com o texto "Estamos online ·
+Agende sua avaliação".
 
-1. **Elementos (+)** > **Botão** > escolha um botão redondo com ícone (ou um botão de ícone).
-2. Com ele selecionado, clique em **Link** (ícone de corrente) > **Endereço da web** > cole:
-   `https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*`
-   e marque **abrir em nova aba**.
-3. Arraste o botão para o canto inferior direito. Clique com o botão direito > **Fixar na tela**
-   (ou ícone de alfinete na barra de ferramentas) > escolha o canto inferior direito.
-4. No `LP_CONFIG`, mude `botaoFlutuante: true` para `false`, para não ficar com dois botões.
+1. No painel do Wix (fora do editor): **Configurações** > **Código personalizado** > **+ Adicionar código**.
+2. Cole o conteúdo inteiro de `wix-codigo-personalizado.html`.
+3. Nome: `LP Invisalign – botão e conversões`. Em **Adicionar código a**, escolha **Páginas escolhidas**
+   e marque só a página da landing page. Em **Posicionar código em**, escolha **Head**. Salve.
+4. O código personalizado só roda no site **publicado**: publique e abra a página para conferir.
+
+Se o site tiver o aplicativo **Smartarget WhatsApp** (ou outro botão de WhatsApp de app), remova-o
+ou desative-o nesta página, para não ficarem dois botões: painel > **Apps** > Smartarget > gerenciar/
+remover. Esse app também mostra um aviso "Smartarget Apps are hidden" no plano gratuito.
 
 ---
 
