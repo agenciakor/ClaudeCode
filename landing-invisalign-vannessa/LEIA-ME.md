@@ -155,9 +155,9 @@ A página roda dentro de um iframe do Wix, em outro domínio. Uma tag do Google 
 - [x] Fotos do alinhador Invisalign (3 imagens em `imagens/`)
 - [x] Selo Invisalign Doctor (já hospedado no Wix e configurado)
 - [ ] Confirmar que os 4 casos têm TCLE assinado e consultar o CRO-PR sobre publicação no site da clínica
-- [ ] Depoimentos reais do Google e nota
+- [x] Depoimentos reais do Google (5) e nota 5,0 · falta só o total de avaliações (`totalAvaliacoesGoogle`)
 - [x] Detalhes da consulta de avaliação (virou a seção "A consulta de avaliação")
 - [x] Responsável técnico confirmado no CRO-PR
-- [ ] URL da política de privacidade
+- [x] Política de privacidade (`politica-de-privacidade.html`, publicar em /politica-de-privacidade e confirmar os itens [CONFIRMAR])
 - [ ] IDs do Google Ads e do GTM
 - [ ] Cores oficiais da marca: a paleta está em variáveis no início do `<style>` (`--brand`, `--accent` etc.) e pode ser trocada em um minuto

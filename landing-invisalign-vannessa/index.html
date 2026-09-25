@@ -62,10 +62,14 @@ window.LP_CONFIG = {
   // Use só avaliações reais. Nome: primeiro nome + inicial (ex.: 'Ana P.'); sem foto do paciente.
   // estrelas: a nota real daquela avaliação (1 a 5). Deixe sem 'estrelas' se não vier do Google.
   depoimentos: [
-    // { nome: 'Ana P.', texto: 'Depoimento real copiado do Google...', origem: 'Google', estrelas: 5 },
+    { nome: 'Brenda M.', texto: 'Excelente, muito atenciosos e dedicados... desde o primeiro contato pelo WhatsApp muito prestativa a moça, super indico ❤️', origem: 'Google', estrelas: 5 },
+    { nome: 'Camila H.', texto: 'Clínica com ótimos profissionais, o atendimento impecável, super atenciosos e educados, esclareceram todas minhas dúvidas em relação aos tratamentos, de uma forma clara, ao qual fiquei muito satisfeita.', origem: 'Google', estrelas: 5 },
+    { nome: 'Emanuel B.', texto: 'Excelente experiência! Desde o primeiro atendimento, fui muito bem recebido e tive toda a atenção necessária. A equipe é muito profissional, atenciosa e cuidadosa, e a estrutura da clínica é excelente.', origem: 'Google', estrelas: 5 },
+    { nome: 'Lucas R.', texto: 'Com certeza recomendo a clínica para quem procura um atendimento de qualidade e profissionais que se preocupam com o paciente.', origem: 'Google', estrelas: 5 },
+    { nome: 'Pedro M.', texto: 'Profissionais extremamente competentes, educados e com boa conduta, recomendo muito!', origem: 'Google', estrelas: 5 },
   ],
-  notaGoogle: '',            // nota média real do perfil, ex.: '4,9'  (vazio = não exibe)
-  totalAvaliacoesGoogle: '', // ex.: '120'
+  notaGoogle: '5,0',         // nota média do perfil no Google
+  totalAvaliacoesGoogle: '', // PENDENTE: total de avaliações do perfil, ex.: '14' (vazio = mostra só a nota)
 
   // ---------- CONSULTA DE AVALIAÇÃO (pendente) ----------
   // Texto opcional que substitui a resposta padrão no FAQ "Como funciona a avaliação?"
@@ -74,7 +78,7 @@ window.LP_CONFIG = {
 
   // ---------- LINKS ----------
   links: {
-    google: 'https://share.google/CiZfX66Kq2GzWdxAi',
+    google: 'https://www.google.com/maps/place/Cl%C3%ADnica+Ateli%C3%AA+Dental+%7C+Ateli%C3%AA+Facial/@-25.4362418,-49.3111355,17z/data=!4m8!3m7!1s0x94dce3e81b571715:0x3f50203b848eff56!8m2!3d-25.4362418!4d-49.3085606!9m1!1b1!16s%2Fg%2F11ph0_850h?entry=ttu',
     instagram: 'https://www.instagram.com/clinicaateliedental/',
     site: 'https://www.clinicaateliedental.com/',
     privacidade: 'https://www.clinicaateliedental.com/politica-de-privacidade' // página criada no Wix a partir de politica-de-privacidade.html
@@ -473,11 +477,11 @@ window.LP_CONFIG = {
   .aval-intro{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;margin-bottom:clamp(36px,5vw,56px)}
   .aval-intro .section-head{margin-bottom:0}
   .aval-quote{
-    position:relative;padding:32px 34px;border-radius:var(--radius);background:var(--brand-deep);color:#F3EAE1;
+    position:relative;padding:40px 40px 36px;border-radius:var(--radius);background:var(--brand-deep);color:#F3EAE1;
   }
   .aval-quote p{font-family:var(--italic);font-size:clamp(1.35rem,2.1vw,1.7rem);line-height:1.4;font-style:italic;font-weight:500}
   .aval-quote footer{margin-top:18px;font-size:.84rem;color:#CBB9A8;font-weight:600;letter-spacing:.02em}
-  .aval-quote::before{content:"“";position:absolute;top:-6px;left:22px;font-family:var(--serif);font-size:5rem;line-height:1;color:#D8B896;opacity:.55}
+  .aval-quote::before{content:"“";display:block;font-family:var(--italic);font-size:4.5rem;line-height:.6;height:.5em;margin-bottom:12px;color:#D8B896;opacity:.7}
   .aval-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;counter-reset:a}
   .aval-list li{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px 24px 22px;display:grid;grid-template-columns:auto 1fr;column-gap:16px}
   .aval-list li::before{counter-increment:a;content:counter(a);width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);font-family:var(--serif);font-style:italic;font-size:1.05rem;display:grid;place-items:center;margin-top:2px}
@@ -489,7 +493,7 @@ window.LP_CONFIG = {
   .aval-tags span{font-size:.8rem;font-weight:600;color:var(--ink-soft);background:var(--bg-alt);border-radius:999px;padding:5px 11px}
   .aval-list li.wide .aval-tags span{background:#fff}
   @media (max-width:900px){.aval-intro{grid-template-columns:1fr}}
-  @media (max-width:640px){.aval-list{grid-template-columns:1fr}.aval-list li{padding:20px 18px}.aval-quote{padding:28px 22px}}
+  @media (max-width:640px){.aval-list{grid-template-columns:1fr}.aval-list li{padding:20px 18px}.aval-quote{padding:32px 26px 28px}}
 
   /* ---------- Animação de entrada ---------- */
   .js .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
@@ -882,7 +886,7 @@ window.LP_CONFIG = {
     </div>
     <div class="quotes" id="quotes"></div>
     <div class="links-row">
-      <a class="btn btn-ghost" data-link="google" href="https://share.google/CiZfX66Kq2GzWdxAi" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-google"/></svg>Ver avaliações no Google</a>
+      <a class="btn btn-ghost" data-link="google" href="https://share.google/CiZfX66Kq2GzWdxAi" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-google"/></svg>Mais avaliações no Google</a>
       <a class="btn btn-ghost" data-link="instagram" href="https://www.instagram.com/clinicaateliedental/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg>@clinicaateliedental</a>
     </div>
   </div>
