@@ -153,7 +153,7 @@ A página roda dentro de um iframe do Wix, em outro domínio. Uma tag do Google 
 - [x] Fotos da Dra., logo e 4 casos de antes e depois (prontos em `imagens/`; falta subir no Wix e colar as URLs)
 - [ ] Fotos da clínica (opcional)
 - [x] Fotos do alinhador Invisalign (3 imagens em `imagens/`)
-- [ ] Selo Invisalign Doctor (PNG sem fundo)
+- [x] Selo Invisalign Doctor (já hospedado no Wix e configurado)
 - [ ] Confirmar que os 4 casos têm TCLE assinado e consultar o CRO-PR sobre publicação no site da clínica
 - [ ] Depoimentos reais do Google e nota
 - [x] Detalhes da consulta de avaliação (virou a seção "A consulta de avaliação")
