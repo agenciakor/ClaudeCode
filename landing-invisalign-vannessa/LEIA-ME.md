@@ -158,7 +158,7 @@ Atenção: o ID da conta do Google Ads **não** é o ID de conversão. A convers
 - [x] Fotos da Dra., logo e 4 casos de antes e depois (prontos em `imagens/`; falta subir no Wix e colar as URLs)
 - [ ] Fotos da clínica (opcional)
 - [x] Fotos do alinhador Invisalign (3 imagens em `imagens/`)
-- [x] Selo Invisalign Doctor (já hospedado no Wix e configurado)
+- [x] Selo Invisalign Platinum (hospedado no Wix e configurado)
 - [ ] Confirmar que os 4 casos têm TCLE assinado e consultar o CRO-PR sobre publicação no site da clínica
 - [x] Depoimentos reais do Google (5), nota 5,0 e 101 avaliações, em carrossel
 - [x] Detalhes da consulta de avaliação (virou a seção "A consulta de avaliação")
