@@ -35,10 +35,11 @@ window.LP_CONFIG = {
     // No Wix, suba os arquivos da pasta "imagens" no Gerenciador de Mídia e cole aqui a URL de cada um.
     heroDra: 'imagens/dra-vannessa-hero.jpg',       // foto principal (vertical 4:5, 1000x1250px)
     sobreDra: 'imagens/dra-vannessa-retrato.jpg',   // retrato para a seção "Quem é" (vertical 4:5)
-    atendimento: '', // Dra. atendendo / mostrando o alinhador (horizontal 3:2)
-    // Material oficial da Align (baixar no Invisalign Doctor Site > área de marketing):
+    // Imagens do Invisalign (fornecidas pela clínica):
+    produtoInvisalign: 'imagens/invisalign-alinhador-3d.png', // alinhador sem fundo, "efeito 3D" (seção "Por que Invisalign")
+    pessoaAlinhador: 'imagens/invisalign-mulher.jpg',        // pessoa colocando o alinhador (seção "Planejamento com especialista")
+    pessoaAlinhador2: 'imagens/invisalign-homem.jpg',        // segunda foto (seção "Para quem é")
     seloInvisalign: '',   // selo "Invisalign Doctor" em PNG sem fundo (aparece no topo e na seção "Quem é")
-    produtoInvisalign: '', // foto do alinhador Invisalign (horizontal 3:2, aparece na seção "Por que Invisalign")
     clinica: [       // fotos da clínica (horizontal 3:2). Apague ou acrescente linhas.
       // 'https://static.wixstatic.com/media/...jpg',
     ]
@@ -297,7 +298,7 @@ window.LP_CONFIG = {
 
   /* ---------- Especialista ---------- */
   .spec{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,88px);align-items:center}
-  .spec .frame{aspect-ratio:3/2;border-radius:24px}
+  .spec .frame{aspect-ratio:1/1;border-radius:24px;max-width:520px}
   .spec h2{font-size:clamp(1.85rem, 3.6vw, 2.9rem);margin-top:14px}
   .spec .body{margin-top:18px;color:var(--ink-soft)}
   .checks{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:14px}
@@ -449,6 +450,11 @@ window.LP_CONFIG = {
   .selo span{font-size:.84rem;color:var(--muted);max-width:260px;line-height:1.45}
   .produto{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;margin-top:clamp(36px,5vw,56px)}
   .produto .frame{aspect-ratio:3/2;border-radius:24px}
+  .produto .frame.solto{aspect-ratio:auto;background:none;box-shadow:none;border-radius:0;overflow:visible;padding:8px 0}
+  .produto .frame.solto img{object-fit:contain;width:100%;height:auto;max-height:520px;filter:drop-shadow(0 30px 40px rgba(35,25,17,.28))}
+  .produto .frame.solto .ph{position:relative;aspect-ratio:3/2;border-radius:24px}
+  .frame.quadrada{aspect-ratio:1/1}
+  .indic .foto-lateral{margin-top:28px;max-width:420px}
   .produto h3{font-size:clamp(1.4rem,2.4vw,1.9rem)}
   .produto p{margin-top:12px;color:var(--ink-soft)}
   @media (max-width:900px){.produto{grid-template-columns:1fr}.produto .frame{max-width:560px}}
@@ -653,6 +659,19 @@ window.LP_CONFIG = {
   </div>
 </section>
 
+<!-- ================= ANTES E DEPOIS (preenchido via CONFIG) ================= -->
+<section class="section" id="resultados" data-requer="antesDepois" hidden>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Resultados reais</span>
+      <h2>Antes e depois de pacientes <em>tratados pela Dra. Vannessa.</em></h2>
+      <p>Casos reais de alinhamento com Invisalign<sup>®</sup>. Arraste a linha sobre cada foto para comparar o início e o final do tratamento.</p>
+    </div>
+    <div class="ba-grid" id="ba-grid"></div>
+    <p class="legal-small">Casos tratados pela Dra. Vannessa Borsato (CRO-PR 26722), publicados com autorização por escrito dos pacientes. Fotos do início e do final do tratamento. Cada tratamento é individual e os resultados variam de pessoa para pessoa.</p>
+  </div>
+</section>
+
 <!-- ================= BENEFÍCIOS ================= -->
 <section class="section" id="beneficios">
   <div class="wrap">
@@ -694,7 +713,7 @@ window.LP_CONFIG = {
       </article>
     </div>
     <div class="produto">
-      <div class="frame reveal" data-foto="produtoInvisalign" data-alt="Alinhador Invisalign">
+      <div class="frame solto reveal" data-foto="produtoInvisalign" data-alt="Alinhador Invisalign com o estojo">
         <div class="ph"><svg viewBox="0 0 400 260" aria-hidden="true"><use href="#i-arch"/></svg><small>Espaço para a foto do alinhador Invisalign</small></div>
       </div>
       <div class="reveal">
@@ -720,6 +739,9 @@ window.LP_CONFIG = {
       <h2>Do ajuste discreto <em>à correção da mordida.</em></h2>
       <p>O Invisalign<sup>®</sup> trata desde casos simples até os mais complexos, em adultos e adolescentes. Estas são algumas das situações mais comuns:</p>
       <p class="note"><svg aria-hidden="true"><use href="#i-info"/></svg><span>A indicação para o seu caso é confirmada na consulta de avaliação com a especialista.</span></p>
+      <div class="frame quadrada foto-lateral reveal" data-foto="pessoaAlinhador2" data-alt="Paciente colocando o alinhador Invisalign">
+        <div class="ph"><svg viewBox="0 0 400 260" aria-hidden="true"><use href="#i-arch"/></svg><small>Foto: paciente com o alinhador</small></div>
+      </div>
     </div>
     <ul class="indic-list">
       <li class="reveal"><span class="num">01</span><div><b>Dentes tortos ou encavalados</b><span>Apinhamento: quando falta espaço e os dentes se sobrepõem.</span></div></li>
@@ -742,8 +764,8 @@ window.LP_CONFIG = {
 <section class="section" id="especialista">
   <div class="wrap spec">
     <div class="media reveal">
-      <div class="frame" data-foto="atendimento" data-alt="Dra. Vannessa Borsato em atendimento na Clínica Ateliê Dental">
-        <div class="ph"><svg viewBox="0 0 400 260" aria-hidden="true"><use href="#i-arch"/></svg><small>Foto: Dra. em atendimento</small></div>
+      <div class="frame" data-foto="pessoaAlinhador" data-alt="Paciente colocando o alinhador Invisalign">
+        <div class="ph"><svg viewBox="0 0 400 260" aria-hidden="true"><use href="#i-arch"/></svg><small>Foto: paciente com o alinhador</small></div>
       </div>
     </div>
     <div class="reveal">
@@ -814,19 +836,6 @@ window.LP_CONFIG = {
         <svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar minha avaliação
       </a>
     </div>
-  </div>
-</section>
-
-<!-- ================= ANTES E DEPOIS (preenchido via CONFIG) ================= -->
-<section class="section" id="resultados" data-requer="antesDepois" hidden>
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Casos tratados</span>
-      <h2>Antes e depois <em>com Invisalign<sup>®</sup>.</em></h2>
-      <p>Arraste a linha sobre a foto para comparar o início e o final do tratamento.</p>
-    </div>
-    <div class="ba-grid" id="ba-grid"></div>
-    <p class="legal-small">Casos tratados pela Dra. Vannessa Borsato (CRO-PR 26722), publicados com autorização por escrito dos pacientes. Fotos do início e do final do tratamento. Cada tratamento é individual e os resultados variam de pessoa para pessoa.</p>
   </div>
 </section>
 

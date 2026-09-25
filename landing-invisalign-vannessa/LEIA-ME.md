@@ -26,6 +26,9 @@ Tudo já está otimizado na pasta `imagens/` (feito a partir dos originais do Dr
 - `logo-atelie-dental-horizontal-clara.png` → campo `logoRodape`
 - `logo-atelie-dental.png` / `-clara.png` → versões verticais, caso precise em outro lugar
 - `caso-01` a `caso-04` (`-antes.jpg` / `-depois.jpg`) → campo `antesDepois` (corte 3:2, centrado nos dentes, sem edição de cor)
+- `invisalign-alinhador-3d.png` → campo `produtoInvisalign` (alinhador sem fundo, seção "Por que Invisalign")
+- `invisalign-mulher.jpg` → campo `pessoaAlinhador` (seção "Planejamento com especialista")
+- `invisalign-homem.jpg` → campo `pessoaAlinhador2` (seção "Para quem é")
 
 **Fontes:** as mesmas do site da clínica, carregadas do Google Fonts: Fahkwang (títulos), Montserrat (texto) e Cormorant Garamond itálico (destaques).
 
@@ -39,7 +42,6 @@ Hoje o `LP_CONFIG` aponta para `imagens/...` **só para a aprovação do layout*
 | `logo` | Logo em PNG/SVG com fundo transparente, versão para fundo claro |
 | `logoRodape` | Logo em versão clara (branca ou bege) para o rodapé verde-escuro (opcional) |
 | `heroDra` | **Foto principal**: Dra. sorrindo, vertical (4:5), cerca de 1000×1250 px, fundo limpo |
-| `atendimento` | Dra. atendendo ou mostrando o alinhador, horizontal (3:2) |
 | `sobreDra` | Retrato profissional, vertical (4:5) |
 | `clinica` | 3 fotos da clínica, horizontais (3:2): recepção, consultório, detalhes |
 
@@ -150,7 +152,8 @@ A página roda dentro de um iframe do Wix, em outro domínio. Uma tag do Google 
 
 - [x] Fotos da Dra., logo e 4 casos de antes e depois (prontos em `imagens/`; falta subir no Wix e colar as URLs)
 - [ ] Fotos da clínica (opcional)
-- [ ] Selo Invisalign Doctor e foto do alinhador (material oficial do Invisalign Doctor Site)
+- [x] Fotos do alinhador Invisalign (3 imagens em `imagens/`)
+- [ ] Selo Invisalign Doctor (PNG sem fundo)
 - [ ] Confirmar que os 4 casos têm TCLE assinado e consultar o CRO-PR sobre publicação no site da clínica
 - [ ] Depoimentos reais do Google e nota
 - [x] Detalhes da consulta de avaliação (virou a seção "A consulta de avaliação")
