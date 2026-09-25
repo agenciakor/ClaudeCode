@@ -1,0 +1,30 @@
+LISTA DOS 20 ARQUIVOS DA PASTA "imagens/" – cole a URL do Wix depois do sinal de =
+(no Wix: Mídia > Arquivos do site > Mostrar mais > clique no arquivo > ⋯ > Copiar URL)
+
+LOGO
+ 1. logo-atelie-dental-horizontal.png        (logo do topo)                 = 
+ 2. logo-atelie-dental-horizontal-clara.png  (logo clara do rodapé)         = 
+
+DRA. VANNESSA
+ 3. dra-vannessa-hero.jpg                    (foto principal do topo)       = 
+ 4. dra-vannessa-retrato.jpg                 (seção "Quem é a Dra.")        = 
+
+INVISALIGN
+ 5. invisalign-alinhador-3d.png              (alinhador sem fundo)          = 
+ 6. invisalign-mulher.jpg                    (mulher colocando o alinhador) = 
+ 7. invisalign-homem.jpg                     (homem colocando o alinhador)  = 
+
+ANTES E DEPOIS
+ 8. caso-01-antes.jpg                                                       = 
+ 9. caso-01-depois.jpg                                                      = 
+10. caso-02-antes.jpg                                                       = 
+11. caso-02-depois.jpg                                                      = 
+12. caso-03-antes.jpg                                                       = 
+13. caso-03-depois.jpg                                                      = 
+14. caso-04-antes.jpg                                                       = 
+15. caso-04-depois.jpg                                                      = 
+
+NÃO PRECISAM SER ENVIADOS (só ficam na pasta como reserva):
+    logo-atelie-dental.png, logo-atelie-dental-clara.png, dra-vannessa-quadrado.jpg,
+    dra-vannessa-hero.webp, dra-vannessa-retrato.webp, invisalign-alinhador-3d.webp,
+    invisalign-mulher.webp, invisalign-homem.webp, invisalign-doctor-selo.png (o selo já está no Wix)
