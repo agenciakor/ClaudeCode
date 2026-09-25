@@ -25,11 +25,22 @@
     window.__lpInvisalignTracking = true;
 
     var MODO = 'gtm';
-    var GOOGLE_ADS_SEND_TO = 'AW-XXXXXXXXXX/XXXXXXXXXXXXXXXX'; // PENDENTE (só no modo 'gtag')
+    var GTM_ID = 'GTM-PXCR2KVF'; // contêiner do Google Tag Manager da clínica
+    var CARREGAR_GTM_AQUI = false; // true SOMENTE se o GTM ainda não estiver conectado em
+                                   // Marketing e SEO > Integrações de marketing > Google Tag Manager
+    var GOOGLE_ADS_SEND_TO = 'AW-XXXXXXXXXX/XXXXXXXXXXXXXXXX'; // só no modo 'gtag' (ID/rótulo da CONVERSÃO, não o ID da conta)
 
     var AW_ID = GOOGLE_ADS_SEND_TO.split('/')[0];
     var pronto = GOOGLE_ADS_SEND_TO.indexOf('XXXX') === -1;
     window.dataLayer = window.dataLayer || [];
+
+    if (MODO === 'gtm' && CARREGAR_GTM_AQUI && !window.google_tag_manager) {
+      window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      var g = document.createElement('script');
+      g.async = true;
+      g.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID;
+      document.head.appendChild(g);
+    }
 
     if (MODO === 'gtag' && pronto) {
       if (typeof window.gtag !== 'function') {

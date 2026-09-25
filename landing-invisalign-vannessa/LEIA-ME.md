@@ -126,11 +126,16 @@ A página roda dentro de um iframe do Wix, em outro domínio. Uma tag do Google 
    - `'gtm'` (recomendado): envia o evento `lp_whatsapp_click` ao Google Tag Manager, e a tag de conversão fica no GTM;
    - `'gtag'`: o próprio código carrega a tag do Google Ads e registra a conversão. Nesse caso, preencha `GOOGLE_ADS_SEND_TO`.
 
+**IDs da clínica (recebidos):** Google Tag Manager `GTM-PXCR2KVF` · Google Analytics (propriedade) `325522298` · Google Ads (conta) `281-866-9997`.
+Atenção: o ID da conta do Google Ads **não** é o ID de conversão. A conversão é criada dentro do Google Ads (passo a passo abaixo) e gera um par `AW-XXXXXXXXX/rótulo`, que vai na tag do GTM.
+
 **Configuração recomendada (GTM):**
-- Conecte o GTM em *Marketing e SEO > Integrações de marketing > Google Tag Manager*.
+- Conecte o GTM em *Marketing e SEO > Integrações de marketing > Google Tag Manager* com o ID `GTM-PXCR2KVF`. (Se a integração não estiver disponível no plano, mude `CARREGAR_GTM_AQUI` para `true` no `wix-codigo-personalizado.html`, que ele carrega o GTM sozinho.)
+- **No Google Ads**, crie a conversão: *Metas > Conversões > + Nova ação de conversão > Site > Adicionar ação manualmente*. Categoria: **Contato**; nome: `Clique WhatsApp – LP Invisalign`; valor: sem valor; contagem: **uma por clique**. Ao salvar, copie o **ID de conversão** (`AW-...`) e o **rótulo**.
 - No GTM, crie:
   - um acionador *Evento personalizado* com nome `lp_whatsapp_click`;
-  - uma tag *Acompanhamento de conversões do Google Ads* usando esse acionador;
+  - uma tag *Acompanhamento de conversões do Google Ads* com o ID e o rótulo copiados acima, usando esse acionador;
+  - (opcional) uma tag *Google Analytics: evento GA4* com o nome `lp_whatsapp_click`, para o evento aparecer no Analytics;
   - a tag *Vinculador de conversões* em todas as páginas.
 - Teste no modo **Visualizar** do GTM antes de ativar a campanha.
 - O clique no botão flutuante nativo do Wix (item 2.7) é rastreado no GTM com um acionador de *Clique em link* cuja URL contém `wa.me`.
@@ -155,9 +160,9 @@ A página roda dentro de um iframe do Wix, em outro domínio. Uma tag do Google 
 - [x] Fotos do alinhador Invisalign (3 imagens em `imagens/`)
 - [x] Selo Invisalign Doctor (já hospedado no Wix e configurado)
 - [ ] Confirmar que os 4 casos têm TCLE assinado e consultar o CRO-PR sobre publicação no site da clínica
-- [x] Depoimentos reais do Google (5) e nota 5,0 · falta só o total de avaliações (`totalAvaliacoesGoogle`)
+- [x] Depoimentos reais do Google (5), nota 5,0 e 101 avaliações, em carrossel
 - [x] Detalhes da consulta de avaliação (virou a seção "A consulta de avaliação")
 - [x] Responsável técnico confirmado no CRO-PR
-- [x] Política de privacidade (`politica-de-privacidade.html`, publicar em /politica-de-privacidade e confirmar os itens [CONFIRMAR])
-- [ ] IDs do Google Ads e do GTM
+- [x] Política de privacidade publicada em /politica-de-privacidade · [ ] confirmar os itens [CONFIRMAR] do texto (Analytics/Pixel, DPO, prazo de guarda)
+- [x] GTM `GTM-PXCR2KVF` configurado · [ ] criar a ação de conversão no Google Ads e a tag no GTM (LEIA-ME, seção 3)
 - [ ] Cores oficiais da marca: a paleta está em variáveis no início do `<style>` (`--brand`, `--accent` etc.) e pode ser trocada em um minuto

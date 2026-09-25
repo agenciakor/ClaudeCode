@@ -69,7 +69,7 @@ window.LP_CONFIG = {
     { nome: 'Pedro M.', texto: 'Profissionais extremamente competentes, educados e com boa conduta, recomendo muito!', origem: 'Google', estrelas: 5 },
   ],
   notaGoogle: '5,0',         // nota média do perfil no Google
-  totalAvaliacoesGoogle: '', // PENDENTE: total de avaliações do perfil, ex.: '14' (vazio = mostra só a nota)
+  totalAvaliacoesGoogle: '101', // total de avaliações do perfil no Google
 
   // ---------- CONSULTA DE AVALIAÇÃO (pendente) ----------
   // Texto opcional que substitui a resposta padrão no FAQ "Como funciona a avaliação?"
@@ -365,7 +365,21 @@ window.LP_CONFIG = {
   .rating > span:not(.stars){font-size:.86rem;color:var(--muted);white-space:nowrap}
   .rating{flex-wrap:wrap;max-width:100%;column-gap:12px;row-gap:2px;border-radius:18px}
   .rating > svg{flex:none}
-  .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
+  .carrossel{position:relative}
+  .carrossel-janela{overflow:hidden;margin:0 -6px;padding:6px}
+  .quotes{display:flex;gap:20px;transition:transform .55s cubic-bezier(.22,.61,.36,1);will-change:transform}
+  .quotes.sem-anim{transition:none}
+  .quotes .quote{flex:0 0 calc((100% - 40px)/3);min-width:0}
+  @media (max-width:1000px){.quotes .quote{flex-basis:calc((100% - 20px)/2)}}
+  @media (max-width:640px){.quotes .quote{flex-basis:100%}}
+  .carrossel-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px}
+  .carrossel-setas{display:flex;gap:10px}
+  .carrossel-setas button{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:grid;place-items:center;transition:border-color .2s,background .2s}
+  .carrossel-setas button:hover{border-color:var(--brand);color:var(--brand)}
+  .carrossel-setas svg{width:20px;height:20px}
+  .carrossel-pontos{display:flex;gap:8px}
+  .carrossel-pontos button{width:9px;height:9px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer;transition:background .2s,transform .2s}
+  .carrossel-pontos button[aria-current="true"]{background:var(--brand);transform:scale(1.25)}
   .quote{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:18px}
   .quote p{font-family:var(--italic);font-style:italic;font-size:1.3rem;line-height:1.45;color:var(--ink)}
   .quote footer{display:flex;align-items:center;gap:12px;margin-top:auto}
@@ -434,7 +448,6 @@ window.LP_CONFIG = {
   .foot .tm{font-size:.76rem;color:#9C8874;line-height:1.6}
 
   /* ---------- Grades com conteúdo variável ---------- */
-  .quotes{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
   .ba-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr))}
   .ba-card:only-child{max-width:640px}
   .gallery{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
@@ -884,7 +897,16 @@ window.LP_CONFIG = {
       <h2>O que os pacientes <em>dizem.</em></h2>
       <div id="rating-slot"></div>
     </div>
-    <div class="quotes" id="quotes"></div>
+    <div class="carrossel" id="carrossel" aria-roledescription="carrossel" aria-label="Depoimentos de pacientes">
+      <div class="carrossel-janela"><div class="quotes" id="quotes"></div></div>
+      <div class="carrossel-nav">
+        <div class="carrossel-pontos" id="carrossel-pontos" role="tablist" aria-label="Ir para o depoimento"></div>
+        <div class="carrossel-setas">
+          <button type="button" id="carrossel-ant" aria-label="Depoimento anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+          <button type="button" id="carrossel-prox" aria-label="Próximo depoimento"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+        </div>
+      </div>
+    </div>
     <div class="links-row">
       <a class="btn btn-ghost" data-link="google" href="https://share.google/CiZfX66Kq2GzWdxAi" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-google"/></svg>Mais avaliações no Google</a>
       <a class="btn btn-ghost" data-link="instagram" href="https://www.instagram.com/clinicaateliedental/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg>@clinicaateliedental</a>
@@ -1078,6 +1100,58 @@ window.LP_CONFIG = {
     else if (a.hasAttribute('data-link')) track('outbound_click', { destino: a.getAttribute('data-link') });
   });
 
+  // ---------- Carrossel de depoimentos (loop infinito, avança sozinho, arrasto no celular) ----------
+  function montarCarrossel(total) {
+    var trilho = document.getElementById('quotes');
+    var pontosEl = document.getElementById('carrossel-pontos');
+    var originais = [].slice.call(trilho.children);
+    if (total < 2) { document.querySelector('.carrossel-nav').hidden = true; return; }
+    var porTela = function () { return window.innerWidth <= 640 ? 1 : (window.innerWidth <= 1000 ? 2 : 3); };
+    var n = total, vis = porTela(), idx = 0, timer, travado = false;
+    // clones nas duas pontas para o loop parecer contínuo
+    function clonar() {
+      trilho.querySelectorAll('.clone').forEach(function (c) { c.remove(); });
+      var k = Math.min(vis, n);
+      for (var i = 0; i < k; i++) { var c = originais[i].cloneNode(true); c.classList.add('clone'); c.setAttribute('aria-hidden', 'true'); trilho.appendChild(c); }
+      for (var j = n - k; j < n; j++) { var d = originais[j].cloneNode(true); d.classList.add('clone'); d.setAttribute('aria-hidden', 'true'); trilho.insertBefore(d, trilho.firstChild); }
+    }
+    function largura() { var el = trilho.children[0]; return el.getBoundingClientRect().width + 20; }
+    function mover(anim) {
+      var k = Math.min(vis, n);
+      trilho.classList.toggle('sem-anim', !anim);
+      trilho.style.transform = 'translateX(' + (-(idx + k) * largura()) + 'px)';
+      pontosEl.querySelectorAll('button').forEach(function (b, i) { b.setAttribute('aria-current', i === ((idx % n) + n) % n ? 'true' : 'false'); });
+    }
+    function ir(delta) {
+      if (travado) return; travado = true;
+      idx += delta; mover(true);
+    }
+    trilho.addEventListener('transitionend', function () {
+      travado = false;
+      if (idx >= n) { idx -= n; mover(false); }
+      if (idx < 0) { idx += n; mover(false); }
+    });
+    pontosEl.innerHTML = originais.map(function (_, i) { return '<button type="button" role="tab" aria-label="Depoimento ' + (i + 1) + '"></button>'; }).join('');
+    pontosEl.querySelectorAll('button').forEach(function (b, i) { b.addEventListener('click', function () { idx = i; mover(true); reiniciar(); }); });
+    document.getElementById('carrossel-prox').addEventListener('click', function () { ir(1); reiniciar(); });
+    document.getElementById('carrossel-ant').addEventListener('click', function () { ir(-1); reiniciar(); });
+    // arrastar / deslizar
+    var x0 = null;
+    trilho.addEventListener('pointerdown', function (e) { x0 = e.clientX; });
+    window.addEventListener('pointerup', function (e) { if (x0 === null) return; var dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) { ir(dx < 0 ? 1 : -1); reiniciar(); } });
+    // avanço automático (para quando o mouse está em cima ou a aba está oculta)
+    var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function iniciar() { if (reduz) return; parar(); timer = setInterval(function () { if (!document.hidden) ir(1); }, 5000); }
+    function parar() { if (timer) clearInterval(timer); }
+    function reiniciar() { parar(); iniciar(); }
+    var box = document.getElementById('carrossel');
+    box.addEventListener('mouseenter', parar); box.addEventListener('mouseleave', iniciar);
+    box.addEventListener('focusin', parar); box.addEventListener('focusout', iniciar);
+    window.addEventListener('resize', function () { var v = porTela(); if (v !== vis) { vis = v; clonar(); } mover(false); });
+    clonar(); mover(false); iniciar();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { mover(false); });
+  }
+
   // ---------- Conteúdo vindo do LP_CONFIG (um erro aqui não derruba o resto da página) ----------
   try {
     if (C.telefoneExibicao) document.querySelectorAll('[data-tel-label]').forEach(function (el) { el.textContent = C.telefoneExibicao; });
@@ -1179,7 +1253,7 @@ window.LP_CONFIG = {
       };
       document.getElementById('quotes').innerHTML = deps.map(function (d) {
         var ini = esc(String(d.nome).trim().charAt(0).toUpperCase());
-        return '<blockquote class="quote reveal" style="margin:0">' + estrelas(d.estrelas) +
+        return '<blockquote class="quote" style="margin:0">' + estrelas(d.estrelas) +
           '<p>“' + esc(d.texto) + '”</p>' +
           '<footer><span class="avatar" aria-hidden="true">' + ini + '</span><div><b>' + esc(d.nome) + '</b>' +
           (d.origem ? '<span>Avaliação no ' + esc(d.origem) + '</span>' : '') + '</div></footer>' +
@@ -1193,6 +1267,7 @@ window.LP_CONFIG = {
           '</div>';
       }
       document.getElementById('depoimentos').hidden = false;
+      montarCarrossel(deps.length);
     }
 
     // Texto da avaliação (FAQ)
