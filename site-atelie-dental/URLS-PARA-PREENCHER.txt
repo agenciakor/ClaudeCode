@@ -1,0 +1,20 @@
+ARQUIVOS DA PASTA "imagens/" QUE PRECISAM SUBIR NO WIX – cole a URL depois do sinal de =
+(no Wix: Mídia > Arquivos do site > Mostrar mais > clique no arquivo > ⋯ > Copiar URL)
+
+CLÍNICA (fotos novas)
+ 1. clinica-recepcao.jpg              (foto principal do topo)           =
+ 2. clinica-consultorio-vista.jpg     (galeria, foto alta à esquerda)    =
+ 3. clinica-sala-atendimento.jpg      (galeria)                          =
+ 4. clinica-sala-planejamento.jpg     (galeria)                          =
+ 5. clinica-consultorio-2.jpg         (galeria, foto alta à direita)     =
+ 6. clinica-sala-atendimento-2.jpg    (galeria)                          =
+ 7. clinica-consultorio.jpg           (galeria, horizontal)              =
+ 8. atelie-facial-recepcao.jpg        (bloco "Conheça também a Ateliê Facial") =
+
+EQUIPE E LOGOS
+ 9. dr-delson-borsato.jpg             (card do Dr. Delson)               =
+10. logo-atelie-facial.png            (logo no bloco da Ateliê Facial)   =
+
+JÁ ESTÃO NO WIX (não precisa subir de novo): logo-atelie-dental-horizontal(-clara).png,
+dra-vannessa-retrato.jpg, invisalign-alinhador-3d.png, invisalign-top-doctor-2026.png.
+Os arquivos .webp e atelie-facial-recepcao-2.jpg são reservas.
