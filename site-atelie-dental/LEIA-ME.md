@@ -8,6 +8,7 @@ com o verde de contraste, fontes Fahkwang e Montserrat, cards, botões e espaça
 | `index.html` | A Home completa (sem menu). É **este arquivo inteiro** que vai no Elemento HTML da página inicial. |
 | `CABECALHO-WIX.md` | Como montar o menu e o cabeçalho nativo do Wix, com cores, fontes e links. |
 | `imagens/` | Fotos da clínica (recortadas e otimizadas), equipe, logos e Invisalign. |
+| `../landing-invisalign-vannessa/wix-codigo-personalizado.html` | Código personalizado (botão flutuante + rastreamento), agora válido para o site inteiro. |
 | `URLS-PARA-PREENCHER.txt` | Lista dos arquivos que precisam subir no Wix, para colar as URLs. |
 | `preview/` | Prévia com imagens embutidas e prints, para aprovação. |
 
@@ -32,9 +33,14 @@ Tudo o que é editável fica no bloco `SITE_CONFIG`, no começo do `index.html` 
 2. **Cabeçalho e menu:** siga o `CABECALHO-WIX.md`.
 3. **Página inicial:** no editor, abra a página *Início*, apague as seções atuais (carrossel de banners, "Conheça quem faz acontecer", especialidades, "Seu sorriso...", "Pessoas reais", depoimentos e o formulário de contato), deixando **só o cabeçalho e o rodapé do Wix**. Se preferir, apague o rodapé do Wix também: a Home já tem rodapé próprio com os dados obrigatórios do CFO.
 4. *Adicionar > Incorporar código > HTML incorporado > Código*, cole o `index.html`, estique para a largura total e ajuste a altura (referências abaixo). O mesmo procedimento da landing, inclusive o `mostrarAltura: true` para medir.
-5. **Código personalizado:** o botão flutuante do WhatsApp e o rastreamento já estão no `wix-codigo-personalizado.html` da landing. Em *Configurações > Código personalizado*, edite aquele código e, em "Adicionar código a", marque também a página **Início** (ou "Todas as páginas"). Nada mais muda.
-6. **Smartarget:** remova o app, para não ficar um segundo botão de WhatsApp na Home.
-7. Publique e confira no celular.
+5. **Código personalizado:** o botão flutuante do WhatsApp e o rastreamento já estão no `wix-codigo-personalizado.html` da landing. Ele foi atualizado para detectar a página: na landing usa a mensagem da campanha, nas outras páginas usa a mensagem geral do site. Em *Configurações > Código personalizado*, cole a versão nova no lugar da atual e deixe "Adicionar código a" em **Todas as páginas**.
+6. **SEO da página Início** (*Páginas > Início > Configurações > SEO*). Importante: o Google não lê o conteúdo do Elemento HTML como parte da página, então o título, a descrição e um H1 precisam estar no próprio Wix:
+   - Título: `Clínica Ateliê Dental | Dentista e Invisalign em Curitiba`
+   - Descrição: `Dentista em Curitiba, na Campina do Siqueira: Invisalign, implantes, facetas, clareamento e cirurgia bucomaxilofacial. Dra. Vannessa Borsato e Dr. Delson Borsato. Agende pelo WhatsApp.`
+   - "Mostrar esta página nos resultados de busca": **ligado**.
+   - Acima do Elemento HTML, adicione um **texto nativo do Wix** marcado como **H1** com `Clínica odontológica em Curitiba · Ateliê Dental`, em Fahkwang 14 px cor `#8A6136` (fica como uma linha discreta sobre o hero). Opcional, mas recomendado: um texto pequeno abaixo do bloco HTML com o endereço e os tratamentos, para a página ter conteúdo próprio indexável.
+7. **Smartarget:** remova o app, para não ficar um segundo botão de WhatsApp na Home.
+8. Publique e confira no celular.
 
 Alturas de referência (sem o cabeçalho do Wix):
 
@@ -54,5 +60,6 @@ Alturas de referência (sem o cabeçalho do Wix):
 - [ ] Montar o cabeçalho e o menu (CABECALHO-WIX.md)
 - [ ] Criar a página `/atelie-facial` (o botão "Conhecer a Ateliê Facial" aponta para ela)
 - [ ] Criar as páginas das demais especialidades, uma a uma, e ligar os cards
-- [ ] Confirmar com o Dr. Delson a redação do currículo (copiada do site atual)
+- [ ] Confirmar se a especialidade em Cirurgia e Traumatologia Bucomaxilofacial do Dr. Delson está **registrada no CRO-PR**. Só com o registro a página pode chamá-lo de "especialista" (hoje diz "residência em CTBMF", que é o que foi informado)
+- [ ] Decidir se os cursos de aperfeiçoamento e imersão continuam no card do Dr. Delson (o CFO só prevê, em publicidade, especialidades registradas e títulos stricto sensu; estão lá porque constam no site atual)
 - [ ] Autorização de uso de imagem dos pacientes, caso as fotos "Pessoas reais" do site antigo voltem a ser usadas (não estão na nova Home)

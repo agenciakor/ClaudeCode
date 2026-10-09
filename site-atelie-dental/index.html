@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Clínica Ateliê Dental | Odontologia e Invisalign em Curitiba</title>
-<meta name="description" content="Clínica odontológica em Curitiba: ortodontia e alinhadores Invisalign, implantes, facetas, clareamento, cirurgia bucomaxilofacial e harmonização facial. Dra. Vannessa Borsato e Dr. Delson Borsato. Agende pelo WhatsApp.">
+<title>Clínica Ateliê Dental | Dentista e Invisalign em Curitiba</title>
+<meta name="description" content="Dentista em Curitiba, na Campina do Siqueira: Invisalign, implantes, facetas, clareamento e cirurgia bucomaxilofacial. Dra. Vannessa Borsato e Dr. Delson Borsato. Agende pelo WhatsApp.">
 
 <!--
   ================================================================
@@ -34,13 +34,13 @@ window.SITE_CONFIG = {
     atelieFacial: 'imagens/atelie-facial-recepcao.jpg',
     produtoInvisalign: 'https://static.wixstatic.com/media/1d3ce1_6190dd64e0014770b3ee110c385bf536~mv2.png',
     seloInvisalign: 'https://static.wixstatic.com/media/1d3ce1_6dd33b301b6a43bab8f72400cea7f95d~mv2.png', // troféu Top Doctor (já no Wix)
-    galeria: [                                           // 6 fotos da clínica (a 1ª e a 4ª ficam altas; a 6ª, larga)
-      'imagens/clinica-consultorio-vista.jpg',
-      'imagens/clinica-sala-atendimento.jpg',
-      'imagens/clinica-sala-planejamento.jpg',
-      'imagens/clinica-consultorio-2.jpg',
-      'imagens/clinica-sala-atendimento-2.jpg',
-      'imagens/clinica-consultorio.jpg'
+    galeria: [                                           // 6 fotos da clínica (a 1ª e a 4ª ficam altas no desktop)
+      { src: 'imagens/clinica-consultorio-vista.jpg', alt: 'Consultório da Clínica Ateliê Dental com vista para Curitiba' },
+      { src: 'imagens/clinica-sala-atendimento.jpg', alt: 'Sala de atendimento da Clínica Ateliê Dental' },
+      { src: 'imagens/clinica-sala-planejamento.jpg', alt: 'Sala de planejamento da Clínica Ateliê Dental' },
+      { src: 'imagens/clinica-consultorio-2.jpg', alt: 'Consultório odontológico da Clínica Ateliê Dental' },
+      { src: 'imagens/clinica-sala-atendimento-2.jpg', alt: 'Sala de atendimento da Ateliê Dental, na Campina do Siqueira' },
+      { src: 'imagens/clinica-consultorio.jpg', alt: 'Cadeira odontológica da Clínica Ateliê Dental' }
     ]
   },
 
@@ -571,10 +571,15 @@ window.SITE_CONFIG = {
   .esp.destaque .link{color:#fff}
   .esp.destaque .tag{position:absolute;top:18px;right:18px;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#D8B896;border:1px solid rgba(216,184,150,.5);border-radius:999px;padding:5px 10px}
 
-  /* Invisalign em destaque */
+  /* Invisalign em destaque (o quadro reserva a altura 1:1 do PNG antes de a foto carregar) */
   .inv{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center}
-  .inv .frame.solto{aspect-ratio:auto;background:none;box-shadow:none;border-radius:0;overflow:visible}
-  .inv .frame.solto img{object-fit:contain;width:100%;height:auto;max-height:480px;filter:drop-shadow(0 30px 40px rgba(35,25,17,.28))}
+  .inv .frame.solto{width:100%;max-width:480px;margin:0 auto;aspect-ratio:1/1;background:none;box-shadow:none;border-radius:0;overflow:visible}
+  .inv .frame.solto img{object-fit:contain;width:100%;height:100%;filter:drop-shadow(0 30px 40px rgba(35,25,17,.28))}
+  .inv .frame.solto .ph{border-radius:24px}
+  .cred{padding:28px 18px}
+  .cred b{font-size:1.15rem}
+  .cta-note{align-items:flex-start}
+  .cta-note .dot{margin-top:.55em}
   .inv h2{font-size:clamp(1.85rem,3.6vw,2.9rem);margin-top:14px}
   .inv .body{margin-top:18px;color:var(--ink-soft)}
   .inv .selo{margin-top:22px}
@@ -595,10 +600,11 @@ window.SITE_CONFIG = {
   .galeria figure:nth-child(1){grid-row:span 2}
   .galeria figure:nth-child(4){grid-row:span 2}
 
-  /* Equipe */
-  .equipe{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,32px)}
-  .prof{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
-  .prof .frame{aspect-ratio:auto;border-radius:0;box-shadow:none;height:100%;min-height:360px}
+  /* Equipe: cards verticais (foto em cima, currículo embaixo) */
+  .equipe{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,32px);align-items:start}
+  .prof{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
+  .prof .frame{aspect-ratio:4/3;border-radius:0;box-shadow:none}
+  .prof .frame img{object-position:50% 18%}
   .prof .ph{border-radius:0}
   .prof-body{padding:28px 28px 26px}
   .prof-body .eyebrow{font-size:.7rem}
@@ -623,6 +629,7 @@ window.SITE_CONFIG = {
   .facial-lista span{font-size:.82rem;font-weight:600;color:#F3EAE1;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 12px}
   .facial-foto{position:relative;min-height:320px}
   .facial-foto .frame{aspect-ratio:auto;border-radius:0;box-shadow:none;height:100%}
+  .facial-foto .frame img{object-position:100% 50%}
   .facial-foto .ph{border-radius:0}
   .facial-body .hero-ctas{margin-top:28px}
 
@@ -630,9 +637,10 @@ window.SITE_CONFIG = {
   .row a{overflow-wrap:anywhere}
   .btn > span sup{font-size:.6em}
 
-  @media (max-width:1080px){.esp-grid{grid-template-columns:1fr 1fr}.esp.destaque{grid-column:span 2}.galeria{grid-template-columns:repeat(3,1fr);grid-auto-rows:200px}.galeria figure:nth-child(4){grid-row:span 1}}
-  @media (max-width:900px){.hero-home .wrap,.inv,.clinica-intro,.equipe,.facial,.contato-grid{grid-template-columns:1fr}.prof{grid-template-columns:1fr}.prof .frame{min-height:0;aspect-ratio:4/5;max-width:none}.facial-foto{min-height:260px;order:-1}.inv .frame.solto{max-width:520px;margin:0 auto}}
-  @media (max-width:640px){.esp-grid{grid-template-columns:1fr}.esp.destaque{grid-column:auto}.galeria{grid-template-columns:1fr 1fr;grid-auto-rows:160px}.galeria figure:nth-child(1),.galeria figure:nth-child(4){grid-row:span 1}.facial-body .hero-ctas .btn{width:100%}.prof-body{padding:22px 20px}}
+  @media (max-width:1080px){.galeria{grid-template-columns:repeat(3,1fr);grid-auto-rows:200px}.galeria figure:nth-child(1),.galeria figure:nth-child(4){grid-row:span 1}}
+  @media (max-width:900px){.hero-home .wrap,.inv,.clinica-intro,.equipe,.contato-grid{grid-template-columns:1fr}.facial{grid-template-columns:minmax(0,1fr)}.esp-grid{grid-template-columns:1fr 1fr}.esp.destaque{grid-column:span 2}.prof .frame{aspect-ratio:4/3}.facial-foto{min-height:0;order:-1}.facial-foto .frame{height:auto;aspect-ratio:4/3}.facial-foto .frame img{object-position:70% 50%}}
+  @media (max-width:640px){.esp-grid{grid-template-columns:1fr}.esp.destaque{grid-column:auto}.galeria{grid-template-columns:1fr 1fr;grid-auto-rows:160px}.facial-body{padding:28px 22px}.facial-body .hero-ctas .btn{width:100%;padding-left:16px;padding-right:16px;gap:8px}.prof-body{padding:22px 20px}}
+  @media (max-width:360px){.facial-body .hero-ctas .btn svg{display:none}}
 
 </style>
 </head>
@@ -666,7 +674,7 @@ window.SITE_CONFIG = {
     <symbol id="i-tooth" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M7.5 3C5 3 3.5 5 3.5 7.5c0 2 .8 3.2 1.4 5 .7 2.2.9 5.5 2.4 8.3.4.8 1.5.8 1.9 0 .8-1.6.9-4.3 2.8-4.3s2 2.7 2.8 4.3c.4.8 1.5.8 1.9 0 1.5-2.8 1.7-6.1 2.4-8.3.6-1.8 1.4-3 1.4-5C20.5 5 19 3 16.5 3c-1.8 0-2.9 1-4.5 1S9.3 3 7.5 3Z"/></symbol>
     <symbol id="i-sparkle" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3v4M12 17v4M3 12h4M17 12h4M12 8l1.5 2.5L16 12l-2.5 1.5L12 16l-1.5-2.5L8 12l2.5-1.5Z"/></symbol>
     <symbol id="i-smile" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9.5h.01M15 9.5h.01"/></g></symbol>
-    <symbol id="i-implant" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8l-1 4H9L8 4ZM9.5 8h5l-.6 4h-3.8L9.5 8ZM10.4 12h3.2l-.5 4h-2.2l-.5-4ZM11 16h2l-1 5-1-5Z"/></g></symbol>
+    <symbol id="i-implant" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10v3a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V3Z"/><path d="M9.5 8v2.5h5V8M9.5 10.5h5M9.8 13h4.4M10.2 15.5h3.6M10.6 18h2.8M11 20.5h2"/><path d="M9.5 10.5 11 21h2l1.5-10.5"/></g></symbol>
     <symbol id="i-face" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10a6 6 0 1 1 12 0c0 2.5-1 3.5-1.5 5s-.5 3 .5 4H7c1-1 1-2.5.5-4S6 12.5 6 10Z"/><path d="M9.5 10h.01M14.5 10h.01M10.5 13.5c.5.5 2.5.5 3 0"/></g></symbol>
     <symbol id="i-child" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0 1 14 0M9 7.5h.01M15 7.5h.01M10 10c.6.6 3.4.6 4 0"/></g></symbol>
     <symbol id="i-scalpel" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21 14 10M14 10l3.5-6.5a2 2 0 0 1 3 3L14 10ZM3 21l5-1 6-6"/></g></symbol>
@@ -691,15 +699,15 @@ window.SITE_CONFIG = {
       <p class="lead">Atendimento odontológico completo, da ortodontia com alinhadores Invisalign<sup>®</sup> à cirurgia bucomaxilofacial, em um espaço pensado para cuidar de você e da sua família.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" data-wa="hero" href="https://wa.me/554130726994?text=Ol%C3%A1%2C%20conheci%20o%20site%20e%20quero%20agendar%20um%20atendimento.%20Ref.%20WUAF9XQ" target="_blank" rel="noopener">
-          <svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar uma avaliação
+          <svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar avaliação
         </a>
-        <a class="btn btn-ghost" data-link="lpInvisalign" href="https://www.clinicaateliedental.com/alinhador-invisivel-invisalig"><span>Alinhador invisível Invisalign<sup>®</sup></span></a>
+        <a class="btn btn-ghost" data-link="lpInvisalign" href="https://www.clinicaateliedental.com/alinhador-invisivel-invisalig"><span>Conhecer o Invisalign<sup>®</sup></span></a>
       </div>
       <p class="cta-note"><span class="dot" aria-hidden="true"></span>Envie sua mensagem a qualquer hora. Respondemos seg a sex, 8h às 18h, e sáb, 8h às 12h.</p>
       <ul class="trust" aria-label="Diferenciais">
-        <li><svg aria-hidden="true"><use href="#i-check"/></svg>Nota 5,0 no Google</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>Para adultos e crianças</li>
         <li><svg aria-hidden="true"><use href="#i-check"/></svg>Ortodontia e Cirurgia Bucomaxilofacial</li>
-        <li><svg aria-hidden="true"><use href="#i-check"/></svg>Invisalign Platinum Elite</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Invisalign<sup>®</sup> Platinum Elite</span></li>
       </ul>
     </div>
     <div class="hero-media reveal">
@@ -722,8 +730,8 @@ window.SITE_CONFIG = {
 <section class="creds" aria-label="Diferenciais da clínica">
   <div class="wrap">
     <div class="cred"><b>5,0 no Google</b><span data-cfg-text="totalAvaliacoesTexto2">101 avaliações de pacientes reais</span></div>
-    <div class="cred"><b>Dois especialistas</b><span>Ortodontia e Cirurgia Bucomaxilofacial</span></div>
-    <div class="cred"><b>Invisalign Platinum Elite</b><span>Top Doctor 2026 pela Align Technology</span></div>
+    <div class="cred"><b>Ortodontia e Bucomaxilofacial</b><span>Dra. Vannessa Borsato e Dr. Delson Borsato</span></div>
+    <div class="cred"><b>Invisalign<sup>®</sup> Platinum Elite</b><span>Dra. Vannessa · Top Doctor 2026 pela Align Technology</span></div>
     <div class="cred"><b>Campina do Siqueira</b><span>Rua General Mário Tourinho, 1805 · Ed. Lakeside Corporate</span></div>
   </div>
 </section>
@@ -732,16 +740,16 @@ window.SITE_CONFIG = {
 <section class="section" id="especialidades">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">Nossas especialidades</span>
+      <span class="eyebrow">Nossos tratamentos</span>
       <h2>Tratamentos completos, <em>no mesmo lugar.</em></h2>
-      <p>Da prevenção à reabilitação, a equipe da Ateliê Dental cuida de cada etapa do seu sorriso. Conheça as áreas de atuação da clínica.</p>
+      <p>Da prevenção à reabilitação, a equipe da Ateliê Dental cuida de cada etapa do seu sorriso. Conheça os tratamentos realizados na clínica.</p>
     </div>
     <div class="esp-grid">
       <a class="esp destaque reveal" data-link="lpInvisalign" href="https://www.clinicaateliedental.com/alinhador-invisivel-invisalig">
         <span class="tag">Em destaque</span>
         <span class="icon"><svg aria-hidden="true"><use href="#i-aligner"/></svg></span>
         <h3>Alinhador invisível (Invisalign<sup>®</sup>)</h3>
-        <p>Alinhadores transparentes e removíveis, planejados pela Dra. Vannessa Borsato, especialista em Ortodontia e Invisalign Doctor Platinum Elite. Resultados reais de pacientes e tudo sobre a avaliação.</p>
+        <p>Alinhadores transparentes e removíveis, planejados pela Dra. Vannessa Borsato, especialista em Ortodontia. Veja como funciona o tratamento, para quem é indicado e como é a avaliação.</p>
         <span class="link">Conhecer o tratamento <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
       </a>
       <div class="esp reveal">
@@ -770,9 +778,9 @@ window.SITE_CONFIG = {
         <p>Coroas, próteses fixas e removíveis para devolver função, conforto e estética.</p>
       </div>
       <div class="esp reveal">
-        <span class="icon"><svg aria-hidden="true"><use href="#i-tooth"/></svg></span>
+        <span class="icon"><svg aria-hidden="true"><use href="#i-cube"/></svg></span>
         <h3>Reabilitação oral</h3>
-        <p>Planejamento completo para casos que envolvem várias especialidades, com a equipe atuando em conjunto.</p>
+        <p>Planejamento completo para casos que envolvem várias áreas da odontologia, com a equipe atuando em conjunto.</p>
       </div>
       <div class="esp reveal">
         <span class="icon"><svg aria-hidden="true"><use href="#i-root"/></svg></span>
@@ -792,7 +800,7 @@ window.SITE_CONFIG = {
       <div class="esp reveal">
         <span class="icon"><svg aria-hidden="true"><use href="#i-face"/></svg></span>
         <h3>Harmonização orofacial</h3>
-        <p>Procedimentos estéticos da face realizados na Ateliê Facial, o espaço da clínica dedicado à harmonização e à cirurgia maxilofacial.</p>
+        <p>Procedimentos estéticos da face realizados na Ateliê Facial, o espaço da clínica dedicado à harmonização e à cirurgia bucomaxilofacial.</p>
       </div>
     </div>
     <div class="inline-cta reveal">
@@ -816,7 +824,7 @@ window.SITE_CONFIG = {
       <p class="body">Os alinhadores Invisalign<sup>®</sup> são transparentes, removíveis e feitos sob medida. Na Ateliê Dental, o tratamento é planejado pela Dra. Vannessa Borsato, especialista em Ortodontia e reconhecida pela Align Technology como <strong>Top Doctor 2026 · Platinum Elite</strong>.</p>
       <div class="selo">
         <div class="selo-img" data-selo>Selo Invisalign</div>
-        <span><b>Top Doctor 2026 · Platinum Elite</b>Entre os Invisalign Doctors que mais transformaram sorrisos com Invisalign<sup>®</sup>.</span>
+        <span><b>Top Doctor 2026 · Platinum Elite</b>Reconhecimento da Align Technology: a Dra. Vannessa está entre os Invisalign Doctors que mais transformaram sorrisos com Invisalign<sup>®</sup>.</span>
       </div>
       <div class="hero-ctas">
         <a class="btn btn-primary" data-link="lpInvisalign" href="https://www.clinicaateliedental.com/alinhador-invisivel-invisalig">Conhecer o tratamento <svg aria-hidden="true" style="width:20px;height:20px"><use href="#i-arrow"/></svg></a>
@@ -833,11 +841,11 @@ window.SITE_CONFIG = {
       <div class="section-head reveal">
         <span class="eyebrow">A clínica</span>
         <h2>Seu sorriso e sua autoestima <em>são a nossa prioridade.</em></h2>
-        <p>Pensamos cada detalhe para atender você e sua família como atendemos a nossa. São dois espaços no Edifício Lakeside Corporate, na Campina do Siqueira: a <strong>Ateliê Dental</strong>, com a odontologia completa, e a <strong>Ateliê Facial</strong>, dedicada à harmonização e à cirurgia maxilofacial.</p>
+        <p>Pensamos cada detalhe para atender você e sua família como atendemos a nossa. Somos uma clínica de dentistas em Curitiba, com dois espaços no Edifício Lakeside Corporate, na Campina do Siqueira: a <strong>Ateliê Dental</strong>, com a odontologia completa, e a <strong>Ateliê Facial</strong>, dedicada à harmonização e à cirurgia maxilofacial.</p>
       </div>
       <div class="pilares reveal">
-        <div class="pilar"><span class="icon"><svg aria-hidden="true"><use href="#i-smile"/></svg></span><div><b>Atendimento próximo</b><span>Você é recebido pelos próprios especialistas, que explicam cada etapa antes de qualquer decisão.</span></div></div>
-        <div class="pilar"><span class="icon"><svg aria-hidden="true"><use href="#i-cube"/></svg></span><div><b>Tecnologia e planejamento digital</b><span>Escaneamento intraoral, documentação fotográfica e planejamento em 3D para tratamentos previsíveis.</span></div></div>
+        <div class="pilar"><span class="icon"><svg aria-hidden="true"><use href="#i-smile"/></svg></span><div><b>Atendimento próximo</b><span>Você é recebido pelos próprios dentistas, que explicam cada etapa antes de qualquer decisão.</span></div></div>
+        <div class="pilar"><span class="icon"><svg aria-hidden="true"><use href="#i-cube"/></svg></span><div><b>Tecnologia e planejamento digital</b><span>Escaneamento intraoral, documentação fotográfica e planejamento em 3D para estudar cada caso antes de começar.</span></div></div>
         <div class="pilar"><span class="icon"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><div><b>Estrutura completa</b><span>Consultórios modernos, com vista para a cidade, e protocolos rigorosos de biossegurança.</span></div></div>
       </div>
     </div>
@@ -860,7 +868,7 @@ window.SITE_CONFIG = {
         <div class="prof-body">
           <span class="eyebrow">Diretora clínica</span>
           <h3>Dra. Vannessa Borsato</h3>
-          <p class="role">Cirurgiã-dentista · CRO-PR 26722</p>
+          <p class="role">Cirurgiã-dentista · <span style="white-space:nowrap">CRO-PR 26722</span></p>
           <ul>
             <li>Cirurgiã-dentista pela Universidade Estadual de Ponta Grossa (UEPG)</li>
             <li>Especialista em Ortodontia pela UEPG</li>
@@ -874,18 +882,18 @@ window.SITE_CONFIG = {
         </div>
       </article>
       <article class="prof reveal">
-        <div class="frame" data-foto="drDelson" data-alt="Dr. Delson Borsato, cirurgião bucomaxilofacial">
+        <div class="frame" data-foto="drDelson" data-alt="Dr. Delson Borsato, cirurgião-dentista, cirurgia bucomaxilofacial">
           <div class="ph"><svg viewBox="0 0 400 260" aria-hidden="true"><use href="#i-arch"/></svg><small>Foto do Dr. Delson</small></div>
         </div>
         <div class="prof-body">
-          <span class="eyebrow">Sócio-proprietário · Cirurgia maxilofacial</span>
+          <span class="eyebrow">Sócio-proprietário · Cirurgia bucomaxilofacial</span>
           <h3>Dr. Delson Borsato</h3>
-          <p class="role">Cirurgião-dentista · CRO-PR 23995</p>
+          <p class="role">Cirurgião-dentista · <span style="white-space:nowrap">CRO-PR 23995</span></p>
           <ul>
             <li>Cirurgião-dentista pela Universidade Estadual de Ponta Grossa (UEPG)</li>
             <li>Residência em Cirurgia e Traumatologia Bucomaxilofacial pelo Hospital Evangélico de Curitiba</li>
             <li>Mestrado em Princípios de Cirurgia pela Faculdade Evangélica Mackenzie</li>
-            <li>Cirurgias estéticas da face · Aperfeiçoamento em cirurgias periodontais e periimplantares</li>
+            <li>Cirurgias estéticas da face · Aperfeiçoamento em cirurgias periodontais e peri-implantares</li>
             <li>Imersão em Cirurgia Bucomaxilofacial · Miami Anatomical Research Center</li>
             <li>Cirurgião-dentista do Exército Brasileiro</li>
           </ul>
@@ -948,8 +956,8 @@ window.SITE_CONFIG = {
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Onde estamos</span>
-      <h2>Venha conhecer <em>a clínica.</em></h2>
-      <p>No bairro Campina do Siqueira, próximo ao Bigorrilho, ao Champagnat e ao Ecoville, no Edifício Lakeside Corporate.</p>
+      <h2>Seu dentista em Curitiba, <em>na Campina do Siqueira.</em></h2>
+      <p>A clínica fica no Edifício Lakeside Corporate, próximo ao Bigorrilho, ao Champagnat e ao Ecoville.</p>
     </div>
     <div class="visit">
       <div class="visit-info reveal">
@@ -1025,7 +1033,8 @@ window.SITE_CONFIG = {
       </span>
       <div class="foot-legal">
         <span><b>Clínica Ateliê Dental</b> · Atelie Dental Odontologia LTDA · CRO-PR 6780 · CNPJ 39.816.125/0001-20</span>
-        <span>Responsável técnica: Dra. Vannessa Borsato · CRO-PR 26722 · Dr. Delson Borsato · CRO-PR 23995</span>
+        <span>Responsável técnica: Dra. Vannessa Borsato, cirurgiã-dentista · CRO-PR 26722</span>
+        <span>Sócio-proprietário: Dr. Delson Borsato, cirurgião-dentista · CRO-PR 23995</span>
         <span>Rua General Mário Tourinho, 1805, salas 804 e 805 · Campina do Siqueira · Curitiba/PR</span>
         <span id="privacy-slot"></span>
       </div>
@@ -1127,7 +1136,8 @@ window.SITE_CONFIG = {
     // Links
     document.querySelectorAll('[data-link]').forEach(function (a) {
       var u = links[a.getAttribute('data-link')];
-      if (hasUrl(u)) a.href = u;
+      if (hasUrl(u)) { a.href = u; }
+      else { a.removeAttribute('href'); a.removeAttribute('target'); a.setAttribute('aria-disabled', 'true'); if (a.classList.contains('btn') || a.classList.contains('esp')) a.hidden = true; }
     });
     // Links internos do site abrem na mesma aba (fora do iframe do Wix)
     document.querySelectorAll('[data-link="lpInvisalign"], [data-link="atelieFacial"]').forEach(function (a) { a.target = '_top'; });
@@ -1177,11 +1187,11 @@ window.SITE_CONFIG = {
     }
 
     // Galeria
-    var gal = lista(fotos.galeria).filter(hasUrl);
+    var gal = lista(fotos.galeria).map(function (x) { return typeof x === 'string' ? { src: x, alt: '' } : (x || {}); }).filter(function (x) { return hasUrl(x.src); });
     var g = document.getElementById('galeria');
     if (gal.length) {
-      g.innerHTML = gal.map(function (u, i) {
-        return '<figure class="reveal"><img loading="lazy" decoding="async" src="' + esc(u) + '" alt="Clínica Ateliê Dental – ambiente ' + (i + 1) + '"></figure>';
+      g.innerHTML = gal.map(function (x, i) {
+        return '<figure class="reveal"><img loading="lazy" decoding="async" src="' + esc(x.src) + '" alt="' + esc(x.alt || ('Clínica Ateliê Dental – ambiente ' + (i + 1))) + '"></figure>';
       }).join('');
     } else { g.hidden = true; }
 
