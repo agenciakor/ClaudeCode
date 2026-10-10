@@ -47,16 +47,16 @@ Alturas de referência (sem o cabeçalho do Wix):
 | Largura do elemento | Altura |
 |---|---|
 | 280 px (mobile clássico) | ≈ 16.200 px |
-| 320 px (mobile clássico) | ≈ 15.000 px |
+| 320 px (mobile clássico) | ≈ 15.100 px |
 | 390 px | ≈ 13.900 px |
 | 768 px | ≈ 12.400 px |
 | 980 px | ≈ 9.950 px |
-| 1280 px | ≈ 9.750 px |
-| 1440 px ou mais | ≈ 9.860 px |
+| 1280 px | ≈ 9.850 px |
+| 1440 px ou mais | ≈ 9.950 px |
 
 ## Pendências
 
-- [ ] Subir as fotos da clínica, do Dr. Delson e a logo da Ateliê Facial no Wix e colar as URLs
+- [x] Subir as fotos da clínica, do Dr. Delson e a logo da Ateliê Facial no Wix e colar as URLs (feito: todas as imagens já vêm do Wix)
 - [ ] Montar o cabeçalho e o menu (CABECALHO-WIX.md)
 - [ ] Criar a página `/atelie-facial` (o botão "Conhecer a Ateliê Facial" aponta para ela)
 - [ ] Criar as páginas das demais especialidades, uma a uma, e ligar os cards

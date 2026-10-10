@@ -45,9 +45,16 @@ Páginas que **não** entram no menu: `politica-de-privacidade` (link só no rod
    `logo-atelie-dental-horizontal.png` (já está no Gerenciador de Mídia), altura 44 px, e ligue ao
    **Início** (*Link > Página > Início*).
 4. **Âncoras:** na página inicial, adicione duas âncoras do Wix (*Adicionar > Mais > Âncora*) chamadas
-   `clinica` e `contato`, posicionadas sobre o bloco HTML na altura dessas seções (use a prévia
-   para achar a altura: "A clínica" fica a ~45% da página e "Contato" a ~88%). Elas servem para os
-   itens *A Clínica* e *Contato* do menu.
+   `clinica` e `contato`, posicionadas sobre o bloco HTML na altura dessas seções. Posições medidas
+   a partir do **topo do Elemento HTML** (não do topo da página):
+
+   | Tela | Âncora `clinica` | Âncora `contato` | Altura do HTML |
+   |---|---|---|---|
+   | Desktop (elemento com 1280 px ou mais) | ≈ 3.720 px (37 %) | ≈ 8.120 px (82 %) | ≈ 9.950 px |
+   | Celular (elemento com 320 px) | ≈ 6.730 px (45 %) | ≈ 12.590 px (83 %) | ≈ 15.100 px |
+
+   No editor mobile as âncoras podem ser movidas separadamente; use a segunda linha da tabela.
+   Elas servem para os itens *A Clínica* e *Contato* do menu.
 5. **Menu:** *Adicionar > Menu > Menu horizontal*. Em **Gerenciar menu**:
    - mantenha só `Início`, `A Clínica` (link: âncora `clinica`), `Especialidades` (pasta) com o
      subitem `Alinhador Invisível (Invisalign®)` (link: página `/alinhador-invisivel-invisalig`),
