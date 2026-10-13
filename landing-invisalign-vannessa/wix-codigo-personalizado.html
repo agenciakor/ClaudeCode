@@ -5,8 +5,8 @@
   ------------------------------------------------------------------
   Onde colar: Painel do Wix > Configurações > Código personalizado > + Adicionar código
     • Colar o código abaixo
-    • Adicionar código a: "Todas as páginas" (o botão e o rastreamento valem para a Home e a landing;
-      o código detecta sozinho em qual página está e usa a mensagem de WhatsApp certa)
+    • Adicionar código a: "Todas as páginas" (o botão e o rastreamento valem para o site inteiro;
+      o código detecta sozinho em qual página está e usa a mensagem de WhatsApp certa: veja PAGINAS)
     • Posicionar em: "Head"
   (Código personalizado exige plano Premium com domínio conectado e só roda no site
    publicado, não no "Visualizar" do editor.)
@@ -56,12 +56,15 @@
 <script>
   (function () {
     if (document.getElementById('lp-wa')) return;
-    // Na landing page do Invisalign a mensagem é a da campanha; nas demais páginas (Home etc.), a mensagem geral do site.
-    // Não inclua "Ref." na mensagem: o rastreador do site (kor-radar) acrescenta o código Ref. sozinho ao clicar.
-    var NA_LP = /^\/alinhador-invisivel-invisalig\/?$/i.test(location.pathname);
-    var URL_WA = NA_LP
-      ? 'https://wa.me/554130726994?text=Ol%C3%A1%20Tenho%20interesse%20em%20saber%20mais%20sobre%20Invisalign.%20*N%C3%83O%20APAGUE%20ESSA%20MENSAGEM%20VOC%C3%8A%20TEM%20PREFER%C3%8ANCIA*'
-      : 'https://wa.me/554130726994?text=Ol%C3%A1%2C%20conheci%20o%20site%20e%20quero%20agendar%20um%20atendimento.';
+    // Mensagem do WhatsApp por página (sem "Ref.": o rastreador do site, kor-radar, acrescenta o código Ref. sozinho ao clicar).
+    // Para uma nova landing, acrescente uma linha com o caminho da página e a mensagem da campanha.
+    var PAGINAS = [
+      { id: 'lp',   caminho: /^\/alinhador-invisivel-invisalig\/?$/i, msg: 'Olá Tenho interesse em saber mais sobre Invisalign. *NÃO APAGUE ESSA MENSAGEM VOCÊ TEM PREFERÊNCIA*' },
+      { id: 'siso', caminho: /^\/extracao-de-siso-curitiba\/?$/i,     msg: 'Olá, quero agendar uma avaliação para extração de siso.' }
+    ];
+    var PAGINA = { id: 'site', msg: 'Olá, conheci o site e quero agendar um atendimento.' }; // demais páginas (Home etc.)
+    for (var i = 0; i < PAGINAS.length; i++) { if (PAGINAS[i].caminho.test(location.pathname)) { PAGINA = PAGINAS[i]; break; } }
+    var URL_WA = 'https://wa.me/554130726994?text=' + encodeURIComponent(PAGINA.msg);
     function criar() {
       var a = document.createElement('a');
       a.id = 'lp-wa'; a.href = URL_WA; a.target = '_blank'; a.rel = 'noopener';
@@ -70,7 +73,7 @@
         '<span><small>Estamos online</small><b>Agende sua avaliação</b></span>';
       a.addEventListener('click', function () {
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: 'lp_whatsapp_click', cta_posicao: (NA_LP ? 'lp_' : 'site_') + 'flutuante' });
+        window.dataLayer.push({ event: 'lp_whatsapp_click', cta_posicao: PAGINA.id + '_flutuante' });
         if (window.__lpEnviarConversao) window.__lpEnviarConversao();
       });
       document.body.appendChild(a);
