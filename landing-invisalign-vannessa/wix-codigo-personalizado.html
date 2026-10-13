@@ -129,7 +129,7 @@
 
       if (d.event === 'whatsapp_click') {
         if (MODO === 'gtm') {
-          window.dataLayer.push({ event: 'lp_whatsapp_click', cta_posicao: d.cta_posicao || '' });
+          window.dataLayer.push({ event: 'lp_whatsapp_click', cta_posicao: d.cta_posicao || '', pagina: d.pagina || '' });
         } else if (pronto) {
           window.gtag('event', 'conversion', { send_to: GOOGLE_ADS_SEND_TO });
         }

@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Extração de Siso em Curitiba | Dr. Delson Borsato – Clínica Ateliê Dental</title>
-<meta name="description" content="Extração de siso em Curitiba com cirurgião-dentista com residência em cirurgia bucomaxilofacial. Avaliação com exame de imagem, sisos inclusos e casos complexos, pós-operatório acompanhado. Agende pelo WhatsApp.">
+<title>Extração de Siso em Curitiba | Clínica Ateliê Dental · Dr. Delson Borsato</title>
+<meta name="description" content="Extração de siso em Curitiba, do caso simples ao siso incluso. Cirurgia feita por cirurgião-dentista com residência em cirurgia bucomaxilofacial, avaliação com exame de imagem e pós-operatório acompanhado. Agende pelo WhatsApp.">
 
 <!--
   ================================================================
-  LANDING PAGE · EXTRAÇÃO DE SISO EM CURITIBA · DR. DELSON BORSATO
+  LANDING PAGE · EXTRAÇÃO DE SISO EM CURITIBA · CLÍNICA ATELIÊ DENTAL
   Feita para o Wix: Adicionar > Incorporar código > Elemento HTML
   (modo "Código"). Cole ESTE ARQUIVO INTEIRO no elemento.
+  A página do Wix deve ficar COM o cabeçalho principal do site.
   Tudo o que é editável fica no bloco LP_CONFIG logo abaixo.
   ================================================================
 -->
@@ -25,13 +26,11 @@ window.LP_CONFIG = {
 
   // ---------- FOTOS (URLs do Gerenciador de Mídia do Wix; vazio = mostra espaço reservado) ----------
   fotos: {
-    logo: 'https://static.wixstatic.com/media/1d3ce1_afdb8963ed1c49949ec86ac1fed7af1f~mv2.png',        // logo horizontal (topo)
-    logoRodape: 'https://static.wixstatic.com/media/1d3ce1_f656dca2a1df4fe08b2a8de1e32fc608~mv2.png',  // versão clara (rodapé)
-    heroFoto: 'https://static.wixstatic.com/media/71aa96_24a91c91e33040e7b17ee79a24201063~mv2.jpg',    // Dr. Delson (vertical 4:5)
-    sobreDr: 'https://static.wixstatic.com/media/71aa96_24a91c91e33040e7b17ee79a24201063~mv2.jpg',     // retrato para a seção "Quem vai fazer a sua cirurgia"
-    consultorio: 'https://static.wixstatic.com/media/71aa96_c6e5ad22a40947cca09ce6632ccc0462~mv2.jpg', // foto quadrada na seção de indicações
-    atendimento: 'https://static.wixstatic.com/media/71aa96_01511a43fb7244e9bf56709012725f5c~mv2.jpg', // foto da seção "Quem faz a cirurgia"
-    clinica: [                                           // fotos da clínica (horizontal 3:2)
+    logoRodape: 'https://static.wixstatic.com/media/1d3ce1_f656dca2a1df4fe08b2a8de1e32fc608~mv2.png',  // logo clara (rodapé)
+    heroFoto: 'https://static.wixstatic.com/media/71aa96_24a91c91e33040e7b17ee79a24201063~mv2.jpg',    // Dr. Delson (vertical 4:5), hero
+    sobreDr: 'https://static.wixstatic.com/media/71aa96_24a91c91e33040e7b17ee79a24201063~mv2.jpg',     // Dr. Delson, seção "Quem faz a cirurgia"
+    consultorio: 'https://static.wixstatic.com/media/71aa96_4d59408390d840d4a9d92369f9861c6f~mv2.jpg', // cadeira odontológica com vista (foto quadrada da seção de indicações)
+    clinica: [                                           // fotos da clínica (horizontal 3:2), em carrossel
       { src: 'https://static.wixstatic.com/media/71aa96_4d59408390d840d4a9d92369f9861c6f~mv2.jpg', alt: 'Consultório da Clínica Ateliê Dental com vista para Curitiba' },
       { src: 'https://static.wixstatic.com/media/71aa96_01511a43fb7244e9bf56709012725f5c~mv2.jpg', alt: 'Sala de atendimento da Clínica Ateliê Dental' },
       { src: 'https://static.wixstatic.com/media/71aa96_c8ca8043856b4aa0b184b7c5902b08fa~mv2.jpg', alt: 'Sala de planejamento da Clínica Ateliê Dental' },
@@ -43,7 +42,7 @@ window.LP_CONFIG = {
 
   // ---------- LINKS ----------
   links: {
-    google: 'https://www.google.com/maps/place/Cl%C3%ADnica+Ateli%C3%AA+Dental+%7C+Ateli%C3%AA+Facial/@-25.4362418,-49.3111355,17z/data=!4m8!3m7!1s0x94dce3e81b571715:0x3f50203b848eff56!8m2!3d-25.4362418!4d-49.3085606!9m1!1b1!16s%2Fg%2F11ph0_850h?entry=ttu',
+    google: 'https://www.google.com/maps/place/Cl%%C3%%ADnica+Ateli%%C3%%AA+Dental+%%7C+Ateli%%C3%%AA+Facial/@-25.4362418,-49.3111355,17z/data=!4m8!3m7!1s0x94dce3e81b571715:0x3f50203b848eff56!8m2!3d-25.4362418!4d-49.3085606!9m1!1b1!16s%%2Fg%%2F11ph0_850h?entry=ttu',
     instagram: 'https://www.instagram.com/clinicaateliedental/',
     privacidade: 'https://www.clinicaateliedental.com/politica-de-privacidade'
   },
@@ -549,12 +548,23 @@ window.LP_CONFIG = {
   }
 
   /* =============== LANDING · EXTRAÇÃO DE SISO =============== */
-  .hero-copy h1{font-size:clamp(2.2rem, 4.6vw, 3.9rem)}
+  .hero{padding-top:clamp(40px,6vw,72px)}   /* sem a barra própria: o cabeçalho é o do site (Wix) */
+  .hero-copy h1{font-size:clamp(2.15rem, 4.4vw, 3.7rem)}
   .hero-media .frame img{object-position:50% 15%}
   .about .frame img{object-position:50% 15%}
+  .about .checks{margin-top:22px}
+  .indic .foto-lateral img{object-position:50% 62%}
+  @media (max-width:900px){.indic .foto-lateral{display:none}}   /* no celular a foto interromperia a lista; ela já está no carrossel da clínica */
   .pos-note{display:flex;gap:10px;align-items:flex-start;margin:26px auto 0;max-width:760px;color:var(--muted);font-size:.9rem;line-height:1.55}
   .pos-note svg{width:18px;height:18px;flex:none;margin-top:2px;color:var(--accent-ink)}
-  .cro-line{display:block;margin-top:6px;font-size:.85rem;color:var(--muted)}
+  /* carrossel de fotos da clínica (mesma mecânica do carrossel de depoimentos) */
+  .galeria{margin-bottom:32px}
+  .fotos{display:flex;gap:20px;transition:transform .55s cubic-bezier(.22,.61,.36,1);will-change:transform}
+  .fotos.sem-anim{transition:none}
+  .fotos figure{flex:0 0 calc((100% - 40px)/3);min-width:0;margin:0;border-radius:var(--radius-sm);overflow:hidden;aspect-ratio:3/2;background:var(--accent-soft)}
+  .fotos img{width:100%;height:100%;object-fit:cover;display:block}
+  @media (max-width:1000px){.fotos figure{flex-basis:calc((100% - 20px)/2)}}
+  @media (max-width:640px){.fotos figure{flex-basis:100%}}
 
 </style>
 </head>
@@ -584,51 +594,32 @@ window.LP_CONFIG = {
 </svg>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <symbol id="i-tooth" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M7.5 3C5 3 3.5 5 3.5 7.5c0 2 .8 3.2 1.4 5 .7 2.2.9 5.5 2.4 8.3.4.8 1.5.8 1.9 0 .8-1.6.9-4.3 2.8-4.3s2 2.7 2.8 4.3c.4.8 1.5.8 1.9 0 1.5-2.8 1.7-6.1 2.4-8.3.6-1.8 1.4-3 1.4-5C20.5 5 19 3 16.5 3c-1.8 0-2.9 1-4.5 1S9.3 3 7.5 3Z"/></symbol>
-    <symbol id="i-scalpel" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21 14 10M14 10l3.5-6.5a2 2 0 0 1 3 3L14 10ZM3 21l5-1 6-6"/></g></symbol>
-    <symbol id="i-xray" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h5M12 6v12"/></g></symbol>
     <symbol id="i-ice" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M12 3l-2.5 2.5M12 3l2.5 2.5M12 21l-2.5-2.5M12 21l2.5-2.5M4.2 7.5l3.4-.9M4.2 7.5l.9 3.4M19.8 16.5l-3.4.9M19.8 16.5l-.9-3.4M4.2 16.5l.9-3.4M4.2 16.5l3.4.9M19.8 7.5l-.9 3.4M19.8 7.5l-3.4-.9"/></g></symbol>
     <symbol id="i-bed" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18V8M3 14h18v4M21 14v-3a2 2 0 0 0-2-2h-8v5"/><circle cx="7" cy="10.5" r="1.8"/></g></symbol>
-    <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v11H9l-5 4V5ZM8 9h8M8 12.5h5"/></symbol>
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
   </defs>
 </svg>
-
-<header class="topbar">
-  <div class="wrap">
-    <span class="brand" data-logo>
-      <span class="wordmark"><small>Clínica</small><span>Ateliê Dental</span></span>
-    </span>
-    <div class="top-right">
-      <span class="cro">Dr. Delson Borsato · CRO-PR 23995</span>
-      <a class="btn btn-primary" data-wa="topo" href="https://wa.me/554130726994?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20extra%C3%A7%C3%A3o%20de%20siso." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
-        <svg aria-hidden="true"><use href="#i-wa"/></svg><span>Falar no WhatsApp</span>
-      </a>
-    </div>
-  </div>
-</header>
 
 <main>
 <!-- ================= HERO ================= -->
 <section class="hero" id="inicio">
   <div class="wrap">
     <div class="hero-copy reveal">
-      <span class="eyebrow">Extração de siso em Curitiba</span>
-      <h1>Extração de siso com <em>cirurgião bucomaxilofacial.</em></h1>
-      <p class="lead">Avaliação com exame de imagem, cirurgia no consultório com anestesia local e pós-operatório acompanhado, com o <strong>Dr. Delson Borsato, cirurgião-dentista com residência em Cirurgia e Traumatologia Bucomaxilofacial</strong>, na Clínica Ateliê Dental, Campina do Siqueira.</p>
+      <span class="eyebrow">Clínica Ateliê Dental · Campina do Siqueira</span>
+      <h1>Extração de siso em Curitiba, <em>do caso simples ao siso incluso.</em></h1>
+      <p class="lead">A cirurgia é feita pelo <strong>Dr. Delson Borsato, cirurgião-dentista com residência em Cirurgia e Traumatologia Bucomaxilofacial</strong>. Avaliação com exame de imagem, cirurgia no consultório com anestesia local e pós-operatório acompanhado pela equipe da clínica.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" data-wa="hero" href="https://wa.me/554130726994?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20extra%C3%A7%C3%A3o%20de%20siso." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar minha avaliação</a>
       </div>
       <p class="cta-note"><span class="dot" aria-hidden="true"></span>Envie sua mensagem a qualquer hora. Respondemos seg a sex, 8h às 18h, e sáb, 8h às 12h.</p>
       <ul class="trust" aria-label="Diferenciais">
-        <li><svg aria-hidden="true"><use href="#i-check"/></svg>Residência em cirurgia bucomaxilofacial</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>Cirurgião com residência hospitalar</li>
         <li><svg aria-hidden="true"><use href="#i-check"/></svg>Sisos inclusos e semi-inclusos</li>
         <li><svg aria-hidden="true"><use href="#i-check"/></svg>Pós-operatório acompanhado</li>
       </ul>
     </div>
 
     <div class="hero-media reveal">
-      <div class="frame" data-foto="heroFoto" data-alt="Dr. Delson Borsato, cirurgião-dentista em Curitiba">
+      <div class="frame" data-foto="heroFoto" data-alt="Dr. Delson Borsato, cirurgião-dentista da Clínica Ateliê Dental, em Curitiba">
         <div class="ph"><svg viewBox="0 0 400 260" aria-hidden="true"><use href="#i-arch"/></svg><small>Foto do Dr. Delson</small></div>
       </div>
       <div class="badge-float">
@@ -644,10 +635,10 @@ window.LP_CONFIG = {
 </section>
 
 <!-- ================= CREDENCIAIS ================= -->
-<section class="creds" aria-label="Credenciais do Dr. Delson e da clínica">
+<section class="creds" aria-label="Credenciais do cirurgião e da clínica">
   <div class="wrap">
     <div class="cred"><b>Residência em Bucomaxilofacial</b><span>Cirurgia e Traumatologia Bucomaxilofacial · Hospital Evangélico de Curitiba</span></div>
-    <div class="cred"><b>Mestrado em Cirurgia</b><span>Princípios de Cirurgia · Faculdade Evangélica Mackenzie</span></div>
+    <div class="cred"><b>Mestrado em Cirurgia</b><span>Princípios da Cirurgia · Faculdade Evangélica Mackenzie</span></div>
     <div class="cred"><b>5,0 no Google</b><span>101 avaliações de pacientes da Clínica Ateliê Dental</span></div>
     <div class="cred"><b>Campina do Siqueira</b><span>Rua General Mário Tourinho, 1805 · Curitiba</span></div>
   </div>
@@ -668,36 +659,43 @@ window.LP_CONFIG = {
     <ul class="indic-list">
       <li class="reveal"><span class="num">01</span><div><b>Dor, inchaço ou gengiva inflamada no fundo da boca</b><span>Pericoronarite: a gengiva que cobre parte do siso inflama, dói e pode infeccionar repetidas vezes.</span></div></li>
       <li class="reveal"><span class="num">02</span><div><b>Siso incluso ou semi-incluso</b><span>O dente não consegue nascer por completo e fica preso dentro do osso ou sob a gengiva.</span></div></li>
-      <li class="reveal"><span class="num">03</span><div><b>Siso deitado ou mal posicionado</b><span>Pressiona o dente vizinho, dificulta a limpeza e pode causar cárie e desgaste no segundo molar.</span></div></li>
+      <li class="reveal"><span class="num">03</span><div><b>Siso deitado ou mal posicionado</b><span>Pressiona o dente vizinho, dificulta a limpeza e pode causar cárie, perda óssea e até reabsorção da raiz do segundo molar.</span></div></li>
       <li class="reveal"><span class="num">04</span><div><b>Cárie ou inflamação que sempre voltam</b><span>Por ficar no fundo da boca, o siso é difícil de escovar e costuma dar problema de novo depois de tratado.</span></div></li>
-      <li class="reveal"><span class="num">05</span><div><b>Indicação do ortodontista</b><span>Para ganhar espaço ou proteger o resultado do tratamento com aparelho ou alinhadores.</span></div></li>
+      <li class="reveal"><span class="num">05</span><div><b>Indicação do ortodontista</b><span>Quando o siso atrapalha a movimentação dos outros dentes ou o ortodontista precisa de espaço atrás dos molares para o tratamento com aparelho ou alinhadores.</span></div></li>
       <li class="reveal"><span class="num">06</span><div><b>Cistos e alterações no exame de imagem</b><span>Sisos inclusos podem estar associados a lesões que precisam de acompanhamento ou de remoção.</span></div></li>
     </ul>
     <div class="inline-cta plain reveal">
-      <p>Está sentindo algum desses sinais?</p>
+      <p>Se identificou com alguma dessas situações?</p>
       <a class="btn btn-primary" data-wa="indicacoes" href="https://wa.me/554130726994?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20extra%C3%A7%C3%A3o%20de%20siso." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Quero avaliar meu siso</a>
     </div>
   </div>
 </section>
 
-<!-- ================= QUEM FAZ A CIRURGIA ================= -->
+<!-- ================= QUEM FAZ A CIRURGIA (Dr. Delson) ================= -->
 <section class="section alt" id="cirurgiao">
-  <div class="wrap spec">
-    <div class="media reveal">
-      <div class="frame" data-foto="atendimento" data-alt="Sala de atendimento da Clínica Ateliê Dental">
-        <div class="ph"><svg viewBox="0 0 400 260" aria-hidden="true"><use href="#i-arch"/></svg><small>Foto da sala de atendimento</small></div>
+  <div class="wrap about">
+    <div class="reveal">
+      <div class="frame" data-foto="sobreDr" data-alt="Retrato do Dr. Delson Borsato">
+        <div class="ph"><svg viewBox="0 0 400 260" aria-hidden="true"><use href="#i-arch"/></svg><small>Retrato do Dr. Delson</small></div>
       </div>
     </div>
     <div class="reveal">
       <span class="eyebrow">Quem faz a cirurgia</span>
       <h2>Tirar o siso é uma cirurgia. <em>Aqui, é feita por quem se dedica a ela.</em></h2>
-      <p class="body">O Dr. Delson Borsato é cirurgião-dentista com residência em Cirurgia e Traumatologia Bucomaxilofacial pelo Hospital Evangélico de Curitiba e mestrado em Princípios de Cirurgia. Na Ateliê Dental, é ele quem faz as extrações de siso, dos casos simples aos inclusos e mais delicados.</p>
+      <p class="role">Dr. Delson Borsato · Cirurgião-dentista · CRO-PR 23995</p>
+      <div class="body">
+        <p>Na Ateliê Dental, as extrações de siso são feitas pelo Dr. Delson Borsato, sócio-proprietário da clínica, com residência em Cirurgia e Traumatologia Bucomaxilofacial pelo Hospital Evangélico de Curitiba e mestrado em Princípios da Cirurgia pela Faculdade Evangélica Mackenzie.</p>
+        <p>Siso incluso, deitado, encostado no nervo ou com as raízes já formadas pede mais do que uma extração comum. É para esse tipo de caso que a residência hospitalar em cirurgia prepara o profissional.</p>
+      </div>
       <ul class="checks">
         <li><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><div><b>Formação hospitalar em cirurgia.</b> <span>A residência em bucomaxilofacial é voltada às cirurgias da boca, dos maxilares e da face.</span></div></li>
         <li><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><div><b>Sisos inclusos, semi-inclusos e próximos ao nervo.</b> <span>Planejamento com radiografia panorâmica e, quando necessário, tomografia, para operar com mais previsibilidade.</span></div></li>
         <li><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><div><b>Cirurgia no consultório, com anestesia local.</b> <span>Ambiente preparado, técnica e instrumental adequados a cada caso.</span></div></li>
         <li><span class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg></span><div><b>Pós-operatório acompanhado.</b> <span>Orientações por escrito, prescrição e retorno marcado para conferir a cicatrização.</span></div></li>
       </ul>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" data-wa="cirurgiao" href="https://wa.me/554130726994?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20extra%C3%A7%C3%A3o%20de%20siso." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar minha avaliação</a>
+      </div>
     </div>
   </div>
 </section>
@@ -712,13 +710,13 @@ window.LP_CONFIG = {
     </div>
     <ol class="steps">
       <li class="step reveal"><h3>Avaliação</h3><p>Conversa sobre a sua queixa, exame clínico e radiografia panorâmica. Quando necessário, tomografia para ver a relação do siso com o nervo e com as raízes dos dentes vizinhos.</p></li>
-      <li class="step reveal"><h3>Planejamento</h3><p>O Dr. Delson mostra a posição dos seus sisos, explica o que será feito, quantos dentes por sessão e o que fazer antes da cirurgia.</p></li>
-      <li class="step reveal"><h3>Cirurgia</h3><p>No consultório, com anestesia local. A duração varia com a posição do dente: em geral, entre 30 minutos e 1 hora por sessão.</p></li>
+      <li class="step reveal"><h3>Planejamento</h3><p>Você entende a posição dos seus sisos, o que será feito, quantos dentes por sessão e o que fazer antes da cirurgia.</p></li>
+      <li class="step reveal"><h3>Cirurgia</h3><p>Feita pelo Dr. Delson, no consultório, com anestesia local. A duração varia com a posição do dente: em geral, entre 30 minutos e 1 hora por sessão.</p></li>
       <li class="step reveal"><h3>Pós-operatório</h3><p>Você sai com as orientações por escrito e a prescrição. Nos primeiros dias, a equipe está disponível para tirar dúvidas pelo WhatsApp.</p></li>
       <li class="step reveal"><h3>Retorno</h3><p>Consulta de controle para conferir a cicatrização e retirar os pontos, quando houver.</p></li>
     </ol>
     <div class="inline-cta plain reveal">
-      <p>Tudo começa pela avaliação com o Dr. Delson.</p>
+      <p>Tudo começa pela avaliação.</p>
       <a class="btn btn-primary" data-wa="como-funciona" href="https://wa.me/554130726994?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20extra%C3%A7%C3%A3o%20de%20siso." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar minha avaliação</a>
     </div>
   </div>
@@ -736,12 +734,12 @@ window.LP_CONFIG = {
       <article class="card reveal">
         <div class="icon"><svg aria-hidden="true"><use href="#i-clock"/></svg></div>
         <h3>Primeiras 24 horas</h3>
-        <p>Repouso, compressa fria no rosto e nada de bochechos. Um pouco de sangue na gaze ou na saliva é esperado.</p>
+        <p>Repouso, compressa fria no rosto e nada de bochechar, cuspir ou fumar. Um pouco de sangue na gaze ou na saliva é esperado.</p>
       </article>
       <article class="card reveal">
         <div class="icon"><svg aria-hidden="true"><use href="#i-ice"/></svg></div>
         <h3>Inchaço e desconforto</h3>
-        <p>São comuns nos primeiros 2 a 3 dias e tendem a diminuir a partir daí. A medicação prescrita ajuda a controlá-los.</p>
+        <p>Inchaço, desconforto e alguma dificuldade para abrir a boca são comuns nos primeiros 2 a 3 dias e tendem a diminuir a partir daí. A medicação prescrita ajuda a controlar o desconforto.</p>
       </article>
       <article class="card reveal">
         <div class="icon"><svg aria-hidden="true"><use href="#i-food"/></svg></div>
@@ -751,12 +749,12 @@ window.LP_CONFIG = {
       <article class="card reveal">
         <div class="icon"><svg aria-hidden="true"><use href="#i-drop"/></svg></div>
         <h3>Higiene</h3>
-        <p>Escovação normal nos outros dentes e cuidado redobrado na região operada, conforme a orientação do Dr. Delson.</p>
+        <p>Escovação normal nos outros dentes e cuidado redobrado na região operada, conforme a orientação da equipe.</p>
       </article>
       <article class="card reveal">
         <div class="icon"><svg aria-hidden="true"><use href="#i-bed"/></svg></div>
         <h3>Volta à rotina</h3>
-        <p>Atividades leves, em geral, em 2 a 3 dias. Exercício físico e esforço, só depois da liberação na consulta de retorno.</p>
+        <p>Atividades leves, em geral, em 1 a 2 dias; um pouco mais em sisos inclusos ou quando mais de um dente é extraído. Exercício físico e esforço, só depois da liberação na consulta de retorno.</p>
       </article>
       <article class="card reveal">
         <div class="icon"><svg aria-hidden="true"><use href="#i-check"/></svg></div>
@@ -765,35 +763,6 @@ window.LP_CONFIG = {
       </article>
     </div>
     <p class="pos-note reveal"><svg aria-hidden="true"><use href="#i-info"/></svg><span>Orientações gerais. Cada caso tem a sua evolução: siga sempre a prescrição e as instruções entregues no dia da cirurgia e, em caso de dúvida, fale com a equipe.</span></p>
-  </div>
-</section>
-
-<!-- ================= QUEM É O DR. ================= -->
-<section class="section" id="dr">
-  <div class="wrap about">
-    <div class="reveal">
-      <div class="frame" data-foto="sobreDr" data-alt="Retrato do Dr. Delson Borsato">
-        <div class="ph"><svg viewBox="0 0 400 260" aria-hidden="true"><use href="#i-arch"/></svg><small>Retrato do Dr. Delson</small></div>
-      </div>
-    </div>
-    <div class="reveal">
-      <span class="eyebrow">Quem vai fazer a sua cirurgia</span>
-      <h2>Dr. Delson <em>Borsato</em></h2>
-      <p class="role">Cirurgião-dentista · Cirurgia bucomaxilofacial · CRO-PR 23995</p>
-      <div class="body">
-        <p>Sócio-proprietário da Clínica Ateliê Dental, o Dr. Delson fez residência em Cirurgia e Traumatologia Bucomaxilofacial no Hospital Evangélico de Curitiba e mestrado em Princípios de Cirurgia na Faculdade Evangélica Mackenzie.</p>
-        <p>Atua com extrações de siso, cirurgias orais e bucomaxilofaciais e cirurgias estéticas da face, com aperfeiçoamento em cirurgias periodontais e peri-implantares e imersão em cirurgia bucomaxilofacial no Miami Anatomical Research Center.</p>
-      </div>
-      <div class="facts">
-        <div class="fact"><small>Residência</small><b>Cirurgia e Traumatologia Bucomaxilofacial · Hospital Evangélico de Curitiba</b></div>
-        <div class="fact"><small>Mestrado</small><b>Princípios de Cirurgia · Faculdade Evangélica Mackenzie</b></div>
-        <div class="fact"><small>Aperfeiçoamento</small><b>Cirurgias periodontais e peri-implantares</b></div>
-        <div class="fact"><small>Imersão</small><b>Cirurgia Bucomaxilofacial · Miami Anatomical Research Center</b></div>
-      </div>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" data-wa="dr" href="https://wa.me/554130726994?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20extra%C3%A7%C3%A3o%20de%20siso." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Agendar com o Dr. Delson</a>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -816,7 +785,7 @@ window.LP_CONFIG = {
       </div>
     </div>
     <div class="links-row">
-      <a class="btn btn-ghost" data-link="google" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-google"/></svg>Mais avaliações no Google</a>
+      <a class="btn btn-ghost" data-link="google" href="https://www.google.com/maps/place/Cl%C3%ADnica+Ateli%C3%AA+Dental+%7C+Ateli%C3%AA+Facial/@-25.4362418,-49.3111355,17z/data=!4m8!3m7!1s0x94dce3e81b571715:0x3f50203b848eff56!8m2!3d-25.4362418!4d-49.3085606!9m1!1b1!16s%2Fg%2F11ph0_850h?entry=ttu" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-google"/></svg>Mais avaliações no Google</a>
       <a class="btn btn-ghost" data-link="instagram" href="https://www.instagram.com/clinicaateliedental/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg>@clinicaateliedental</a>
     </div>
   </div>
@@ -830,7 +799,16 @@ window.LP_CONFIG = {
       <h2>Um espaço pensado para você se sentir <em>à&nbsp;vontade.</em></h2>
       <p>No bairro Campina do Siqueira, próximo ao Bigorrilho, ao Champagnat e ao Ecoville.</p>
     </div>
-    <div class="gallery" id="gallery" hidden></div>
+    <div class="carrossel galeria reveal" id="galeria" aria-roledescription="carrossel" aria-label="Fotos da clínica" hidden>
+      <div class="carrossel-janela"><div class="fotos" id="galeria-trilho"></div></div>
+      <div class="carrossel-nav">
+        <div class="carrossel-pontos" id="galeria-pontos" role="tablist" aria-label="Ir para a foto"></div>
+        <div class="carrossel-setas">
+          <button type="button" id="galeria-ant" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+          <button type="button" id="galeria-prox" aria-label="Próxima foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+        </div>
+      </div>
+    </div>
     <div class="visit">
       <div class="visit-info reveal">
         <div class="row">
@@ -880,7 +858,7 @@ window.LP_CONFIG = {
     <div class="faq">
       <details name="faq" open>
         <summary>A extração de siso dói?</summary>
-        <div class="ans">A cirurgia é feita com anestesia local, e a sensação mais comum durante o procedimento é de pressão, não de dor. Depois, é normal sentir desconforto e inchaço por alguns dias, que a medicação prescrita ajuda a controlar.</div>
+        <div class="ans">A cirurgia é feita com anestesia local, e a sensação mais comum durante o procedimento é de pressão, não de dor. Depois, é normal sentir desconforto e inchaço por alguns dias; a medicação prescrita ajuda a controlá-los.</div>
       </details>
       <details name="faq">
         <summary>Quanto tempo demora a cirurgia?</summary>
@@ -888,7 +866,7 @@ window.LP_CONFIG = {
       </details>
       <details name="faq">
         <summary>Posso tirar os quatro sisos de uma vez?</summary>
-        <div class="ans">Depende do caso. Muitas vezes operam-se os dois sisos de um mesmo lado por sessão, o que facilita a alimentação na recuperação. Em alguns casos é possível remover os quatro na mesma sessão. O Dr. Delson define isso com você na avaliação.</div>
+        <div class="ans">Depende do caso. Muitas vezes, os dois sisos do mesmo lado (o de cima e o de baixo) são tirados na mesma sessão, para que você consiga mastigar pelo outro lado durante a recuperação. Em alguns casos é possível remover os quatro na mesma sessão. Isso é definido no planejamento, conforme o seu caso.</div>
       </details>
       <details name="faq">
         <summary>Preciso tirar o siso mesmo sem sentir dor?</summary>
@@ -900,15 +878,15 @@ window.LP_CONFIG = {
       </details>
       <details name="faq">
         <summary>Quais exames preciso levar?</summary>
-        <div class="ans">Se você já tem uma radiografia panorâmica recente, leve na avaliação. Se não tiver, o Dr. Delson solicita os exames necessários, que podem incluir uma tomografia quando o siso está próximo ao nervo.</div>
+        <div class="ans">Se você já tem uma radiografia panorâmica recente, leve na avaliação. Se não tiver, a equipe solicita os exames necessários, que podem incluir uma tomografia quando o siso está próximo ao nervo.</div>
       </details>
       <details name="faq">
         <summary>Quanto tempo leva a recuperação?</summary>
-        <div class="ans">O desconforto e o inchaço são maiores nos primeiros 2 a 3 dias e diminuem a partir daí. Os pontos saem em cerca de 7 a 10 dias. Sisos inclusos podem ter uma recuperação um pouco mais longa.</div>
+        <div class="ans">O desconforto, o inchaço e alguma dificuldade para abrir a boca são maiores nos primeiros 2 a 3 dias e diminuem a partir daí. Os pontos saem em cerca de 7 a 10 dias. Sisos inclusos podem ter uma recuperação um pouco mais longa.</div>
       </details>
       <details name="faq">
         <summary>Posso trabalhar no dia seguinte?</summary>
-        <div class="ans">Muitas pessoas conseguem fazer atividades leves no dia seguinte, mas o ideal é reservar 1 a 2 dias de repouso, principalmente quando mais de um dente é extraído. Exercício físico só com a liberação do Dr. Delson.</div>
+        <div class="ans">Muitas pessoas conseguem fazer atividades leves no dia seguinte, mas o ideal é reservar 1 a 2 dias de repouso, principalmente quando mais de um dente é extraído ou o siso é incluso. Exercício físico só depois da liberação na consulta de retorno.</div>
       </details>
       <details name="faq">
         <summary>Preciso ir acompanhado?</summary>
@@ -920,7 +898,7 @@ window.LP_CONFIG = {
       </details>
       <details name="faq">
         <summary>Como funciona a consulta de avaliação?</summary>
-        <div class="ans"><span id="faq-avaliacao">Na avaliação, o Dr. Delson conversa com você sobre a queixa, faz o exame clínico, analisa a radiografia panorâmica e explica a posição dos seus sisos, o que precisa ser feito e como será a cirurgia e a recuperação.</span> Para agendar, é só <a data-wa="faq" href="https://wa.me/554130726994?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20extra%C3%A7%C3%A3o%20de%20siso." target="_blank" rel="noopener">chamar a nossa equipe no WhatsApp</a>.</div>
+        <div class="ans"><span id="faq-avaliacao">Na avaliação, a equipe da clínica conversa com você sobre a queixa, faz o exame clínico, analisa a radiografia panorâmica e explica a posição dos seus sisos, o que precisa ser feito e como serão a cirurgia e a recuperação. A cirurgia em si é feita pelo Dr. Delson.</span> Para agendar, é só <a data-wa="faq" href="https://wa.me/554130726994?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20extra%C3%A7%C3%A3o%20de%20siso." target="_blank" rel="noopener">chamar a nossa equipe no WhatsApp</a>.</div>
       </details>
     </div>
   </div>
@@ -933,7 +911,7 @@ window.LP_CONFIG = {
     <div class="reveal">
       <span class="eyebrow" style="color:#D8B896">Agende sua avaliação</span>
       <h2 style="margin-top:14px">Resolver o siso é mais simples <em>do que parece.</em></h2>
-      <p>Chame nossa equipe no WhatsApp e agende sua avaliação com o Dr. Delson Borsato, cirurgião-dentista com residência em cirurgia bucomaxilofacial.</p>
+      <p>Chame nossa equipe no WhatsApp e agende sua avaliação na Clínica Ateliê Dental. A cirurgia é feita pelo Dr. Delson Borsato, cirurgião-dentista com residência em cirurgia bucomaxilofacial.</p>
     </div>
     <div class="final-box reveal">
       <a class="btn btn-light" data-wa="final" href="https://wa.me/554130726994?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20extra%C3%A7%C3%A3o%20de%20siso." target="_blank" rel="noopener">
@@ -955,7 +933,7 @@ window.LP_CONFIG = {
       <div class="foot-legal">
         <span><b>Clínica Ateliê Dental</b> · Atelie Dental Odontologia LTDA · <span data-cfg="croClinica">CRO-PR 6780</span> · CNPJ <span data-cfg="cnpj">39.816.125/0001-20</span></span>
         <span data-cfg="responsavelTecnico">Responsável técnica: Dra. Vannessa Borsato, cirurgiã-dentista · CRO-PR 26722</span>
-        <span>Cirurgião responsável pelos procedimentos desta página: Dr. Delson Borsato, cirurgião-dentista · CRO-PR 23995</span>
+        <span>Cirurgião responsável pelas extrações desta página: Dr. Delson Borsato, cirurgião-dentista · CRO-PR 23995</span>
         <span>Rua General Mário Tourinho, 1805, salas 804 e 805 · Campina do Siqueira · Curitiba/PR</span>
         <span id="privacy-slot"></span>
       </div>
@@ -1006,11 +984,12 @@ window.LP_CONFIG = {
   });
 
   // ---------- Carrossel de depoimentos (loop infinito, avança sozinho, arrasto no celular) ----------
-  function montarCarrossel(total) {
-    var trilho = document.getElementById('quotes');
-    var pontosEl = document.getElementById('carrossel-pontos');
+  function montarCarrossel(total, ids) {
+    ids = ids || { trilho: 'quotes', pontos: 'carrossel-pontos', prox: 'carrossel-prox', ant: 'carrossel-ant', box: 'carrossel' };
+    var trilho = document.getElementById(ids.trilho);
+    var pontosEl = document.getElementById(ids.pontos);
     var originais = [].slice.call(trilho.children);
-    if (total < 2) { document.querySelector('.carrossel-nav').hidden = true; return; }
+    if (total < 2) { document.getElementById(ids.box).querySelector('.carrossel-nav').hidden = true; return; }
     var porTela = function () { return window.innerWidth <= 640 ? 1 : (window.innerWidth <= 1000 ? 2 : 3); };
     var n = total, vis = porTela(), idx = 0, timer, travado = false;
     // clones nas duas pontas para o loop parecer contínuo
@@ -1036,10 +1015,10 @@ window.LP_CONFIG = {
       if (idx >= n) { idx -= n; mover(false); }
       if (idx < 0) { idx += n; mover(false); }
     });
-    pontosEl.innerHTML = originais.map(function (_, i) { return '<button type="button" role="tab" aria-label="Depoimento ' + (i + 1) + '"></button>'; }).join('');
+    pontosEl.innerHTML = originais.map(function (_, i) { return '<button type="button" role="tab" aria-label="' + (ids.rotulo || 'Depoimento') + ' ' + (i + 1) + '"></button>'; }).join('');
     pontosEl.querySelectorAll('button').forEach(function (b, i) { b.addEventListener('click', function () { idx = i; mover(true); reiniciar(); }); });
-    document.getElementById('carrossel-prox').addEventListener('click', function () { ir(1); reiniciar(); });
-    document.getElementById('carrossel-ant').addEventListener('click', function () { ir(-1); reiniciar(); });
+    document.getElementById(ids.prox).addEventListener('click', function () { ir(1); reiniciar(); });
+    document.getElementById(ids.ant).addEventListener('click', function () { ir(-1); reiniciar(); });
     // arrastar / deslizar
     var x0 = null;
     trilho.addEventListener('pointerdown', function (e) { x0 = e.clientX; });
@@ -1049,7 +1028,7 @@ window.LP_CONFIG = {
     function iniciar() { if (reduz) return; parar(); timer = setInterval(function () { if (!document.hidden) ir(1); }, 5000); }
     function parar() { if (timer) clearInterval(timer); }
     function reiniciar() { parar(); iniciar(); }
-    var box = document.getElementById('carrossel');
+    var box = document.getElementById(ids.box);
     box.addEventListener('mouseenter', parar); box.addEventListener('mouseleave', iniciar);
     box.addEventListener('focusin', parar); box.addEventListener('focusout', iniciar);
     window.addEventListener('resize', function () { var v = porTela(); if (v !== vis) { vis = v; clonar(); } mover(false); });
@@ -1080,7 +1059,6 @@ window.LP_CONFIG = {
       var el = document.querySelector(sel);
       if (el && hasUrl(url)) el.innerHTML = '<img src="' + esc(url) + '" alt="Clínica Ateliê Dental">';
     };
-    setLogo('[data-logo]', fotos.logo);
     setLogo('[data-logo-rodape]', fotos.logoRodape);
 
     // Fotos principais
@@ -1098,15 +1076,15 @@ window.LP_CONFIG = {
       frame.appendChild(img);
     });
 
-    // Galeria da clínica
+    // Galeria da clínica (carrossel; aceita URLs ou objetos {src, alt})
     var gal = lista(fotos.clinica).map(function (x) { return typeof x === 'string' ? { src: x, alt: '' } : x; }).filter(function (x) { return x && hasUrl(x.src); });
     if (gal.length) {
-      var g = document.getElementById('gallery');
-      g.innerHTML = gal.map(function (u, i) {
-        return '<figure class="reveal"><img loading="lazy" decoding="async" src="' + esc(u.src) +
+      document.getElementById('galeria-trilho').innerHTML = gal.map(function (u, i) {
+        return '<figure><img loading="lazy" decoding="async" src="' + esc(u.src) +
                '" alt="' + esc(u.alt || ('Clínica Ateliê Dental – ambiente ' + (i + 1))) + '"></figure>';
       }).join('');
-      g.hidden = false;
+      document.getElementById('galeria').hidden = false;
+      montarCarrossel(gal.length, { trilho: 'galeria-trilho', pontos: 'galeria-pontos', prox: 'galeria-prox', ant: 'galeria-ant', box: 'galeria', rotulo: 'Foto' });
     }
 
     // Depoimentos
