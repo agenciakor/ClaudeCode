@@ -15,8 +15,8 @@ especialidades no menu sem mexer em código.
 | **Contato** | link | página inicial, seção "Contato" (âncora `#contato`) |
 | **Agendar avaliação** (botão) | botão | link do WhatsApp (abaixo) |
 
-Link do WhatsApp do botão:
-`https://wa.me/554130726994?text=Ol%C3%A1%2C%20conheci%20o%20site%20e%20quero%20agendar%20um%20atendimento.%20Ref.%20WUAF9XQ`
+Link do WhatsApp do botão (sem "Ref.": o rastreador do site, kor-radar, acrescenta o código Ref. sozinho ao clicar):
+`https://wa.me/554130726994?text=Ol%C3%A1%2C%20conheci%20o%20site%20e%20quero%20agendar%20um%20atendimento.`
 
 Novas especialidades: *Páginas > Especialidades (pasta) > + Adicionar subpágina*. Cada página nova
 já entra no dropdown automaticamente.

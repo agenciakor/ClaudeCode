@@ -59,8 +59,9 @@ Alturas de referência (sem o cabeçalho do Wix):
 A nova Home e o cabeçalho já estão no ar. O que ainda precisa de ajuste, visto no site ao vivo:
 
 - [ ] **Celular:** o Elemento HTML está com **98 px de altura** na versão mobile, então a Home quase não aparece no celular. No editor mobile, selecione o elemento e ajuste a altura (≈ 16.400 px com o elemento a 280 px de largura; ≈ 15.400 px se esticar para 320 px).
-- [ ] **Botão flutuante:** o código personalizado está aplicado só à landing. Editar o trecho, colar a versão nova e marcar **Todas as páginas**.
-- [ ] **Botão do cabeçalho "Agendar Avaliação":** está com a mensagem da campanha do Invisalign. Trocar pelo link geral do site (está no `CABECALHO-WIX.md`).
+- [x] **Botão flutuante:** já aparece em todas as páginas. Versão de 13/10 do código: centralizado no celular, botão "voltar ao topo" do Wix mantido acima dele e barra de ações rápidas do Wix (telefone) ocultada, porque ficava escondida atrás do botão. Recomendado desligar essa barra também no editor mobile (*Ferramentas móveis > Barra de ações rápidas*).
+- [ ] **"Ref." duplicado:** o rastreador do site (kor-radar) acrescenta um código "Ref." a todo link de WhatsApp da página. Por isso o botão flutuante e o botão do cabeçalho não levam "Ref." fixo na mensagem. Dentro do Elemento HTML o rastreador não roda, então os links da Home continuam com o "Ref. WUAF9XQ" fixo (decidir se fica assim ou se o `k.js` também deve ser carregado dentro do HTML).
+- [ ] **Botão do cabeçalho "Agendar Avaliação":** está com a mensagem da campanha do Invisalign. Trocar pelo link geral do site, sem "Ref." (está no `CABECALHO-WIX.md`).
 - [ ] **Itens "A Clínica" e "Contato" do menu:** apontam para a Home sem âncora. Criar as âncoras `clinica` e `contato` e ligar os itens a elas.
 - [ ] **Subitem do menu:** renomear "Alinhador Invisível | Invisalig" para "Alinhador Invisível (Invisalign®)" em *Páginas e menu* (só o nome do item, a URL não muda).
 - [ ] **SEO da página Início:** título ainda é "Clínica Odontológica Ateliê Dental | Ateliê Facial" e não há H1. Seguir o passo 6 acima.
